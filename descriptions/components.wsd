@@ -1,0 +1,58 @@
+@startuml Analysis Service
+
+skinparam {
+    HorizontalAlignment center
+}
+
+cloud "GitHub" as GitHub
+
+node "user identity service" as UserIdentityService {
+    component "User Domain" as UserDomain
+}
+
+node "frontend" as Frontend {
+
+}
+
+node "api gateway\n[KrakenD]" as ApiGateway
+
+node "analysis service" as AnalysisService {
+    component "Analysis Domain" as AnalysisDomain
+    component "Limitation Domain" as LimitationDomain
+
+}
+
+node "storage service" as StorageService {
+    component "Storage Domain" as StorageDomain
+}
+
+node "clustering processor service" as ClusteringProcessorService{
+    component "Processor Domain" as ProcessorDomain
+}
+
+queue "MessageBroker\n[Kafka]" as MessageBroker
+
+database "clustering storage\n[MongoDB]" as ClusteringStorage
+database "user storage\n[PostgreSQL]" as UserStorage
+
+GitHub <-d-- UserDomain
+GitHub <-l--> Frontend
+
+Frontend <-d--> ApiGateway
+
+ApiGateway <-d-- LimitationDomain
+ApiGateway <-d--> AnalysisDomain
+ApiGateway <-d--> UserDomain 
+
+UserDomain -l--> LimitationDomain
+UserDomain <-r-> UserStorage
+
+AnalysisDomain <-d--> StorageDomain
+StorageDomain -u--> LimitationDomain
+StorageDomain <-l-> ClusteringStorage
+
+AnalysisDomain -d--> MessageBroker
+MessageBroker -d--> ProcessorDomain
+ProcessorDomain <-u--> StorageDomain
+
+@enduml

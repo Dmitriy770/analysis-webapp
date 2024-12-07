@@ -1,0 +1,104 @@
+### UIS
+
+POST /user/login
+{
+    "token": "github token"
+}
+
+cookie: token
+{
+    "nickname": "string"
+}
+
+GET /user with cookie token
+{
+    "nickname": "string"
+}
+
+GET /user/logout with cookie token
+
+
+### AnalysisService
+
+GET /user/limits with cookie token
+{
+    "total": int,
+    "left": int,
+    "reducesAt": iso-datatime,
+}
+
+POST /analysis/datasets?{name:text}
+{
+    file
+}
+
+POST /analysis/studies
+{
+    "type": "clustering",
+    "components": int,
+    "dataset": {
+        "name": "string",
+        "columns": string[] | null
+    }
+}
+
+200 OK
+{
+    "studyId": "guid"
+}
+429 Bad request
+
+GET /analysis/studies
+{
+    "studies": [
+        {
+            "id": "guid",
+            "type": "clustering",
+            "status": "in-progress" | "done",
+            "components": int,
+            "dataset": {
+                "name": "string",
+                "columns": string[] | null
+            }
+        }
+    ]
+}
+
+GET /analysis/studies/{id}
+{
+    "id": "guid",
+    "type": "clustering",
+    "status": "in-progress" | "done",
+    "dataset": {
+        "name": "string",
+        "columns": string[] | null
+    }
+}
+
+GET /analysis/studies/{id}/result (clustering)
+{
+    "points": number[], // [кластер_id, ...координаты]
+}
+
+
+### Storage internal
+
+from kafka
+{
+    "type": "clustering",
+    "components": int,
+    "dataset": {
+        "id": Guid,
+        "columns": string[] | null
+    }
+}
+
+GET /storage/datasets/{guid}
+{
+    file
+}
+
+POST /storage/studies/{id}/result (clustering) // обновляет статус, ругается если уже done
+{
+    "points": number[], // [кластер_id, ...координаты]
+}
