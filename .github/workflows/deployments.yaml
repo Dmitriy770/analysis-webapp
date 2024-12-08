@@ -13,11 +13,11 @@ on:
 
 jobs:
   deploy-kraken:
-    if: ${{ inputs.servicename }} == 'krakend' ||  ${{ inputs.servicename }} == 'all'
+    if: inputs.servicename == 'krakend' || inputs.servicename == 'all'
     uses: ./.github/workflows/krakend-deployment.yaml
     secrets: inherit
   
   deploy-uis:
-    if: ${{ inputs.servicename }} == 'uis' ||  ${{ inputs.servicename }} == 'all'
+    if: inputs.servicename == 'uis' || inputs.servicename == 'all'
     uses: ./.github/workflows/uis-deployment.yaml
     secrets: inherit
