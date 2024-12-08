@@ -26,12 +26,12 @@ spec:
             port: 8080
           initialDelaySeconds: 3
           periodSeconds: 3
-            resources:
-        requests:
-          memory: "512Mi"
-          cpu: "0.5"
-        limits:
-          memory: "1024Mi"
-          cpu: "1"
+        resources:
+          requests:
+            memory: "512Mi"
+            cpu: "0.5"
+          limits:
+            memory: "1024Mi"
+            cpu: "1"
   strategy:
     type: RollingUpdate
