@@ -19,5 +19,5 @@ jobs:
   
   deploy-uis:
     if: ${{ inputs.servicename }} == 'uis' ||  ${{ inputs.servicename }} == 'all'
-    uses: ./.github/workflows/uis-deployment.yaml@main
+    uses: ./.github/workflows/uis-deployment.yaml
     secrets: inherit
