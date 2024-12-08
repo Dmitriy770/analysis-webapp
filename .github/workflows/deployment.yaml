@@ -30,4 +30,4 @@ jobs:
           context: ./src/Uis
           file: ./src/Uis/Uis.Api/Dockerfile
           push: true
-          tags: ghcr.io/Dmitriy770/analysis-webapp-uis:${{github.run_id}}
+          tags: ghcr.io/dmitriy770/analysis-webapp-uis:${{github.run_id}}
