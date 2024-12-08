@@ -43,7 +43,7 @@ jobs:
         uses: actions/checkout@v4
 
       - name: Overwrite image for deployment
-        run: sed -i 's\uis-image\${{ secrets.KUBE_CONFIG }}\g' ./deployments/uis/uis-deployment.yaml
+        run: sed -i 's\uis-image\ghcr.io/dmitriy770/analysis-webapp-uis:${{github.run_id}}\g' ./deployments/uis/uis-deployment.yaml
 
       - name: Apply deployment
         uses: actions-hub/kubectl@master
