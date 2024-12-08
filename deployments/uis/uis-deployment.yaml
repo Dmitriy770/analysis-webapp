@@ -16,7 +16,7 @@ spec:
     spec:
       containers:
       - name: uis
-        image: uis:1
+        image: uis-image
         imagePullPolicy: IfNotPresent 
         ports:
         - containerPort: 80
