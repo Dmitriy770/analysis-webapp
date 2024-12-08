@@ -1,7 +1,7 @@
 name: Deploy
 run-name: Deploy by @${{ github.actor }}
 on:
-  worflow_dispatch:
+  workflow_dispatch:
 
 jobs:
   build-uis:
