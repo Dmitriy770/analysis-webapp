@@ -25,9 +25,9 @@ jobs:
         uses: docker/setup-buildx-action@v3
       
       - name: Build and push
-        working-directory: ./src/Uis
         uses: docker/build-push-action@v6
         with:
+          context: src/Uis
           file: Uis.Api/Dockerfile
           push: true
           tags: ghcr.io/dmitriy770/analysis-webapp-uis:${{github.run_id}}
