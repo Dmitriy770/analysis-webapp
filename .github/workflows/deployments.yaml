@@ -1,0 +1,23 @@
+name: Build and deploy
+run-name: Build and deploy by @${{ github.actor }}
+on:
+  workflow_dispatch:
+    inputs:
+      servicename:
+        type: choice
+        description: Service types
+        options: 
+        - uis
+        - krakend
+        - all
+
+jobs:
+  deploy-kraken:
+    if: ${{ inputs.servicename }} == 'krakend' ||  ${{ inputs.servicename }} == 'all'
+    uses: Dmitriy770/analysis-webapp/.github/workflows/krakend-deployment.yaml@main
+    secrets: inherit
+  
+  deploy-uis:
+    if: ${{ inputs.servicename }} == 'uis' ||  ${{ inputs.servicename }} == 'all'
+    uses: Dmitriy770/analysis-webapp/.github/workflows/uis-deployment.yaml@main
+    secrets: inherit
