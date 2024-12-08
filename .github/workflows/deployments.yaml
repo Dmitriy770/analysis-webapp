@@ -14,10 +14,10 @@ on:
 jobs:
   deploy-kraken:
     if: ${{ inputs.servicename }} == 'krakend' ||  ${{ inputs.servicename }} == 'all'
-    uses: Dmitriy770/analysis-webapp/.github/workflows/krakend-deployment.yaml@main
+    uses: ./.github/workflows/krakend-deployment.yaml
     secrets: inherit
   
   deploy-uis:
     if: ${{ inputs.servicename }} == 'uis' ||  ${{ inputs.servicename }} == 'all'
-    uses: Dmitriy770/analysis-webapp/.github/workflows/uis-deployment.yaml@main
+    uses: ./.github/workflows/uis-deployment.yaml@main
     secrets: inherit
