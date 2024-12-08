@@ -30,6 +30,6 @@ jobs:
       - name: Build and push
         uses: docker/build-push-action@v6
         with:
-          file: /Uis.Api/Dockerfile
+          file: Uis.Api/Dockerfile
           push: true
           tags: ghcr.io/dmitriy770/analysis-webapp-uis:${{github.run_id}}
