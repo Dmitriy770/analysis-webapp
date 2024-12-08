@@ -8,7 +8,8 @@ jobs:
     name: Build UIS
     runs-on: ubuntu-latest
     defaults:
-      working-directory: './src/Uis'
+      run:
+        working-directory: './src/Uis'
     steps:
       - name: Login to GitHub Registry
         uses: docker/login-action@v3
