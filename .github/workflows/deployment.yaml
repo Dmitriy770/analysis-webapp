@@ -25,8 +25,8 @@ jobs:
         uses: docker/setup-buildx-action@v3
       
       - name: Build and push
+        working-directory: ./src/Uis
         uses: docker/build-push-action@v6
-        working-directory: './src/Uis'
         with:
           file: Uis.Api/Dockerfile
           push: true
