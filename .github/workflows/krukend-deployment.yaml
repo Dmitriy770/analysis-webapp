@@ -2,6 +2,7 @@ name: Build and deploy KrakenD
 run-name: KrakenD UIS by @${{ github.actor }}
 on:
   workflow_dispatch:
+  workflow_call:
 
 jobs:
   build-krakend:

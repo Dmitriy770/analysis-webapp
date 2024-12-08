@@ -2,6 +2,7 @@ name: Build and deploy UIS
 run-name: Deploy UIS by @${{ github.actor }}
 on:
   workflow_dispatch:
+  workflow_call:
 
 jobs:
   build-uis:
