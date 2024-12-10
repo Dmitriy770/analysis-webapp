@@ -3,6 +3,9 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddOpenApi();
 builder.Services.AddHealthChecks();
 
+var v = builder.Configuration
+v.
+
 var app = builder.Build();
 app.MapOpenApi();
 app.MapHealthChecks("/healthz");
