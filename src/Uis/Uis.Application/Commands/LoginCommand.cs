@@ -1,11 +1,8 @@
 ﻿using MediatR;
-using Uis.Application.Mappers;
+using Uis.Application.Abstractions.Gateways;
+using Uis.Application.Abstractions.Providers;
+using Uis.Application.Abstractions.Repositories;
 using Uis.Domain.Models;
-using Uis.Infrastructure.Gateways.Abstractions;
-using Uis.Infrastructure.Gateways.Abstractions.Models;
-using Uis.Infrastructure.Helpers.Abstractions;
-using Uis.Infrastructure.Repositories.Abstractions;
-using Uis.Infrastructure.Settings;
 
 using User = Uis.Domain.Models.User;
 
@@ -15,7 +12,7 @@ public record LoginCommand(
     string GitHubCode)
     : IRequest<Result>;
 
-public record Result(
+internal record Result(
     User User,
     Session Session);
 
@@ -24,22 +21,23 @@ internal sealed class LoginCommandHandler(
     ISessionRepository sessionRepository,
     IDateTimeProvider dateTimeProvider,
     IGuidProvider guidProvider,
-    IGitHubGateway gitHubGateway,
-    GitHubGatewaySettings gitHubGatewaySettings)
+    IGitHubGateway gitHubGateway)
     : IRequestHandler<LoginCommand, Result>
 {
     public async Task<Result> Handle(LoginCommand request, CancellationToken cancellationToken)
     {
-        var oauth = new OAuth(
-            ClientId: gitHubGatewaySettings.ClientId,
-            ClientSecret: gitHubGatewaySettings.ClientSecret,
-            RedirectUri: gitHubGatewaySettings.RedirectUri,
-            Code: request.GitHubCode);
-        var accessToken = await gitHubGateway.GetAccessTokenAsync(oauth);
+        var accessToken = await gitHubGateway.GetAccessTokenAsync(request.GitHubCode);
         
         var gitHubUser = await gitHubGateway.GetUserAsync(accessToken);
-        var user = gitHubUser.ToDomain();
-        await userRepository.SaveAsync(user.ToRepository());
+
+        var user = new User(
+            Id: gitHubUser.Id,
+            Login: gitHubUser.Login,
+            Name: gitHubUser.Name,
+            AvatarUri: gitHubUser.AvatarUrl,
+            Limit: Limit);
+        
+        await userRepository.AddOrUpdateAsync(user);
 
         await sessionRepository.DeleteByUserIdAsync(user.Id);
         
@@ -48,11 +46,13 @@ internal sealed class LoginCommandHandler(
         var session = new Session(
             SessionId: sessionId,
             UserId: user.Id,
-            CreatedDate: sessionCreationTime);
-        await sessionRepository.SaveAsync(session.ToRepository());
+            CreatedDateTime: sessionCreationTime);
+        await sessionRepository.AddAsync(session);
         
         return new Result(
             User: user,
             Session: session);
     }
+
+    private const int Limit = 5;
 }

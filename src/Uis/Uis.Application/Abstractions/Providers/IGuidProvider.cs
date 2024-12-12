@@ -1,4 +1,4 @@
-﻿namespace Uis.Infrastructure.Helpers.Abstractions;
+﻿namespace Uis.Application.Abstractions.Providers;
 
 public interface IGuidProvider
 {

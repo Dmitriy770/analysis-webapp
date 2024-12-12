@@ -17,4 +17,9 @@
       </Content>
     </ItemGroup>
 
+    <ItemGroup>
+      <ProjectReference Include="..\Uis.Common\Uis.Common.csproj" />
+      <ProjectReference Include="..\Uis.Infrastructure\Uis.Infrastructure.csproj" />
+    </ItemGroup>
+
 </Project>

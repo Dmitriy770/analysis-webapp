@@ -1,12 +1,15 @@
-﻿using Microsoft.AspNetCore.Mvc.Controllers;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc.Controllers;
 using Microsoft.AspNetCore.Mvc.Filters;
-using Uis.Common.Authorization.Attributes;
+using Microsoft.AspNetCore.Routing;
+using Uis.Domain.Exceptions;
+using AuthorizeAttribute = Uis.Common.Authorization.Attributes.AuthorizeAttribute;
 
 namespace Uis.Common.Authorization.Extensions;
 
 public static class AuthorizationFilterContextExtensions
 {
-    public static bool IsAuthorizationRequired(this AuthorizationFilterContext context)
+    public static bool IsAuthorizationRequired(this AuthorizationHandlerContext context)
     {
         if (context.ActionDescriptor is not ControllerActionDescriptor contextActionDescriptor)
         {
@@ -21,20 +24,23 @@ public static class AuthorizationFilterContextExtensions
 
     }
     
-    public static Guid? GetSessionId(this AuthorizationFilterContext context)
+    public static Guid GetSessionId(this AuthorizationHandlerContext context)
     {
-        if (!context.HttpContext.Request.Cookies.TryGetValue(SessionIdKey, out var sessionIdString))
+        if (!context.HttpContext.Request.Cookies.TryGetValue(Consts.SessionIdKey, out var sessionIdString))
         {
-            return null;
+            throw new SessionIdNotFoundException();
         }
 
-        if (Guid.TryParse(sessionIdString, out var sessionId))
+        if (!Guid.TryParse(sessionIdString, out var sessionId))
         {
-            return sessionId;
+            throw new SessionIdNotFoundException();
         }
 
-        return null;
+        return sessionId;
     }
 
-    private const string SessionIdKey = "SessionId";
+    public static void AddSessionToHeader(this AuthorizationFilterContext context, Guid sessionId)
+    {
+        context.HttpContext.Request.Headers[Consts.SessionIdKey] = sessionId.ToString();
+    }
 }

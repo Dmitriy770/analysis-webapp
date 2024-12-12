@@ -1,4 +1,4 @@
-﻿namespace Uis.Api.Models;
+﻿namespace Uis.Api.Models.Public;
 
 public record User(
     string Nickname);

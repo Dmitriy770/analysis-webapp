@@ -11,12 +11,9 @@ internal sealed class AuthorizationFilter : IAuthorizationFilter
         {
             return;
         }
+        
+        var sessionId = context.GetSessionId();
 
-        if (context.GetSessionId() is not { } sessionId)
-        {
-            throw new Exception();
-        }
-        
-        
+
     }
 }

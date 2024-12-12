@@ -3,4 +3,4 @@
 public record Session(
     Guid SessionId,
     long UserId,
-    DateTime CreatedDate);
+    DateTime CreatedDateTime);
