@@ -1,5 +1,6 @@
 ﻿using MediatR;
 using Microsoft.AspNetCore.Mvc;
+using Uis.Api.Filters.Internal;
 using Uis.Api.Mappers;
 using Uis.Application.Queries;
 
@@ -7,6 +8,7 @@ namespace Uis.Api.Controllers.Internal;
 
 [ApiController]
 [Route("internal/user")]
+[ServiceFilter<UserControllerExceptionFilter>]
 public class UserController(
     ISender sender)
     : ControllerBase

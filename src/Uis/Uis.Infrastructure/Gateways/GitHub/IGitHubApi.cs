@@ -1,9 +1,9 @@
 ﻿using Refit;
-using Uis.Infrastructure.Gateways.Abstractions.Models;
+using Uis.Infrastructure.Gateways.GitHub.Models;
 
-namespace Uis.Infrastructure.Gateways.Abstractions;
+namespace Uis.Infrastructure.Gateways.GitHub;
 
-public interface IGitHubGateway
+internal interface IGitHubApi
 {
     [Get("/login/oauth/access_token")]
     Task<string> GetAccessTokenAsync(OAuth oAuth);

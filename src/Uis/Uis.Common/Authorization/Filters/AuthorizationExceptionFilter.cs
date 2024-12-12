@@ -1,20 +1,11 @@
-﻿using Microsoft.AspNetCore.Mvc.Filters;
+﻿using Uis.Common.ExceptionFilter;
 
 namespace Uis.Common.Authorization.Filters;
 
-public sealed class AuthorizationExceptionFilter : IExceptionFilter
+public sealed class AuthorizationExceptionFilter : BaseExceptionFilter
 {
-    public void OnException(ExceptionContext context)
+    protected override ErrorResponse? HandleException(Exception exception)
     {
-        var result = context.Exception switch
-        {
-            _ => null
-        };
-
-        if (result is not null)
-        {
-            context.ExceptionHandled = true;
-            context.Result = result;
-        }
+        throw new NotImplementedException();
     }
 }

@@ -1,9 +1,13 @@
 ﻿using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Refit;
+using Uis.Application.Abstractions.Gateways;
+using Uis.Application.Abstractions.Providers;
 using Uis.Application.Commands;
-using Uis.Infrastructure.Gateways.Abstractions;
+using Uis.Infrastructure.Gateways.GitHub;
+using Uis.Infrastructure.Providers;
 using Uis.Infrastructure.Settings;
+using Uis.Infrastructure.Repositories.Session;
 
 namespace Uis.Infrastructure;
 
@@ -23,12 +27,21 @@ public static class ServiceCollectionExtensions
         this IServiceCollection serviceCollection,
         IConfigurationRoot configuration)
     {
+        // Providers
+        serviceCollection.AddScoped<IDateTimeProvider, DateTimeProvider>();
+        serviceCollection.AddScoped<IGuidProvider, GuidProvider>();
+        
         // Gateways
         var settings = GitHubGatewaySettings.From(configuration);
         serviceCollection.AddSingleton(settings);
         serviceCollection
-            .AddRefitClient<IGitHubGateway>()
+            .AddRefitClient<IGitHubApi>()
             .ConfigureHttpClient(httpClient => httpClient.BaseAddress = settings.ApiUri);
+        serviceCollection.AddScoped<IGitHubGateway, GitHubGateway>();
+     
+        // repository
+        serviceCollection.AddSessionRepository(configuration);
+
         
         return serviceCollection;
     }

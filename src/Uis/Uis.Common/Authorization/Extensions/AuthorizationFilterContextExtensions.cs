@@ -1,7 +1,5 @@
-﻿using Microsoft.AspNetCore.Authorization;
-using Microsoft.AspNetCore.Mvc.Controllers;
+﻿using Microsoft.AspNetCore.Mvc.Controllers;
 using Microsoft.AspNetCore.Mvc.Filters;
-using Microsoft.AspNetCore.Routing;
 using Uis.Domain.Exceptions;
 using AuthorizeAttribute = Uis.Common.Authorization.Attributes.AuthorizeAttribute;
 
@@ -9,7 +7,7 @@ namespace Uis.Common.Authorization.Extensions;
 
 public static class AuthorizationFilterContextExtensions
 {
-    public static bool IsAuthorizationRequired(this AuthorizationHandlerContext context)
+    public static bool IsAuthorizationRequired(this AuthorizationFilterContext context)
     {
         if (context.ActionDescriptor is not ControllerActionDescriptor contextActionDescriptor)
         {
@@ -24,7 +22,7 @@ public static class AuthorizationFilterContextExtensions
 
     }
     
-    public static Guid GetSessionId(this AuthorizationHandlerContext context)
+    public static Guid GetSessionId(this AuthorizationFilterContext context)
     {
         if (!context.HttpContext.Request.Cookies.TryGetValue(Consts.SessionIdKey, out var sessionIdString))
         {

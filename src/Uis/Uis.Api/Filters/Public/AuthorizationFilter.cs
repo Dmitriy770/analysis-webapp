@@ -1,14 +1,15 @@
 ﻿using MediatR;
-using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc.Filters;
 using Uis.Application.Commands;
+using Uis.Common.Authorization.Extensions;
 
 namespace Uis.Api.Filters.Public;
 
 internal sealed class AuthorizationFilter(
     ISender sender)
-    : IAuthorizationHandler
+    : IAsyncAuthorizationFilter
 {
-    public async Task HandleAsync(AuthorizationHandlerContext context)
+    public async Task OnAuthorizationAsync(AuthorizationFilterContext context)
     {
         if (!context.IsAuthorizationRequired())
         {

@@ -3,7 +3,7 @@ using Uis.Common.Configuration;
 
 namespace Uis.Infrastructure.Settings;
 
-public sealed class GitHubGatewaySettings
+internal sealed class GitHubGatewaySettings
 {
     public static GitHubGatewaySettings From(IConfigurationRoot configuration)
     {
@@ -23,4 +23,6 @@ public sealed class GitHubGatewaySettings
     public string ClientId { get; private set; }
     
     public string ClientSecret { get; private set; }
+
+    private GitHubGatewaySettings(){}
 }

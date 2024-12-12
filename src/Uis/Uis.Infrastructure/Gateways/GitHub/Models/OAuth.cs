@@ -1,6 +1,6 @@
-﻿namespace Uis.Infrastructure.Gateways.Abstractions.Models;
+﻿namespace Uis.Infrastructure.Gateways.GitHub.Models;
 
-public record OAuth(
+internal record OAuth(
     string ClientId,
     string ClientSecret,
     string Code,

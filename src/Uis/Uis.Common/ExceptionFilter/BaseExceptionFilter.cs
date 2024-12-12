@@ -1,20 +1,30 @@
-﻿using Microsoft.AspNetCore.Diagnostics;
-using Microsoft.AspNetCore.Http;
+﻿using System.Net;
+using System.Text.Json;
+using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.Filters;
 
 namespace Uis.Common.ExceptionFilter;
 
-public abstract class BaseExceptionFilter : IExceptionHandler
+public abstract class BaseExceptionFilter : IExceptionFilter
 {
-    protected abstract IResult? HandleException(Exception exception);
+    protected abstract ErrorResponse? HandleException(Exception exception);
     
-    public async ValueTask<bool> TryHandleAsync(HttpContext httpContext, Exception exception, CancellationToken cancellationToken)
+    public void OnException(ExceptionContext context)
     {
-        if (HandleException(exception) is not { } result)
+        if (HandleException(context.Exception) is not { } response)
         {
-            return false;
+            response = new ErrorResponse(
+                StatusCode: (int)HttpStatusCode.InternalServerError,
+                ErrorCode: 0,
+                ErrorMessage: context.Exception.Message);
         }
-        
-        await result.ExecuteAsync(httpContext);
-        return true;
+
+        context.Result = new ContentResult
+        {
+            StatusCode = response.StatusCode,
+            Content = JsonSerializer.Serialize(response),
+            ContentType = "application/json"
+        };
+        context.ExceptionHandled = true;
     }
 }

@@ -1,5 +1,6 @@
 ﻿using MediatR;
 using Microsoft.AspNetCore.Mvc;
+using Uis.Api.Filters.Internal;
 using Uis.Api.Mappers;
 using Uis.Application.Commands;
 
@@ -7,6 +8,7 @@ namespace Uis.Api.Controllers.Internal;
 
 [ApiController]
 [Route("internal/session")]
+[ServiceFilter<SessionControllerExceptionFilter>]
 public sealed class SessionController(
     ISender sender)
     : ControllerBase

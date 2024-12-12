@@ -5,6 +5,7 @@ using Uis.Api.Models.Public;
 using Uis.Application.Commands;
 using Uis.Application.Queries;
 using Uis.Common.Authorization;
+using Uis.Common.Authorization.Attributes;
 using Uis.Common.Authorization.Extensions;
 
 namespace Uis.Api.Controllers.Public;
@@ -27,6 +28,7 @@ internal sealed class UserController(
     }
 
     [HttpGet("logout")]
+    [Authorize]
     public async Task<IResult> Logout(
         [FromHeader(Name = Consts.SessionIdKey)]Guid sessionId)
     {
@@ -36,6 +38,7 @@ internal sealed class UserController(
     }
 
     [HttpGet]
+    [Authorize]
     public async Task<IResult> Get(
         [FromHeader(Name = Consts.SessionIdKey)]Guid sessionId)
     {
