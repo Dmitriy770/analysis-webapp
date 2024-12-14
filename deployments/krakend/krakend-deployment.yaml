@@ -16,7 +16,7 @@ spec:
     spec:
       containers:
       - name: krakend
-        image: krakend-image
+        image: {template.krakend.image}
         imagePullPolicy: IfNotPresent 
         ports:
         - containerPort: 8080
@@ -25,7 +25,8 @@ spec:
             path: /__health
             port: 8080
           initialDelaySeconds: 3
-          periodSeconds: 3
+          periodSeconds: 20
+          failureThreshold: 3
         resources:
           requests:
             memory: "512Mi"

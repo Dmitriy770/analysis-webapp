@@ -9,6 +9,8 @@ on:
         options: 
         - uis
         - krakend
+        - user-storage
+        - session-storage
         - all
 
 jobs:
@@ -21,3 +23,14 @@ jobs:
     if: inputs.servicename == 'uis' || inputs.servicename == 'all'
     uses: ./.github/workflows/uis-deployment.yaml
     secrets: inherit
+  
+   deploy-user-storage:
+    if: inputs.servicename == 'user-storage' || inputs.servicename == 'all'
+    uses: ./.github/workflows/user-storage-deployment.yaml
+    secrets: inherit
+  
+  deploy-session-storage:
+    if: inputs.servicename == 'session-storage' || inputs.servicename == 'all'
+    uses: ./.github/workflows/session-storage-deployment.yaml
+    secrets: inherit
+

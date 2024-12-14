@@ -1,0 +1,93 @@
+{
+    "$schema": "https://www.krakend.io/schema/v3.json",
+    "version": 3,
+    "endpoints": [
+        {
+            "endpoint": "/api/uis/openapi/v1",
+            "method": "GET",
+            "input_headers": [
+                "User-Agent",
+                "Accept"
+              ],        
+            "backend": [
+                {
+                    "url_pattern": "/user/openapi/v1.json",
+                    "method": "POST",
+                    "host": [
+                        "http://uis-service.default.svc.cluster.local"
+                    ],
+                    "extra_config": {
+                        "backend/http": {
+                            "return_error_code": true,
+                            "return_error_details": "krakend"
+                        }
+                    }
+                }
+            ]
+        },
+        {
+            "endpoint": "/api/user/login",
+            "method": "POST",
+            "input_headers": [
+                "User-Agent",
+                "Accept",
+                "Cookie"
+              ],        
+            "backend": [
+                {
+                    "url_pattern": "/user/login",
+                    "method": "POST",
+                    "host": [
+                        "http://uis-service.default.svc.cluster.local"
+                    ],
+                    "extra_config": {
+                        "backend/http": {
+                            "return_error_code": true,
+                            "return_error_details": "krakend"
+                        }
+                    }
+                }
+            ]
+        },
+        {
+            "endpoint": "/api/user/logout",
+            "method": "GET",
+            "input_headers": [
+                "User-Agent",
+                "Accept",
+                "Cookie"
+              ],        
+            "backend": [
+                {
+                    "url_pattern": "/user/logout",
+                    "method": "POST",
+                    "host": [
+                        "http://uis-service.default.svc.cluster.local"
+                    ],
+                    "extra_config": {
+                        "backend/http": {
+                            "return_error_code": true,
+                            "return_error_details": "krakend"
+                        }
+                    }
+                }
+            ]
+        }
+    ],
+    "extra_config": {
+        "telemetry/logging": {
+            "level": "DEBUG",
+            "prefix": "[KRAKEND]",
+            "stdout": true
+        },
+        "qos/ratelimit/service": {
+            "every": "1m",
+            "max_rate": 500,
+            "client_max_rate": 50,
+            "strategy": "ip"
+        },
+        "router": {
+            "return_error_msg": true
+        }
+    }
+}
