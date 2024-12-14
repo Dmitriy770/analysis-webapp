@@ -19,7 +19,8 @@ internal static class SessionRepositoryConfiguration
         {
             EndPoints = {$"{redisSettings.Endpoint}:{redisSettings.Port}"},
             User = redisSettings.User,
-            Password = redisSettings.Password
+            Password = redisSettings.Password,
+            AbortOnConnectFail = false
         };
         
         var redis = ConnectionMultiplexer.Connect(redisConfiguration);

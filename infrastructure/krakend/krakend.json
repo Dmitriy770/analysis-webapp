@@ -18,7 +18,6 @@
                     ],
                     "extra_config": {
                         "backend/http": {
-                            "return_error_code": true,
                             "return_error_details": "krakend"
                         }
                     }
@@ -42,7 +41,6 @@
                     ],
                     "extra_config": {
                         "backend/http": {
-                            "return_error_code": true,
                             "return_error_details": "krakend"
                         }
                     }
