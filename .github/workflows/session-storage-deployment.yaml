@@ -23,4 +23,4 @@ jobs:
         env:
           KUBE_CONFIG: ${{ secrets.KUBE_CONFIG }}
         with:
-          args: apply -f ./deployments/user-storage/session-storage-service.yaml
+          args: apply -f ./deployments/session-storage/session-storage-service.yaml
