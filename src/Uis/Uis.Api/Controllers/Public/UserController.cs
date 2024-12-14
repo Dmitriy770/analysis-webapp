@@ -12,7 +12,7 @@ namespace Uis.Api.Controllers.Public;
 
 [ApiController]
 [Route("user")]
-internal sealed class UserController(
+public sealed class UserController(
     ISender sender)
     : ControllerBase
 {

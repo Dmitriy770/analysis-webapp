@@ -13,7 +13,7 @@ public class UserController(
     ISender sender)
     : ControllerBase
 {
-    [HttpGet("/limits/total")]
+    [HttpGet("limits/total")]
     public async Task<IResult> GetLimitsBySessionId(
         [FromQuery] Guid sessionId)
     {
