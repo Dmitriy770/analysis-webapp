@@ -81,7 +81,8 @@
             "strategy": "ip"
         },
         "router": {
-            "return_error_msg": true
+            "return_error_msg": true,
+            "disable_access_log": false
         }
     }
 }
