@@ -16,7 +16,7 @@ spec:
     spec:
       containers:
       - name: krakend
-        image: {template.krakend.image}
+        image: {template-krakend-image}
         imagePullPolicy: IfNotPresent 
         ports:
         - containerPort: 8080

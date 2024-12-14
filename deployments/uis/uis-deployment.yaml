@@ -16,7 +16,7 @@ spec:
     spec:
       containers:
       - name: uis
-        image: {template.uis.image}
+        image: {template-uis-image}
         imagePullPolicy: IfNotPresent 
         ports:
         - containerPort: 8080
@@ -29,17 +29,17 @@ spec:
           failureThreshold: 3
         env:
         - name: Repositories__SessionRepository__User
-          vale: {template.repository.session.user}
+          vale: {template-repository-session.user}
         - name: Repositories__SessionRepository__Password
-          vale: {template.repository.session.password}
+          vale: {template-repository-session-password}
         - name: Repositories__UserRepository__User
-          vale: {template.repository.user.user}
+          vale: {template-repository-user.user}
         - name: Repositories__UserRepository__Password
-          vale: {template.repository.user.password}
+          vale: {template-repository-user-password}
         - name: Gateways__GitHub__ClientId
-          value: {template.gateway.github.clientid}
+          value: {template-gateway-github-clientid}
         - name: Gateways__GitHub__Secret
-          value: {template.gateway.github.secret}
+          value: {template-gateway-github-secret}
   strategy:
     type: RollingUpdate
 
