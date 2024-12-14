@@ -1,6 +1,10 @@
-@Uis.Api_HostAddress = http://localhost:5220
+#@Uis.Api_HostAddress = http://analysis.devsquare.ru
 
-GET {{Uis.Api_HostAddress}}/weatherforecast/
+POST http://analysis.devsquare.ru/api/user/login
 Accept: application/json
+Content-Type: application/json
 
+{
+    "Token": "w"
+}
 ###
