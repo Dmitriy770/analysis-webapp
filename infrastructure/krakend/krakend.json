@@ -12,7 +12,6 @@
             "backend": [
                 {
                     "url_pattern": "/user/openapi/v1.json",
-                    "method": "POST",
                     "host": [
                         "http://uis-service.default.svc.cluster.local"
                     ],
@@ -35,7 +34,6 @@
             "backend": [
                 {
                     "url_pattern": "/user/login",
-                    "method": "POST",
                     "host": [
                         "http://uis-service.default.svc.cluster.local"
                     ],
@@ -49,7 +47,6 @@
         },
         {
             "endpoint": "/api/user/logout",
-            "method": "GET",
             "input_headers": [
                 "User-Agent",
                 "Accept",
