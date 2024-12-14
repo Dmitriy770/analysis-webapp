@@ -29,13 +29,13 @@ spec:
           failureThreshold: 3
         env:
         - name: Repositories__SessionRepository__User
-          vale: {template-repository-session-user}
+          value: {template-repository-session-user}
         - name: Repositories__SessionRepository__Password
-          vale: {template-repository-session-password}
+          value: {template-repository-session-password}
         - name: Repositories__UserRepository__User
-          vale: {template-repository-user.user}
+          value: {template-repository-user.user}
         - name: Repositories__UserRepository__Password
-          vale: {template-repository-user-password}
+          value: {template-repository-user-password}
         - name: Gateways__GitHub__ClientId
           value: {template-gateway-github-clientid}
         - name: Gateways__GitHub__Secret
