@@ -24,7 +24,7 @@ jobs:
     uses: ./.github/workflows/uis-deployment.yaml
     secrets: inherit
   
-   deploy-user-storage:
+  deploy-user-storage:
     if: inputs.servicename == 'user-storage' || inputs.servicename == 'all'
     uses: ./.github/workflows/user-storage-deployment.yaml
     secrets: inherit
