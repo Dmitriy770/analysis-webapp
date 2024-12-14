@@ -1,5 +1,4 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using Microsoft.Extensions.Configuration;
 using Npgsql;
 using Uis.Infrastructure.Repositories.Users.Models;
 using Uis.Infrastructure.Settings;
@@ -14,7 +13,7 @@ internal class UserRepositoryDbContext(
     {
         var connectionStringBuilder = new NpgsqlConnectionStringBuilder
         {
-            Host = settings.Endpoint.ToString(),
+            Host = settings.Endpoint,
             Port = settings.Port,
             Database = settings.Database,
             Username = settings.User,

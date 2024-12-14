@@ -23,10 +23,11 @@ public static class SessionRepositoryConfiguration
         return serviceCollection;
     }
 
-    public static async Task RegisterUserRepository(this WebApplication application)
+    public static Task RegisterUserRepository(this WebApplication application)
     {
-        var dbContext = application.Services.GetRequiredService<UserRepositoryDbContext>();
-        
-        await dbContext.Database.MigrateAsync();
+        return Task.CompletedTask;
+        // var dbContext = application.Services.GetRequiredService<UserRepositoryDbContext>();
+        //
+        // await dbContext.Database.MigrateAsync();
     }
 }
