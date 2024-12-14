@@ -15,6 +15,8 @@ internal static class SessionRepositoryConfiguration
         IConfigurationRoot configuration)
     {
         var redisSettings = SessionRepositorySettings.From(configuration);
+        Console.WriteLine(redisSettings.User);
+        Console.WriteLine(redisSettings.Password);
         var redisConfiguration = new ConfigurationOptions
         {
             EndPoints = {{redisSettings.Endpoint, redisSettings.Port}},
