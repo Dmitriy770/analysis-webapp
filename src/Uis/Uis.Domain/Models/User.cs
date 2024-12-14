@@ -5,4 +5,4 @@ public record User(
     string Login,
     string Name,
     Uri AvatarUri,
-    int Limit = 5);
+    int Limit);

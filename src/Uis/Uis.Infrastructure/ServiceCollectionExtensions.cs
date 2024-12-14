@@ -6,8 +6,9 @@ using Uis.Application.Abstractions.Providers;
 using Uis.Application.Commands;
 using Uis.Infrastructure.Gateways.GitHub;
 using Uis.Infrastructure.Providers;
+using Uis.Infrastructure.Repositories.Sessions;
+using Uis.Infrastructure.Repositories.Users;
 using Uis.Infrastructure.Settings;
-using Uis.Infrastructure.Repositories.Session;
 
 namespace Uis.Infrastructure;
 
@@ -41,7 +42,7 @@ public static class ServiceCollectionExtensions
      
         // repository
         serviceCollection.AddSessionRepository(configuration);
-
+        serviceCollection.AddUserRepository(configuration);
         
         return serviceCollection;
     }

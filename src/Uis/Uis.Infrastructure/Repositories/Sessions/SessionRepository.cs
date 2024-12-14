@@ -3,7 +3,7 @@ using NRedisStack.Search;
 using StackExchange.Redis;
 using Uis.Application.Abstractions.Repositories;
 
-namespace Uis.Infrastructure.Repositories.Session;
+namespace Uis.Infrastructure.Repositories.Sessions;
 
 internal sealed class SessionRepository(
     IDatabase database) : ISessionRepository

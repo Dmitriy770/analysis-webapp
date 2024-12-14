@@ -7,12 +7,12 @@ public static class ConfigurationExtensions
 {
     public static T GetRequiredValue<T>(this IConfiguration configuration, string key)
     {
-        if (configuration.GetSection(key).Value is not {} valueString)
+        if (configuration.GetValue<string>(key) is null)
         {
             throw new ConfigurationKeyNotFoundException(key);
         }
 
-        if (valueString is not T value)
+        if (configuration.GetValue<T>(key) is not {} value)
         {
             throw new ConfigurationCastValueException(key, typeof(T));
         }

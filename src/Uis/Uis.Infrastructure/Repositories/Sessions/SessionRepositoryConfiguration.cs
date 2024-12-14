@@ -6,7 +6,7 @@ using NRedisStack.Search.Literals.Enums;
 using StackExchange.Redis;
 using Uis.Infrastructure.Settings;
 
-namespace Uis.Infrastructure.Repositories.Session;
+namespace Uis.Infrastructure.Repositories.Sessions;
 
 internal static class SessionRepositoryConfiguration
 {

@@ -12,7 +12,7 @@ public record LoginCommand(
     string GitHubCode)
     : IRequest<Result>;
 
-internal record Result(
+public record Result(
     User User,
     Session Session);
 
