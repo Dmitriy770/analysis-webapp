@@ -40,6 +40,13 @@ spec:
           value: {template-gateway-github-clientid}
         - name: Gateways__GitHub__Secret
           value: {template-gateway-github-secret}
+        resources:
+          requests:
+            memory: "512Mi"
+            cpu: "0.5"
+          limits:
+            memory: "1024Mi"
+            cpu: "1"
   strategy:
     type: RollingUpdate
 

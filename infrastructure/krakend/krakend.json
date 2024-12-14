@@ -5,10 +5,12 @@
         {
             "endpoint": "/api/uis/openapi/v1",
             "method": "GET",
-            "input_headers": ["*"],        
+            "input_headers": ["*"],
+            "output_encoding": "json",        
             "backend": [
                 {
-                    "url_pattern": "/user/openapi/v1",
+                    "url_pattern": "/openapi/v1",
+                    "encoding": "json",
                     "host": [
                         "http://uis-service.default.svc.cluster.local"
                     ],
@@ -28,7 +30,7 @@
             "backend": [
                 {
                     "encoding": "no-op",
-                    "url_pattern": "/user/scalar/v1",
+                    "url_pattern": "/scalar/v1",
                     "host": [
                         "http://uis-service.default.svc.cluster.local"
                     ],
@@ -43,6 +45,7 @@
         {
             "endpoint": "/api/user/login",
             "method": "POST",
+            "output_encoding": "json",
             "input_headers": [
                 "User-Agent",
                 "Accept",
@@ -51,6 +54,7 @@
             "backend": [
                 {
                     "url_pattern": "/user/login",
+                    "encoding": "json",
                     "host": [
                         "http://uis-service.default.svc.cluster.local"
                     ],
@@ -64,6 +68,7 @@
         },
         {
             "endpoint": "/api/user/logout",
+            "output_encoding": "json",
             "input_headers": [
                 "User-Agent",
                 "Accept",
@@ -73,6 +78,7 @@
                 {
                     "url_pattern": "/user/logout",
                     "method": "POST",
+                    "encoding": "json",
                     "host": [
                         "http://uis-service.default.svc.cluster.local"
                     ],
