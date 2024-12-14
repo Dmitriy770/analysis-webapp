@@ -9,14 +9,14 @@ internal sealed class SessionRepositorySettings
     {
         return new SessionRepositorySettings
         {
-            Endpoint = configuration.GetRequiredValue<Uri>("Repositories:SessionRepository:Endpoint"),
+            Endpoint = configuration.GetRequiredValue<string>("Repositories:SessionRepository:Endpoint"),
             Port = configuration.GetRequiredValue<int>("Repositories:SessionRepository:Port"),
             User = configuration.GetRequiredValue<string>("Repositories:SessionRepository:User"),
             Password = configuration.GetRequiredValue<string>("Repositories:SessionRepository:Password")
         };
     }
     
-    public Uri Endpoint { get; private set; }
+    public string Endpoint { get; private set; }
     
     public int Port { get; private set; }
     

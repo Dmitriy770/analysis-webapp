@@ -17,7 +17,7 @@ internal static class SessionRepositoryConfiguration
         var redisSettings = SessionRepositorySettings.From(configuration);
         var redisConfiguration = new ConfigurationOptions
         {
-            EndPoints = {$"{redisSettings.Endpoint}:{redisSettings.Port}"},
+            EndPoints = {{redisSettings.Endpoint, redisSettings.Port}},
             User = redisSettings.User,
             Password = redisSettings.Password,
             AbortOnConnectFail = false

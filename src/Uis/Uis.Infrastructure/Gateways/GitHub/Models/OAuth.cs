@@ -4,4 +4,4 @@ internal record OAuth(
     string ClientId,
     string ClientSecret,
     string Code,
-    Uri RedirectUri);
+    string RedirectUri);

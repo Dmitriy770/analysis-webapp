@@ -9,7 +9,7 @@ internal sealed class UserRepositorySettings
     {
         return new UserRepositorySettings
         {
-            Endpoint = configuration.GetRequiredValue<Uri>("Repositories:UserRepository:Endpoint"),
+            Endpoint = configuration.GetRequiredValue<string>("Repositories:UserRepository:Endpoint"),
             Port = configuration.GetRequiredValue<int>("Repositories:UserRepository:Port"),
             User = configuration.GetRequiredValue<string>("Repositories:UserRepository:User"),
             Password = configuration.GetRequiredValue<string>("Repositories:UserRepository:Password"),
@@ -17,7 +17,7 @@ internal sealed class UserRepositorySettings
         };
     }
     
-    public Uri Endpoint { get; private set; }
+    public string Endpoint { get; private set; }
     
     public int Port { get; private set; }
     
