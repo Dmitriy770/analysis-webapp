@@ -29,7 +29,7 @@ spec:
           failureThreshold: 3
         env:
         - name: Repositories__SessionRepository__User
-          vale: {template-repository-session.user}
+          vale: {template-repository-session-user}
         - name: Repositories__SessionRepository__Password
           vale: {template-repository-session-password}
         - name: Repositories__UserRepository__User
