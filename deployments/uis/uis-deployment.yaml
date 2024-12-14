@@ -42,11 +42,11 @@ spec:
           value: {template-gateway-github-secret}
         resources:
           requests:
-            memory: "512Mi"
-            cpu: "0.5"
+            memory: "32i"
+            cpu: "1m"
           limits:
-            memory: "1024Mi"
-            cpu: "1"
+            memory: "64Mi"
+            cpu: "5m"
   strategy:
     type: RollingUpdate
 
