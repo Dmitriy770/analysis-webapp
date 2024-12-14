@@ -48,7 +48,7 @@ jobs:
         run: sed -i 's\{template.repository.session.user}\${{secrets.SESSION_STORAGE_USER}}\g' ./deployments/uis/uis-deployment.yaml
       
       - name: Overwrite password for session storage
-        run: sed -i 's\{template.repository.session.password}${{secrets.SESSION_STORAGE_PASSWORD}}\g' ./deployments/uis/uis-deployment.yaml
+        run: sed -i 's\{template.repository.session.password}\${{secrets.SESSION_STORAGE_PASSWORD}}\g' ./deployments/uis/uis-deployment.yaml
       
       - name: Overwrite user for user storage
         run: sed -i 's\{template.repository.user.user}\${{secrets.USER_STORAGE_USER}}\g' ./deployments/uis/uis-deployment.yaml
