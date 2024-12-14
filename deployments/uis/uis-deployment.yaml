@@ -24,8 +24,8 @@ spec:
           httpGet:
             path: /healthz
             port: 8080
-          initialDelaySeconds: 3
-          periodSeconds: 20
+          initialDelaySeconds: 60
+          periodSeconds: 30
           failureThreshold: 3
         env:
         - name: Repositories__SessionRepository__User
@@ -43,10 +43,10 @@ spec:
         resources:
           requests:
             memory: "32Mi"
-            cpu: "10m"
+            cpu: "15m"
           limits:
             memory: "64Mi"
-            cpu: "15m"
+            cpu: "20m"
   strategy:
     type: RollingUpdate
 
