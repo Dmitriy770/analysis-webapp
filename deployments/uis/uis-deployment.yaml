@@ -33,7 +33,7 @@ spec:
         - name: Repositories__SessionRepository__Password
           value: {template-repository-session-password}
         - name: Repositories__UserRepository__User
-          value: {template-repository-user.user}
+          value: {template-repository-user-user}
         - name: Repositories__UserRepository__Password
           value: {template-repository-user-password}
         - name: Gateways__GitHub__ClientId
