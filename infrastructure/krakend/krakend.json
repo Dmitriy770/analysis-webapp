@@ -46,11 +46,7 @@
             "endpoint": "/api/user/login",
             "method": "POST",
             "output_encoding": "json",
-            "input_headers": [
-                "User-Agent",
-                "Accept",
-                "Cookie"
-              ],        
+            "input_headers": ["*"],        
             "backend": [
                 {
                     "url_pattern": "/user/login",
@@ -69,11 +65,7 @@
         {
             "endpoint": "/api/user/logout",
             "output_encoding": "json",
-            "input_headers": [
-                "User-Agent",
-                "Accept",
-                "Cookie"
-              ],        
+            "input_headers": ["*"],     
             "backend": [
                 {
                     "url_pattern": "/user/logout",

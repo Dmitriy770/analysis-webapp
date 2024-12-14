@@ -1,6 +1,7 @@
 #@Uis.Api_HostAddress = http://analysis.devsquare.ru
 
 POST http://analysis.devsquare.ru/api/user/login
+#POST http://localhost:5220/user/login
 Accept: application/json
 Content-Type: application/json
 
