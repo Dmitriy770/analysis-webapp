@@ -5,13 +5,30 @@
         {
             "endpoint": "/api/uis/openapi/v1",
             "method": "GET",
-            "input_headers": [
-                "User-Agent",
-                "Accept"
-              ],        
+            "input_headers": ["*"],        
             "backend": [
                 {
-                    "url_pattern": "/user/openapi/v1.json",
+                    "url_pattern": "/user/openapi/v1",
+                    "host": [
+                        "http://uis-service.default.svc.cluster.local"
+                    ],
+                    "extra_config": {
+                        "backend/http": {
+                            "return_error_code": true
+                        }
+                    }
+                }
+            ]
+        },
+        {
+            "endpoint": "/api/uis/openapi/v1",
+            "method": "GET",
+            "input_headers": ["*"],       
+            "output_encoding": "no-op", 
+            "backend": [
+                {
+                    "encoding": "no-op",
+                    "url_pattern": "/user/openapi/v1",
                     "host": [
                         "http://uis-service.default.svc.cluster.local"
                     ],
