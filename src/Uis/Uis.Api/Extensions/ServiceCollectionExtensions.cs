@@ -7,6 +7,10 @@ public static class ServiceCollectionExtensions
 {
     public static IServiceCollection AddApi(this IServiceCollection serviceCollection)
     {
+        serviceCollection.AddScoped<SessionControllerExceptionFilter>();
+        serviceCollection.AddScoped<UserControllerExceptionFilter>();
+        serviceCollection.AddScoped<AuthorizationFilter>();
+        
         serviceCollection.AddOpenApi();
         serviceCollection.AddHealthChecks();
         
@@ -14,9 +18,6 @@ public static class ServiceCollectionExtensions
         {
             options.Filters.AddService<AuthorizationFilter>();
         });
-
-        serviceCollection.AddScoped<SessionControllerExceptionFilter>();
-        serviceCollection.AddScoped<UserControllerExceptionFilter>();
         
         return serviceCollection;
     }
