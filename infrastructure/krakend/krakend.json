@@ -21,14 +21,14 @@
             ]
         },
         {
-            "endpoint": "/api/uis/openapi/v1",
+            "endpoint": "/api/uis/scalar/v1",
             "method": "GET",
             "input_headers": ["*"],       
             "output_encoding": "no-op", 
             "backend": [
                 {
                     "encoding": "no-op",
-                    "url_pattern": "/user/openapi/v1",
+                    "url_pattern": "/user/scalar/v1",
                     "host": [
                         "http://uis-service.default.svc.cluster.local"
                     ],
