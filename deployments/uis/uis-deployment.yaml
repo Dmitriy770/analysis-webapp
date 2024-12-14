@@ -43,10 +43,10 @@ spec:
         resources:
           requests:
             memory: "32Mi"
-            cpu: "5m"
+            cpu: "10m"
           limits:
             memory: "64Mi"
-            cpu: "10m"
+            cpu: "15m"
   strategy:
     type: RollingUpdate
 
