@@ -1,4 +1,5 @@
 ﻿using MediatR;
+using Microsoft.Extensions.Logging;
 using Uis.Application.Abstractions.Gateways;
 using Uis.Application.Abstractions.Providers;
 using Uis.Application.Abstractions.Repositories;
@@ -21,11 +22,14 @@ internal sealed class LoginCommandHandler(
     ISessionRepository sessionRepository,
     IDateTimeProvider dateTimeProvider,
     IGuidProvider guidProvider,
-    IGitHubGateway gitHubGateway)
+    IGitHubGateway gitHubGateway,
+    ILogger<LoginCommandHandler> logger)
     : IRequestHandler<LoginCommand, Result>
 {
     public async Task<Result> Handle(LoginCommand request, CancellationToken cancellationToken)
     {
+        logger.LogInformation("Start Handle LoginCommand");
+        
         var accessToken = await gitHubGateway.GetAccessTokenAsync(request.GitHubCode);
         
         var gitHubUser = await gitHubGateway.GetUserAsync(accessToken);
@@ -49,9 +53,9 @@ internal sealed class LoginCommandHandler(
             CreatedDateTime: sessionCreationTime);
         await sessionRepository.AddAsync(session);
         
-        return new Result(
-            User: user,
-            Session: session);
+        var result = new Result(user, session);
+        logger.LogInformation("End Handle LoginCommand with {result}", result);
+        return result;
     }
 
     private const int Limit = 5;

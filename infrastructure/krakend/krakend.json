@@ -69,12 +69,12 @@
         {
             "endpoint": "/api/user/login",
             "method": "POST",
-            "output_encoding": "json",
+            "output_encoding": "no-op",
             "input_headers": ["*"],        
             "backend": [
                 {
                     "url_pattern": "/user/login",
-                    "encoding": "json",
+                    "encoding": "no-op",
                     "host": [
                         "http://uis-service.default.svc.cluster.local"
                     ],
@@ -88,13 +88,13 @@
         },
         {
             "endpoint": "/api/user/logout",
-            "output_encoding": "json",
+            "output_encoding": "no-op",
             "input_headers": ["*"],     
             "backend": [
                 {
                     "url_pattern": "/user/logout",
                     "method": "POST",
-                    "encoding": "json",
+                    "encoding": "no-op",
                     "host": [
                         "http://uis-service.default.svc.cluster.local"
                     ],

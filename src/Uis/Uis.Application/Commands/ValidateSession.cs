@@ -1,4 +1,5 @@
 ﻿using MediatR;
+using Microsoft.Extensions.Logging;
 using Uis.Application.Abstractions.Providers;
 using Uis.Application.Abstractions.Repositories;
 using Uis.Domain.Exceptions;
@@ -13,11 +14,13 @@ public record ValidateSession(
 internal sealed class ValidateSessionHandler(
     ISessionRepository sessionRepository,
     IDateTimeProvider dateTimeProvider,
-    IGuidProvider guidProvider)
+    IGuidProvider guidProvider,
+    ILogger<ValidateSessionHandler> logger)
     : IRequestHandler<ValidateSession, Session>
 {
     public async Task<Session> Handle(ValidateSession request, CancellationToken cancellationToken)
     {
+        logger.LogInformation("Start ValidateSession");
         if (await sessionRepository.GetAsync(request.SessionId) is not { } session)
         {
             throw new SessionNotFoundException(request.SessionId);
@@ -40,6 +43,8 @@ internal sealed class ValidateSessionHandler(
             UserId: session.UserId,
             CreatedDateTime: currentDateTime);
         await sessionRepository.AddAsync(newSession);
+        
+        logger.LogInformation("End ValidateSession with new {session}", session);
         return newSession;
     }
     
