@@ -1,4 +1,4 @@
-apiVersion: app/v1
+apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: graylog-deployment
@@ -59,4 +59,7 @@ spec:
           initialDelaySeconds: 60
           periodSeconds: 30
           failureThreshold: 3
+  strategy:
+    type: RollingUpdate
+
 
