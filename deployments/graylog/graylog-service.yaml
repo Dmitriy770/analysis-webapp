@@ -6,34 +6,44 @@ spec:
   selector:
     app: graylog
   ports:
-  - protocol: TCP
-    port: 5044 # beats
+  - name: beats
+    protocol: TCP
+    port: 5044
     targetPort: 5044
-  - protocol: UDP
-    port: 5140 # Syslog
+  - name: syslog-udp
+    protocol: UDP
+    port: 5140
     targetPort: 5140
-  - protocol: TCP
-    port: 5140 # Syslog
+  - name: syslog-tcp
+    protocol: TCP
+    port: 5140
     targetPort: 5140
-  - protocol: TCP
-    port: 5555  # RAW TCP
+  - name: raw-tcp
+    protocol: TCP
+    port: 5555
     targetPort: 5555
-  - protocol: UDP 
-    port: 5555 # RAW TCP
+  - name: raw-udp
+    protocol: UDP 
+    port: 5555
     targetPort: 5555
-  - protocol: TCP
-    port: 9000  # Server API
+  - name: server-api
+    protocol: TCP
+    port: 9000
     targetPort: 9000
-  - protocol: TCP
-    port: 12201 # GELF TCP
+  - name: gelf-tcp
+    protocol: TCP
+    port: 12201
     targetPort: 12201
-  - protocol: UDP
-    port: 12201 # GELF UDP
+  - name: gelf-udp
+    protocol: UDP
+    port: 12201
     targetPort: 12201
-  - protocol: TCP
+  - name: forward-data
+    protocol: TCP
     port: 13301 # Forwarder data
     targetPort: 13301
-  - protocol: TCP
-    port: 13302 # Forwarder config
+  - name: forward-config
+    protocol: TCP
+    port: 13302
     targetPort: 13302
   type: ClusterIP
