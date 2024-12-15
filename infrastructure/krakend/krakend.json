@@ -88,12 +88,32 @@
         },
         {
             "endpoint": "/api/user/logout",
+            "method": "GET",
             "output_encoding": "no-op",
             "input_headers": ["*"],     
             "backend": [
                 {
                     "url_pattern": "/user/logout",
-                    "method": "POST",
+                    "encoding": "no-op",
+                    "host": [
+                        "http://uis-service.default.svc.cluster.local"
+                    ],
+                    "extra_config": {
+                        "backend/http": {
+                            "return_error_details": "error"
+                        }
+                    }
+                }
+            ]
+        },
+        {
+            "endpoint": "/api/user",
+            "method": "GET",
+            "output_encoding": "no-op",
+            "input_headers": ["*"],     
+            "backend": [
+                {
+                    "url_pattern": "/user",
                     "encoding": "no-op",
                     "host": [
                         "http://uis-service.default.svc.cluster.local"

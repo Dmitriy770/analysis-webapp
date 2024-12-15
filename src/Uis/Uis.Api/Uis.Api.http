@@ -1,14 +1,23 @@
 #@Uis.Api_HostAddress = http://analysis.devsquare.ru
 
 POST http://analysis.devsquare.ru/api/user/login
-#POST http://localhost:5220/user/login
 Accept: application/json
 Content-Type: application/json
 
 {
     "token": ""
 }
+###
+
 ### 
+GET  http://analysis.devsquare.ru/api/user/logout
+Accept: application/json
+Cookie: SessionId=
+
+###
+GET  http://analysis.devsquare.ru/api/user
+Accept: application/json
+Cookie: SessionId=
 
 POST https://github.com/login/oauth/access_token?client_id=&client_secret=&code=
 X-GitHub-Api-Version: 2022-11-28
