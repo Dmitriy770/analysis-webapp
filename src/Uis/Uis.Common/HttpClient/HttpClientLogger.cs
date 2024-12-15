@@ -5,23 +5,53 @@ namespace Uis.Common.HttpClient;
 
 public sealed class HttpClientLogger(
     ILogger<HttpClientLogger> logger)
-    : IHttpClientLogger
+    : IHttpClientAsyncLogger
 {
-    public object? LogRequestStart(HttpRequestMessage request)
+    public ValueTask<object?> LogRequestStartAsync(
+        HttpRequestMessage request,
+        CancellationToken cancellationToken = new CancellationToken())
     {
         logger.LogInformation("Request: {Request}", request);
         
-        return null;
+        return ValueTask.FromResult<object?>(null);
+    }
+
+    public async ValueTask LogRequestStopAsync(
+        object? context,
+        HttpRequestMessage request,
+        HttpResponseMessage response,
+        TimeSpan elapsed,
+        CancellationToken cancellationToken = new CancellationToken())
+    {
+        var content = await response.Content.ReadAsStringAsync(cancellationToken);
+        logger.LogInformation("Request end with: {response}. Content: {contenent}. Time: {elapsed}", response, content, elapsed);
+    }
+
+    public async ValueTask LogRequestFailedAsync(
+        object? context,
+        HttpRequestMessage request,
+        HttpResponseMessage? response,
+        Exception exception,
+        TimeSpan elapsed,
+        CancellationToken cancellationToken = new CancellationToken())
+    {
+        var content = response is not null ? await response.Content.ReadAsStringAsync(cancellationToken) : null;
+        logger.LogInformation("Request failed with {exception}. Response: {response}. Content {content}. Time: {elapsed}", exception,  response, content, elapsed);
+    }
+
+    public object? LogRequestStart(HttpRequestMessage request)
+    {
+        return LogRequestStartAsync(request).GetAwaiter().GetResult();
     }
 
     public void LogRequestStop(object? context, HttpRequestMessage request, HttpResponseMessage response, TimeSpan elapsed)
     {
-        logger.LogInformation("Request end with: {response}. Time: {elapsed}", response, elapsed);
+        LogRequestStopAsync(context, request, response, elapsed).GetAwaiter().GetResult();
     }
 
     public void LogRequestFailed(object? context, HttpRequestMessage request, HttpResponseMessage? response, Exception exception,
         TimeSpan elapsed)
     {
-        logger.LogInformation("Request failed with {exception}.Response: {response}",exception,  request);
+        LogRequestFailedAsync(context, request, response, exception, elapsed).GetAwaiter().GetResult();
     }
 }
