@@ -6,12 +6,7 @@ namespace Uis.Infrastructure.Gateways.GitHub.Api;
 internal interface IGitHubOAuthApi
 {
     [Get("/login/oauth/access_token")]
+    [Headers("X-GitHub-Api-Version: 2022-11-2")]
     Task<AccessTokenInfo> GetAccessTokenAsync(
-        [Query("client_id")] string clientId,
-        [Query("client_secret")] string clientSecret,
-        [Query("code")] string code,
-        [Query("redirect_uri")] string redirectUri,
-        [Header("X-GitHub-Api-Version")] string apiVersion = ApiVersion);
-    
-    private const string ApiVersion = "2022-11-28";
+        [Query]GetAccessTokenParams accessTokenParams);
 }

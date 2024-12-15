@@ -2,6 +2,7 @@
 using Uis.Application.Abstractions.Gateways;
 using Uis.Application.Abstractions.Gateways.Models;
 using Uis.Infrastructure.Gateways.GitHub.Api;
+using Uis.Infrastructure.Gateways.GitHub.Models;
 using Uis.Infrastructure.Settings;
 
 namespace Uis.Infrastructure.Gateways.GitHub;
@@ -14,11 +15,14 @@ internal class GitHubGateway(
 {
     public async Task<string> GetAccessTokenAsync(string code)
     {
-        var accessTokenInfo = await gitHubOAuthApi.GetAccessTokenAsync(
-            settings.ClientId,
-            settings.ClientSecret,
-            code,
-            settings.RedirectUri);
+        var accessTokenParams = new GetAccessTokenParams
+        {
+            ClientId = settings.ClientId,
+            ClientSecret = settings.ClientSecret,
+            RedirectUri = settings.RedirectUri,
+            Code = code
+        };
+        var accessTokenInfo = await gitHubOAuthApi.GetAccessTokenAsync(accessTokenParams);
         
         return accessTokenInfo.AccessToken;
     }

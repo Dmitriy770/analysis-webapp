@@ -6,9 +6,9 @@ namespace Uis.Infrastructure.Gateways.GitHub.Api;
 internal interface IGitHubApi
 {
     [Get("/user")]
+    [Headers("X-GitHub-Api-Version: 2022-11-2")]
     Task<User> GetUserAsync(
-        [Header("Authorization")] string authorizationHeader,
-        [Header("X-GitHub-Api-Version")] string apiVersion = ApiVersion);
+        [Header("Authorization")] string authorizationHeader);
 
     private const string ApiVersion = "2022-11-28";
 }

@@ -6,7 +6,8 @@
             "endpoint": "/api/uis/openapi/v1",
             "method": "GET",
             "input_headers": ["*"],
-            "output_encoding": "no-op",        
+            "output_encoding": "no-op",
+            "timeout": "2s",      
             "backend": [
                 {
                     "url_pattern": "/openapi/v1",
@@ -27,6 +28,7 @@
             "method": "GET",
             "input_headers": ["*"],       
             "output_encoding": "no-op", 
+            "timeout": "2s",
             "backend": [
                 {
                     "encoding": "no-op",
