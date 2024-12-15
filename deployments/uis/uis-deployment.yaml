@@ -38,7 +38,7 @@ spec:
           value: {template-repository-user-password}
         - name: Gateways__GitHub__ClientId
           value: {template-gateway-github-clientid}
-        - name: Gateways__GitHub__Secret
+        - name: Gateways__GitHub__ClientSecret
           value: {template-gateway-github-secret}
         resources:
           requests:
