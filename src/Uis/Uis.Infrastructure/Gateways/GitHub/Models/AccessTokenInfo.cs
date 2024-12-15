@@ -1,16 +1,15 @@
-﻿using Refit;
+﻿using System.Text.Json.Serialization;
 
 namespace Uis.Infrastructure.Gateways.GitHub.Models;
 
 internal sealed class AccessTokenInfo
 {
-    [AliasAs("access_token")]
+    [JsonPropertyName("access_token")]
     public string AccessToken { get; set; }
     
-    [AliasAs("scope")]
-    public string Scope { get; set; }
-    
-    [AliasAs("token_type")]
+    [JsonPropertyName("token_type")]
     public string TokenType { get; set; }
     
+    [JsonPropertyName("scope")]
+    public string Scope { get; set; }
 }
