@@ -9,7 +9,7 @@ public static class WebApplicationExtensions
         app.MapOpenApi("openapi/v1");
         app.MapScalarApiReference(options =>
         {
-            options.WithOpenApiRoutePattern("/openapi/{documentName}");
+            options.WithOpenApiRoutePattern("/api/uis/openapi/{documentName}");
         });
         
         app.MapHealthChecks("/healthz");

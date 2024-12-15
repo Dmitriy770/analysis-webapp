@@ -24,6 +24,8 @@ internal class GitHubGateway(
         };
         var accessTokenInfo = await gitHubOAuthApi.GetAccessTokenAsync(accessTokenParams);
         
+        Console.WriteLine($"Access token: {accessTokenInfo.AccessToken}, {accessTokenInfo.TokenType}, {accessTokenInfo.Scope}");
+        
         return accessTokenInfo.AccessToken;
     }
 
