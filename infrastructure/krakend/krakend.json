@@ -6,11 +6,11 @@
             "endpoint": "/api/uis/openapi/v1",
             "method": "GET",
             "input_headers": ["*"],
-            "output_encoding": "json",        
+            "output_encoding": "no-op",        
             "backend": [
                 {
                     "url_pattern": "/openapi/v1",
-                    "encoding": "json",
+                    "encoding": "no-op",
                     "host": [
                         "http://uis-service.default.svc.cluster.local"
                     ],
