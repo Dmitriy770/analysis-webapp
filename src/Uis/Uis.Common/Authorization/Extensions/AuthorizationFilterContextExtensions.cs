@@ -41,4 +41,9 @@ public static class AuthorizationFilterContextExtensions
     {
         context.HttpContext.Request.Headers[Consts.SessionIdKey] = sessionId.ToString();
     }
+
+    public static void AddSessionCookie(this AuthorizationFilterContext context, Guid sessionId)
+    {
+        context.HttpContext.Response.Cookies.Append(Consts.SessionIdKey, sessionId.ToString());
+    }
 }

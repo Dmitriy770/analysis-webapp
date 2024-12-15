@@ -13,7 +13,6 @@ namespace Uis.Api.Controllers.Public;
 
 [ApiController]
 [Route("user")]
-[ServiceFilter<AuthorizationExceptionFilter>]
 public sealed class UserController(
     ISender sender)
     : ControllerBase
