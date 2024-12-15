@@ -1,4 +1,5 @@
-﻿using Npgsql;
+﻿using Microsoft.Extensions.Logging;
+using Npgsql;
 using Uis.Application.Abstractions.Repositories;
 using Uis.Domain.Models;
 using Uis.Infrastructure.Repositories.Users.Models;
@@ -6,16 +7,20 @@ using Uis.Infrastructure.Repositories.Users.Models;
 namespace Uis.Infrastructure.Repositories.Users;
 
 internal sealed class UserRepository(
-    UserRepositoryDbContext dbContext)
+    UserRepositoryDbContext dbContext,
+    ILogger<UserRepository> logger)
     : IUserRepository
 {
     public Task<User?> GetAsync(long id)
     {
+        logger.LogInformation("Start get user with id: {id}", id);
+        
         if (dbContext.Users.FirstOrDefault(userRecord => userRecord.Id == id) is not {} user)
         {
             return Task.FromResult<User?>(null);
         }
         
+        logger.LogInformation("End get user with id: {id}", id);
         return Task.FromResult<User?>(new User(
             Id: user.Id,
             Login: user.Login,
@@ -26,6 +31,8 @@ internal sealed class UserRepository(
 
     public async Task AddOrUpdateAsync(User user)
     {
+        logger.LogInformation("Start add or update user with id: {id}", user.Id);
+
         var findUser = dbContext.Users.FirstOrDefault(userRecord => userRecord.Id == user.Id);
         if (findUser is null)
         {
@@ -37,7 +44,7 @@ internal sealed class UserRepository(
                 AvatarUri = user.AvatarUri.ToString(),
                 Limit = user.Limit
             };
-            
+
             await dbContext.Users.AddAsync(newUser);
         }
         else
@@ -47,17 +54,9 @@ internal sealed class UserRepository(
             findUser.AvatarUri = user.AvatarUri.ToString();
             findUser.Limit = user.Limit;
         }
-        
-        await dbContext.SaveChangesAsync();
-    }
-    
-    protected async Task<NpgsqlConnection> GetAndOpenConnection()
-    {
-        var connection = new NpgsqlConnection();
-        
 
-        await connection.OpenAsync();
-        await connection.ReloadTypesAsync();
-        return connection;
-    } 
+        await dbContext.SaveChangesAsync();
+        
+        logger.LogInformation("End add or update user with id: {id}", user.Id);
+    }
 }
