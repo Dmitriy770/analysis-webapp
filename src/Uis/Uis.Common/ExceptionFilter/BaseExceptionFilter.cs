@@ -2,10 +2,13 @@
 using System.Text.Json;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Filters;
+using Microsoft.Extensions.Logging;
 
 namespace Uis.Common.ExceptionFilter;
 
-public abstract class BaseExceptionFilter : IExceptionFilter
+public abstract class BaseExceptionFilter(
+    ILogger<BaseExceptionFilter> logger)
+    : IExceptionFilter
 {
     protected abstract ErrorResponse? HandleException(Exception exception);
     
@@ -27,5 +30,7 @@ public abstract class BaseExceptionFilter : IExceptionFilter
             ContentType = "application/json"
         };
         context.ExceptionHandled = true;
+        
+        logger.LogInformation("Handling exception and return error {response}", response);
     }
 }

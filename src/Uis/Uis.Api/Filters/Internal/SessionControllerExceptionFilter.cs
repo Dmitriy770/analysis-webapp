@@ -4,7 +4,9 @@ using Uis.Domain.Exceptions;
 
 namespace Uis.Api.Filters.Internal;
 
-public sealed class SessionControllerExceptionFilter : BaseExceptionFilter
+public sealed class SessionControllerExceptionFilter(
+    ILogger<SessionControllerExceptionFilter> logger)
+    : BaseExceptionFilter(logger)
 {
     protected override ErrorResponse? HandleException(Exception exception)
     {

@@ -27,7 +27,7 @@ internal sealed class ValidateSessionHandler(
         }
 
         var currentDateTime = dateTimeProvider.Now;
-        if (session.CreatedDateTime + _sessionTimeout < currentDateTime)
+        if (session.CreatedDateTime + _sessionTimeout > currentDateTime)
         {
             return session;
         }

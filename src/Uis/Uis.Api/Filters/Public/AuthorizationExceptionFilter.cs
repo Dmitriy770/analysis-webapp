@@ -4,13 +4,21 @@ using Uis.Domain.Exceptions;
 
 namespace Uis.Api.Filters.Public;
 
-internal sealed class AuthorizationExceptionFilter : BaseExceptionFilter
+public sealed class AuthorizationExceptionFilter(
+    ILogger<AuthorizationExceptionFilter> logger)
+    : BaseExceptionFilter(logger)
 {
     protected override ErrorResponse? HandleException(Exception exception)
     {
         return exception switch
         {
             SessionNotFoundException => new ErrorResponse(
+                StatusCode: (int)HttpStatusCode.Unauthorized,
+                ErrorCode: 0,
+                ErrorMessage: exception.Message,
+                StackTrace: exception.StackTrace),
+            
+            SessionExpiredException => new ErrorResponse(
                 StatusCode: (int)HttpStatusCode.Unauthorized,
                 ErrorCode: 0,
                 ErrorMessage: exception.Message,

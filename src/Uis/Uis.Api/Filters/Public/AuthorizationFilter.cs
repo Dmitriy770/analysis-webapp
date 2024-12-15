@@ -5,7 +5,7 @@ using Uis.Common.Authorization.Extensions;
 
 namespace Uis.Api.Filters.Public;
 
-internal sealed class AuthorizationFilter(
+public sealed class AuthorizationFilter(
     ISender sender)
     : IAsyncAuthorizationFilter
 {
