@@ -23,11 +23,11 @@ jobs:
       - name: Overwrite mongo password
         run: sed -i 's\{template-graylog-mongo-password}\${{secrets.GRAYLOG_MONGO_PASSWORD}}\g' ./deployments/graylog/graylog-deployment.yaml
 
-       - name: Overwrite opensearch user
-         run: sed -i 's\{template-graylog-opensearch-user}\${{secrets.GRAYLOG_OPENSEARCH_USER}}\g' ./deployments/graylog/graylog-deployment.yaml
+      - name: Overwrite opensearch user
+        run: sed -i 's\{template-graylog-opensearch-user}\${{secrets.GRAYLOG_OPENSEARCH_USER}}\g' ./deployments/graylog/graylog-deployment.yaml
 
-       - name: Overwrite opensearch password
-         run: sed -i 's\{template-graylog-opensearch-password}\${{secrets.GRAYLOG_OPENSEARCH_PASSWORD}}\g' ./deployments/graylog/graylog-deployment.yaml
+      - name: Overwrite opensearch password
+        run: sed -i 's\{template-graylog-opensearch-password}\${{secrets.GRAYLOG_OPENSEARCH_PASSWORD}}\g' ./deployments/graylog/graylog-deployment.yaml
 
       - name: Apply deployment
         uses: actions-hub/kubectl@master
