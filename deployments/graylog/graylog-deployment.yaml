@@ -32,8 +32,7 @@ spec:
         - name: GRAYLOG_DATANODE_ROOT_PASSWORD_SHA2
           value: ${template-graylog-root-password-sha2}
         - name: GRAYLOG_DATANODE_MONGODB_URI
-          value:mongodb://{template-graylog-mongo-user}:{template-graylog-mongo-password}@192.168.0.9:27017/graylog?authSource=admin
-
+          value: mongodb://{template-graylog-mongo-user}:{template-graylog-mongo-password}@192.168.0.9:27017/graylog?authSource=admin
 
       - name: graylog
         image: graylog/graylog:6.1
