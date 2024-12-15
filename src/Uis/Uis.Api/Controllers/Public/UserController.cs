@@ -50,6 +50,6 @@ public sealed class UserController(
     {
         var user = await sender.Send(new GetUserBySessionIdQuery(sessionId));
 
-        return Results.Ok(user);
+        return Results.Ok(user.ToUserResponse());
     }
 }
