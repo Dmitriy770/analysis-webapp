@@ -47,7 +47,7 @@ public static class SessionRepositoryConfiguration
                     var settings = serviceProvider.GetRequiredService<UserRepositorySettings>();
                     return GetConnectionString(settings);
                 })
-                .ScanIn(typeof(AddUserTable).Assembly).For.Migrations())
+                .ScanIn(typeof(Empty).Assembly).For.Migrations())
             .AddLogging()
             .BuildServiceProvider(false);
     }

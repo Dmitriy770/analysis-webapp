@@ -3,7 +3,7 @@
 namespace Uis.Infrastructure.Repositories.Users.Migrations;
 
 [Migration(20241512,  TransactionBehavior.None)]
-internal sealed class AddUserTable : Migration
+public sealed class AddUserTable : Migration
 {
     public override void Up()
     {
