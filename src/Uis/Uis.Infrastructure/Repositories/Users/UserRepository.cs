@@ -33,7 +33,7 @@ internal sealed class UserRepository(
     {
         logger.LogInformation("Start add or update user with id: {id}", user.Id);
 
-        var findUser = dbContext.Users.FirstOrDefault(userRecord => userRecord.Id == user.Id);
+        var findUser = await dbContext.Users.FindAsync(user.Id);
         if (findUser is null)
         {
             var newUser = new UserStorageRecord
