@@ -125,6 +125,27 @@
                     }
                 }
             ]
+        },
+
+        {
+            "endpoint": "/infra/graylog",
+            "method": "GET",
+            "output_encoding": "no-op",
+            "input_headers": ["*"],     
+            "backend": [
+                {
+                    "url_pattern": "/",
+                    "encoding": "no-op",
+                    "host": [
+                        "http://graylog-service.default.svc.cluster.local:9000"
+                    ],
+                    "extra_config": {
+                        "backend/http": {
+                            "return_error_details": "error"
+                        }
+                    }
+                }
+            ]
         }
     ],
     "extra_config": {
