@@ -10,6 +10,7 @@ internal sealed class GitHubGatewaySettings
         return new GitHubGatewaySettings
         {
             ApiUri = configuration.GetRequiredValue<Uri>("Gateways:GitHub:ApiUri"),
+            OauthUri = configuration.GetRequiredValue<Uri>("Gateways:GitHub:OauthUri"),
             RedirectUri = configuration.GetRequiredValue<string>("Gateways:GitHub:RedirectUri"),
             ClientId = configuration.GetRequiredValue<string>("Gateways:GitHub:ClientId"),
             ClientSecret = configuration.GetRequiredValue<string>("Gateways:GitHub:ClientSecret"),
@@ -17,6 +18,8 @@ internal sealed class GitHubGatewaySettings
     }
     
     public Uri ApiUri { get; private set; }
+    
+    public Uri OauthUri { get; private set; }
     
     public string RedirectUri { get; private set; }
     

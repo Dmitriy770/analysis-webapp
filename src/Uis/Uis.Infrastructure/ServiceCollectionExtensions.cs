@@ -4,7 +4,9 @@ using Refit;
 using Uis.Application.Abstractions.Gateways;
 using Uis.Application.Abstractions.Providers;
 using Uis.Application.Commands;
+using Uis.Common.HttpClient;
 using Uis.Infrastructure.Gateways.GitHub;
+using Uis.Infrastructure.Gateways.GitHub.Api;
 using Uis.Infrastructure.Providers;
 using Uis.Infrastructure.Repositories.Sessions;
 using Uis.Infrastructure.Repositories.Users;
@@ -35,11 +37,19 @@ public static class ServiceCollectionExtensions
         // Gateways
         var settings = GitHubGatewaySettings.From(configuration);
         serviceCollection.AddSingleton(settings);
+        
         serviceCollection
             .AddRefitClient<IGitHubApi>()
-            .ConfigureHttpClient(httpClient => httpClient.BaseAddress = settings.ApiUri);
-        serviceCollection.AddScoped<IGitHubGateway, GitHubGateway>();
+            .ConfigureHttpClient(httpClient => httpClient.BaseAddress = settings.ApiUri)
+            .AddLogger<HttpClientLogger>();
+        
+        serviceCollection
+            .AddRefitClient<IGitHubOAuthApi>()
+            .ConfigureHttpClient(httpClient => httpClient.BaseAddress = settings.OauthUri)
+            .AddLogger<HttpClientLogger>();
      
+        serviceCollection.AddScoped<IGitHubGateway, GitHubGateway>();
+
         // repository
         serviceCollection.AddSessionRepository(configuration);
         serviceCollection.AddUserRepository(configuration);

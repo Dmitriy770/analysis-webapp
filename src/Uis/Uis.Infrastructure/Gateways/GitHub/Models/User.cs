@@ -1,7 +1,18 @@
-﻿namespace Uis.Infrastructure.Gateways.GitHub.Models;
+﻿using System.Text.Json.Serialization;
 
-internal record User(
-    long Id,
-    string Login,
-    string Name,
-    Uri AvatarUrl);
+namespace Uis.Infrastructure.Gateways.GitHub.Models;
+
+internal sealed class User
+{
+    [JsonPropertyName("id")]
+    public int Id { get; set; }
+    
+    [JsonPropertyName("login")]
+    public string Login { get; set; }
+    
+    [JsonPropertyName("name")]
+    public string Name { get; set; }
+    
+    [JsonPropertyName("avatar_url")]
+    public Uri AvatarUrl { get; set; }
+}
