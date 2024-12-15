@@ -16,7 +16,8 @@ public abstract class BaseExceptionFilter : IExceptionFilter
             response = new ErrorResponse(
                 StatusCode: (int)HttpStatusCode.InternalServerError,
                 ErrorCode: 0,
-                ErrorMessage: context.Exception.Message);
+                ErrorMessage: context.Exception.Message,
+                StackTrace: context.Exception.StackTrace);
         }
 
         context.Result = new ContentResult

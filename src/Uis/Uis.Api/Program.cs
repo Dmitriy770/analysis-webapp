@@ -10,7 +10,7 @@ builder.Services.AddInfrastructure(builder.Configuration);
 
 var app = builder.Build();
 
-await app.RegisterUserRepository();
+app.RegisterUserRepository();
 app.RegisterApi();
 
 await app.RunAsync();

@@ -13,12 +13,14 @@ public sealed class UserControllerExceptionFilter : BaseExceptionFilter
             UserNotFoundException => new ErrorResponse(
                 StatusCode: (int)HttpStatusCode.NotFound,
                 ErrorCode: 0,
-                ErrorMessage: exception.Message),
+                ErrorMessage: exception.Message,
+                StackTrace: exception.StackTrace),
             
             SessionNotFoundException => new ErrorResponse(
                 StatusCode: (int)HttpStatusCode.NotFound,
                 ErrorCode: 0,
-                ErrorMessage: exception.Message),
+                ErrorMessage: exception.Message,
+                StackTrace: exception.StackTrace),
             
             _ => null
         };

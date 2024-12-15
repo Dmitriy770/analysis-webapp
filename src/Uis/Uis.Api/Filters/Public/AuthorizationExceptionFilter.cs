@@ -2,26 +2,20 @@
 using Uis.Common.ExceptionFilter;
 using Uis.Domain.Exceptions;
 
-namespace Uis.Api.Filters.Internal;
+namespace Uis.Api.Filters.Public;
 
-public sealed class SessionControllerExceptionFilter : BaseExceptionFilter
+internal sealed class AuthorizationExceptionFilter : BaseExceptionFilter
 {
     protected override ErrorResponse? HandleException(Exception exception)
     {
         return exception switch
         {
             SessionNotFoundException => new ErrorResponse(
-                StatusCode: (int)HttpStatusCode.NotFound,
+                StatusCode: (int)HttpStatusCode.Unauthorized,
                 ErrorCode: 0,
                 ErrorMessage: exception.Message,
                 StackTrace: exception.StackTrace),
-
-            SessionExpiredException => new ErrorResponse(
-                StatusCode: (int)HttpStatusCode.Forbidden,
-                ErrorCode: 0,
-                ErrorMessage: exception.Message,
-                StackTrace: exception.StackTrace),
-
+            
             _ => null
         };
     }

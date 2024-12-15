@@ -9,6 +9,7 @@ public static class ServiceCollectionExtensions
     {
         serviceCollection.AddScoped<SessionControllerExceptionFilter>();
         serviceCollection.AddScoped<UserControllerExceptionFilter>();
+        serviceCollection.AddScoped<AuthorizationExceptionFilter>();
         serviceCollection.AddScoped<AuthorizationFilter>();
         
         serviceCollection.AddOpenApi();

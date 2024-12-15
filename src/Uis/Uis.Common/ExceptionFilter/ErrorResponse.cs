@@ -3,4 +3,5 @@
 public record ErrorResponse(
     int StatusCode,
     int ErrorCode,
-    string ErrorMessage);
+    string ErrorMessage,
+    string? StackTrace);

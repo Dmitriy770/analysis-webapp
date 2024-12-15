@@ -1,4 +1,5 @@
-﻿using Uis.Application.Abstractions.Repositories;
+﻿using Npgsql;
+using Uis.Application.Abstractions.Repositories;
 using Uis.Domain.Models;
 using Uis.Infrastructure.Repositories.Users.Models;
 
@@ -19,7 +20,7 @@ internal sealed class UserRepository(
             Id: user.Id,
             Login: user.Login,
             Name: user.Name,
-            AvatarUri: user.AvatarUri,
+            AvatarUri: new Uri(user.AvatarUri),
             Limit: user.Limit));
     }
 
@@ -33,7 +34,7 @@ internal sealed class UserRepository(
                 Id = user.Id,
                 Login = user.Login,
                 Name = user.Name,
-                AvatarUri = user.AvatarUri,
+                AvatarUri = user.AvatarUri.ToString(),
                 Limit = user.Limit
             };
             
@@ -43,10 +44,20 @@ internal sealed class UserRepository(
         {
             findUser.Login = user.Login;
             findUser.Name = user.Name;
-            findUser.AvatarUri = user.AvatarUri;
+            findUser.AvatarUri = user.AvatarUri.ToString();
             findUser.Limit = user.Limit;
         }
         
         await dbContext.SaveChangesAsync();
     }
+    
+    protected async Task<NpgsqlConnection> GetAndOpenConnection()
+    {
+        var connection = new NpgsqlConnection();
+        
+
+        await connection.OpenAsync();
+        await connection.ReloadTypesAsync();
+        return connection;
+    } 
 }

@@ -28,29 +28,30 @@ internal class UserRepositoryDbContext(
         modelBuilder.Entity<UserStorageRecord>(entityBuilder =>
         {
             entityBuilder
-                .ToTable("Users")
+                .ToTable("users")
                 .HasKey(user => user.Id);
             
             entityBuilder
-                .Property(user => user.Id).HasColumnName("UserId");
+                .Property(user => user.Id).HasColumnName("id");
             
             entityBuilder
                 .Property(user => user.Login)
-                .HasColumnName("Login")
+                .HasColumnName("login")
                 .HasMaxLength(40);
             
             entityBuilder
                 .Property(user => user.Name)
-                .HasColumnName("Name")
+                .HasColumnName("name")
                 .HasMaxLength(40);
             
             entityBuilder
                 .Property(user => user.AvatarUri)
-                .HasColumnName("AvatarUri");
+                .HasColumnName("avatar_uri")
+                .HasMaxLength(100);
             
             entityBuilder
                 .Property(user => user.Limit)
-                .HasColumnName("Limit");
+                .HasColumnName("limit");
         });
     }
     

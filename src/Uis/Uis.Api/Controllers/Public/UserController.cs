@@ -1,5 +1,6 @@
 ﻿using MediatR;
 using Microsoft.AspNetCore.Mvc;
+using Uis.Api.Filters.Public;
 using Uis.Api.Mappers;
 using Uis.Api.Models.Public;
 using Uis.Application.Commands;
@@ -12,11 +13,13 @@ namespace Uis.Api.Controllers.Public;
 
 [ApiController]
 [Route("user")]
+[ServiceFilter<AuthorizationExceptionFilter>]
 public sealed class UserController(
     ISender sender)
     : ControllerBase
 {
     [HttpPost("login")]
+    [ProducesResponseType(StatusCodes.Status200OK)]
     public async Task<IResult> Login(
         [FromBody] GitHubToken token)
     {
@@ -29,6 +32,8 @@ public sealed class UserController(
 
     [HttpGet("logout")]
     [Authorize]
+    [ProducesResponseType(StatusCodes.Status200OK)]
+    [ProducesResponseType(StatusCodes.Status401Unauthorized)]
     public async Task<IResult> Logout(
         [FromHeader(Name = Consts.SessionIdKey)]Guid sessionId)
     {
@@ -39,6 +44,8 @@ public sealed class UserController(
 
     [HttpGet]
     [Authorize]
+    [ProducesResponseType(typeof(User), StatusCodes.Status200OK)]
+    [ProducesResponseType(StatusCodes.Status401Unauthorized)]
     public async Task<IResult> Get(
         [FromHeader(Name = Consts.SessionIdKey)]Guid sessionId)
     {
