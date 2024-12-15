@@ -29,7 +29,7 @@ internal class GitHubGateway(
 
     public async Task<GitHubUser> GetUserAsync(string accessToken)
     {
-        var authenticationHeader = new AuthenticationHeaderValue("Bearer ", accessToken);
+        var authenticationHeader = new AuthenticationHeaderValue("Bearer", accessToken);
         var user = await gitHubApi.GetUserAsync(authenticationHeader.ToString());
 
         return new GitHubUser(

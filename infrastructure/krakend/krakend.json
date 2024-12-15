@@ -45,6 +45,27 @@
             ]
         },
         {
+            "endpoint": "/api/uis/scalar/scalar.js",
+            "method": "GET",
+            "input_headers": ["*"],       
+            "output_encoding": "no-op", 
+            "timeout": "2s",
+            "backend": [
+                {
+                    "encoding": "no-op",
+                    "url_pattern": "/scalar/scalar.js",
+                    "host": [
+                        "http://uis-service.default.svc.cluster.local"
+                    ],
+                    "extra_config": {
+                        "backend/http": {
+                            "return_error_code": true
+                        }
+                    }
+                }
+            ]
+        },
+        {
             "endpoint": "/api/user/login",
             "method": "POST",
             "output_encoding": "json",
