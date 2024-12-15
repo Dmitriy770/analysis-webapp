@@ -22,14 +22,14 @@ spec:
     protocol: TCP
     port: 5044
     targetPort: 5044
-  - name: syslog-udp
-    protocol: UDP
-    port: 5140
-    targetPort: 5140
-  - name: syslog-tcp-1
-    protocol: TCP
-    port: 5140
-    targetPort: 5140
+  # - name: syslog-udp
+  #   protocol: UDP
+  #   port: 5140
+  #   targetPort: 5140
+  # - name: syslog-tcp
+  #   protocol: TCP
+  #   port: 5140
+  #   targetPort: 5140
   - name: raw-tcp
     protocol: TCP
     port: 5555
