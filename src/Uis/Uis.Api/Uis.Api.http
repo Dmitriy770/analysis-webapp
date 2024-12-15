@@ -7,7 +7,6 @@ Content-Type: application/json
 {
     "token": ""
 }
-###
 
 ### 
 GET  http://analysis.devsquare.ru/api/user/logout

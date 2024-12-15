@@ -7,7 +7,7 @@ using Uis.Application.Queries;
 namespace Uis.Api.Controllers.Internal;
 
 [ApiController]
-[Route("internal/user")]
+[Route("api/internal/user")]
 [ServiceFilter<UserControllerExceptionFilter>]
 public class UserController(
     ISender sender)

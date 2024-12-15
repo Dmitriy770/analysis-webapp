@@ -6,6 +6,7 @@ public static class WebApplicationExtensions
 {
     public static WebApplication RegisterApi(this WebApplication app)
     {
+        app.UsePathBase("/api");
         app.MapOpenApi("openapi/v1");
         app.MapScalarApiReference(options =>
         {

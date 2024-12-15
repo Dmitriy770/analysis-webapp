@@ -73,7 +73,7 @@
             "input_headers": ["*"],        
             "backend": [
                 {
-                    "url_pattern": "/user/login",
+                    "url_pattern": "/api/user/login",
                     "encoding": "no-op",
                     "host": [
                         "http://uis-service.default.svc.cluster.local"
@@ -93,7 +93,7 @@
             "input_headers": ["*"],     
             "backend": [
                 {
-                    "url_pattern": "/user/logout",
+                    "url_pattern": "/api/user/logout",
                     "encoding": "no-op",
                     "host": [
                         "http://uis-service.default.svc.cluster.local"
@@ -113,7 +113,7 @@
             "input_headers": ["*"],     
             "backend": [
                 {
-                    "url_pattern": "/user",
+                    "url_pattern": "/api/user",
                     "encoding": "no-op",
                     "host": [
                         "http://uis-service.default.svc.cluster.local"

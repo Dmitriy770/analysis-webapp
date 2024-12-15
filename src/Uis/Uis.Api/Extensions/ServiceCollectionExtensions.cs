@@ -9,14 +9,14 @@ public static class ServiceCollectionExtensions
     {
         serviceCollection.AddScoped<SessionControllerExceptionFilter>();
         serviceCollection.AddScoped<UserControllerExceptionFilter>();
-        serviceCollection.AddScoped<AuthorizationFilter>();
+        // serviceCollection.AddScoped<AuthorizationFilter>();
         
         serviceCollection.AddOpenApi();
         serviceCollection.AddHealthChecks();
         
         serviceCollection.AddControllers(options =>
         {
-            options.Filters.AddService<AuthorizationFilter>();
+            // options.Filters.AddService<AuthorizationFilter>();
         });
         
         return serviceCollection;

@@ -12,13 +12,13 @@ using Uis.Common.Authorization.Extensions;
 namespace Uis.Api.Controllers.Public;
 
 [ApiController]
-[Route("user")]
+[Route("api/user")]
 public sealed class UserController(
     ISender sender)
     : ControllerBase
 {
     [HttpPost("login")]
-    [ProducesResponseType(StatusCodes.Status200OK)]
+    [ProducesResponseType(typeof(User), StatusCodes.Status200OK)]
     public async Task<IResult> Login(
         [FromBody] GitHubToken token)
     {
