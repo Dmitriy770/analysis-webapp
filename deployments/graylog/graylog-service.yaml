@@ -7,8 +7,8 @@ spec:
     app: graylog
   ports:
   - name: datanode-api
-    port: 8999
     protocol: TCP
+    port: 8999
     targetPort: 8999
   - name: datanode-tcp-1
     protocol: TCP
@@ -26,7 +26,7 @@ spec:
     protocol: UDP
     port: 5140
     targetPort: 5140
-  - name: syslog-tcp
+  - name: syslog-tcp-1
     protocol: TCP
     port: 5140
     targetPort: 5140
@@ -52,7 +52,7 @@ spec:
     targetPort: 12201
   - name: forward-data
     protocol: TCP
-    port: 13301 # Forwarder data
+    port: 13301
     targetPort: 13301
   - name: forward-config
     protocol: TCP
