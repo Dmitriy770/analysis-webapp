@@ -6,6 +6,13 @@ spec:
   selector:
     app: graylog
   ports:
+  - name: datanode-api
+    port: 8999
+    targetPort: 8999
+  - port: 9200
+    targetPort: 9200
+  - port: 9300
+    targetPort: 9300
   - name: beats
     protocol: TCP
     port: 5044
