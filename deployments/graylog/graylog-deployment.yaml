@@ -19,25 +19,25 @@ spec:
         image: graylog/graylog:6.1.4
         ports:
         - containerPort: 5044 # beats
-          protocol: tcp
+          protocol: TCP
         - containerPort: 5140 # Syslog
-          protocol: udp
+          protocol: UDP
         - containerPort: 5140 # Syslog
-          protocol: tcp
+          protocol: TCP
         - containerPort: 5555  # RAW TCP
-          protocol: tcp
+          protocol: TCP
         - containerPort: 5555 # RAW TCP
-          protocol: udp 
+          protocol: UDP 
         - containerPort: 9000  # Server API
-          protocol: tcp
+          protocol: TCP
         - containerPort: 12201 # GELF TCP
-          protocol: tcp
+          protocol: TCP
         - containerPort: 12201 # GELF UDP
-          protocol: udp
+          protocol: UDP
         - containerPort: 13301 # Forwarder data
-          protocol: tcp
+          protocol: TCP
         - containerPort: 13302 # Forwarder config
-          protocol: tcp
+          protocol: TCP
         env:
         - name: GRAYLOG_NODE_ID_FILE
           value: /usr/share/graylog/data/config/node-id

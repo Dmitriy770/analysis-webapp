@@ -8,32 +8,32 @@ spec:
   ports:
   - port: 5044 # beats
     targetPort: 5044
-    protocol: tcp
+    protocol: TCP
   - port: 5140 # Syslog
     targetPort: 5140
-    protocol: udp
+    protocol: UDP
   - port: 5140 # Syslog
     targetPort: 5140
-    protocol: tcp
+    protocol: TCP
   - port: 5555  # RAW TCP
     targetPort: 5555
-    protocol: tcp
+    protocol: TCP
   - port: 5555 # RAW TCP
     targetPort: 5555
-    protocol: udp 
+    protocol: UDP 
   - port: 9000  # Server API
     targetPort: 9000
-    protocol: tcp
+    protocol: TCP
   - port: 12201 # GELF TCP
     targetPort: 12201
-    protocol: tcp
+    protocol: TCP
   - port: 12201 # GELF UDP
     targetPort: 12201
-    protocol: udp
+    protocol: UDP
   - port: 13301 # Forwarder data
     targetPort: 13301
-    protocol: tcp
+    protocol: TCP
   - port: 13302 # Forwarder config
     targetPort: 13302
-    protocol: tcp
+    protocol: TCP
   type: ClusterIP
