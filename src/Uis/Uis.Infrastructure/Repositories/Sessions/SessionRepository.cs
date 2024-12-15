@@ -31,9 +31,15 @@ internal sealed class SessionRepository(
         
         var key = new RedisKey(sessionId.ToString());
         var value = database.StringGet(key);
+        if (!value.HasValue)
+        {
+            logger.LogInformation("End get session. Session with ID {@sessionId} not found", sessionId);
+            return null;
+        }
         
-        logger.LogInformation("End get session {@sessionId}", sessionId);
-        return JsonSerializer.Deserialize<Session>(value.ToString());
+        var session = JsonSerializer.Deserialize<Session>(value.ToString());
+        logger.LogInformation("End get session {@session}", session);
+        return session;
     }
 
     public async Task DeleteAsync(Guid sessionId)

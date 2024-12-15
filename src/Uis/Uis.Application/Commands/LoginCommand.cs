@@ -54,7 +54,7 @@ internal sealed class LoginCommandHandler(
         await sessionRepository.AddAsync(session);
         
         var result = new Result(user, session);
-        logger.LogInformation("End Handle LoginCommand with {result}", result);
+        logger.LogInformation("End Handle LoginCommand with {@result}", result);
         return result;
     }
 

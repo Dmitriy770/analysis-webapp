@@ -30,7 +30,7 @@ internal sealed class  GetUserBySessionIdHandler(
             throw new UserNotFoundException(session.UserId);
         }
 
-        logger.LogInformation("End handle GetUserBySessionIdQuery with {user}", user);
+        logger.LogInformation("End handle GetUserBySessionIdQuery with {@user}", user);
         return user;
     }
 } 

@@ -31,6 +31,6 @@ public abstract class BaseExceptionFilter(
         };
         context.ExceptionHandled = true;
         
-        logger.LogInformation("Handling exception and return error {response}", response);
+        logger.LogInformation("Handling exception and return error {@response}", response);
     }
 }
