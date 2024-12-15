@@ -35,6 +35,8 @@ public static class ServiceCollectionExtensions
         serviceCollection.AddScoped<IGuidProvider, GuidProvider>();
         
         // Gateways
+        serviceCollection.AddScoped<HttpClientLogger>();
+        
         var settings = GitHubGatewaySettings.From(configuration);
         serviceCollection.AddSingleton(settings);
         
