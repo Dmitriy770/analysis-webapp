@@ -6,9 +6,9 @@ metadata:
     app: graylog
 spec:
   replicas: 1
-    selector:
-      matchLabels:
-        app: graylog
+  selector:
+    matchLabels:
+      app: graylog
   template:
     metadata:
       labels:
