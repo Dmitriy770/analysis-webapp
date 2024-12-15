@@ -8,10 +8,15 @@ spec:
   ports:
   - name: datanode-api
     port: 8999
+    protocol: TCP
     targetPort: 8999
-  - port: 9200
+  - name: datanode-tcp-1
+    protocol: TCP
+    port: 9200
     targetPort: 9200
-  - port: 9300
+  - name: datanode-tcp-2
+    port: 9300
+    protocol: TCP
     targetPort: 9300
   - name: beats
     protocol: TCP
