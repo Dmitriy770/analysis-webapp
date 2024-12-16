@@ -4,7 +4,7 @@
     "timeout": "120s",
     "endpoints": [
         {
-            "endpoint": "/",
+            "endpoint": "/frontend",
             "method": "GET",
             "input_headers": ["*"],
             "input_query_strings": ["*"],
