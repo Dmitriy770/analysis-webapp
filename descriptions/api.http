@@ -15,7 +15,7 @@ GET /user with cookie token
     "nickname": "string"
 }
 
-GET /user/logout with cookie token
+POST /user/logout with cookie token
 
 
 ### AnalysisService
