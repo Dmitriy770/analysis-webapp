@@ -1,7 +1,7 @@
-﻿using Microsoft.Extensions.Configuration;
-using Uis.Common.Configuration.Exceptions;
+﻿using Common.Configuration.Exceptions;
+using Microsoft.Extensions.Configuration;
 
-namespace Uis.Common.Configuration;
+namespace Common.Configuration.Extensions;
 
 public static class ConfigurationExtensions
 {

@@ -1,6 +1,6 @@
 ﻿using Microsoft.AspNetCore.Http;
 
-namespace Uis.Common.Authorization.Extensions;
+namespace Common.Web.Authorization.Extensions;
 
 public static class HttpContextExtensions
 {

@@ -1,4 +1,4 @@
-﻿namespace Uis.Common.ExceptionFilter;
+﻿namespace Common.Web.ExceptionFilters;
 
 public record ErrorResponse(
     int StatusCode,

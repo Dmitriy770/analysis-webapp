@@ -1,9 +1,9 @@
-﻿using Microsoft.AspNetCore.Mvc.Controllers;
+﻿using Common.Web.Authorization.Exception;
+using Microsoft.AspNetCore.Mvc.Controllers;
 using Microsoft.AspNetCore.Mvc.Filters;
-using Uis.Domain.Exceptions;
-using AuthorizeAttribute = Uis.Common.Authorization.Attributes.AuthorizeAttribute;
+using AuthorizeAttribute = Common.Web.Authorization.Attributes.AuthorizeAttribute;
 
-namespace Uis.Common.Authorization.Extensions;
+namespace Common.Web.Authorization.Extensions;
 
 public static class AuthorizationFilterContextExtensions
 {

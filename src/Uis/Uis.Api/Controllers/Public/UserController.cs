@@ -1,13 +1,12 @@
-﻿using MediatR;
+﻿using Common.Web.Authorization;
+using Common.Web.Authorization.Extensions;
+using MediatR;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
-using Uis.Api.Filters.Public;
 using Uis.Api.Mappers;
 using Uis.Api.Models.Public;
 using Uis.Application.Commands;
 using Uis.Application.Queries;
-using Uis.Common.Authorization;
-using Uis.Common.Authorization.Attributes;
-using Uis.Common.Authorization.Extensions;
 
 namespace Uis.Api.Controllers.Public;
 

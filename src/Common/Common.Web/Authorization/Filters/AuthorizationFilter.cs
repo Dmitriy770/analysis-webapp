@@ -1,7 +1,7 @@
-﻿using Microsoft.AspNetCore.Mvc.Filters;
-using Uis.Common.Authorization.Extensions;
+﻿using Common.Web.Authorization.Extensions;
+using Microsoft.AspNetCore.Mvc.Filters;
 
-namespace Uis.Common.Authorization.Filters;
+namespace Common.Web.Authorization.Filters;
 
 internal sealed class AuthorizationFilter : IAuthorizationFilter
 {

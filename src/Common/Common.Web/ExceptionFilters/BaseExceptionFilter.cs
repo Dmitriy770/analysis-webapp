@@ -4,7 +4,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Filters;
 using Microsoft.Extensions.Logging;
 
-namespace Uis.Common.ExceptionFilter;
+namespace Common.Web.ExceptionFilters;
 
 public abstract class BaseExceptionFilter(
     ILogger<BaseExceptionFilter> logger)

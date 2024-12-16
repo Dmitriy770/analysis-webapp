@@ -1,7 +1,7 @@
 ﻿using Microsoft.Extensions.Http.Logging;
 using Microsoft.Extensions.Logging;
 
-namespace Uis.Common.HttpClient;
+namespace Common.Logging.HttpClient;
 
 public sealed class HttpClientLogger(
     ILogger<HttpClientLogger> logger)

@@ -1,3 +1,3 @@
-﻿namespace Uis.Common.Authorization.Attributes;
+﻿namespace Common.Web.Authorization.Attributes;
 
 public sealed class AuthorizeAttribute : Attribute;

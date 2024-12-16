@@ -1,4 +1,4 @@
-﻿namespace Uis.Common.Authorization;
+﻿namespace Common.Web.Authorization;
 
 public static class Consts
 {

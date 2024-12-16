@@ -1,5 +1,5 @@
-﻿using Microsoft.Extensions.Configuration;
-using Uis.Common.Configuration;
+﻿using Common.Configuration.Extensions;
+using Microsoft.Extensions.Configuration;
 
 namespace Uis.Infrastructure.Settings;
 

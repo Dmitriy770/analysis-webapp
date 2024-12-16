@@ -1,5 +1,5 @@
 ﻿using System.Net;
-using Uis.Common.ExceptionFilter;
+using Common.Web.ExceptionFilters;
 using Uis.Domain.Exceptions;
 
 namespace Uis.Api.Filters.Internal;

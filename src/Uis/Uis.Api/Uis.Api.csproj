@@ -23,7 +23,7 @@
     </ItemGroup>
     
     <ItemGroup>
-      <ProjectReference Include="..\Uis.Common\Uis.Common.csproj" />
+      <ProjectReference Include="..\..\Common\Common.Web\Common.Web.csproj" />
       <ProjectReference Include="..\Uis.Infrastructure\Uis.Infrastructure.csproj" />
     </ItemGroup>
 
