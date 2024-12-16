@@ -2,6 +2,7 @@
     "$schema": "https://www.krakend.io/schema/v3.json",
     "version": 3,
     "timeout": "120s",
+    "disable_rest": true,
     "endpoints": [
         {
             "endpoint": "/frontend",
