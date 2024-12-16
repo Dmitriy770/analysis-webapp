@@ -32,7 +32,7 @@
             "output_encoding": "no-op",
             "backend": [
                 {
-                    "url_pattern": "/_next",
+                    "url_pattern": "/_next/",
                     "encoding": "no-op",
                     "host": [
                         "http://frontend-service.default.svc.cluster.local"
