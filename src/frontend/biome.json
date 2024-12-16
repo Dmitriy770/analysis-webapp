@@ -1,0 +1,81 @@
+{
+    "$schema": "https://biomejs.dev/schemas/1.8.3/schema.json",
+
+    "formatter": {
+        "enabled": true,
+        "formatWithErrors": true,
+        "indentStyle": "space",
+        "indentWidth": 2,
+        "lineWidth": 120,
+        "lineEnding": "lf"
+    },
+
+    "javascript": {
+        "formatter": {
+            "quoteStyle": "single",
+            "semicolons": "asNeeded",
+            "jsxQuoteStyle": "double",
+            "trailingCommas": "all",
+            "bracketSpacing": true,
+            "arrowParentheses": "asNeeded"
+        }
+    },
+
+    "json": {
+        "formatter": {
+            "indentWidth": 4
+        }
+    },
+
+    "organizeImports": {
+        "enabled": true
+    },
+
+    "linter": {
+        "enabled": true,
+        "rules": {
+            "recommended": true,
+
+            "complexity": {
+                "noBannedTypes": "off"
+            },
+
+            "correctness": {
+                "noUnusedImports": "error",
+                "noUnusedVariables": "error",
+                "useArrayLiterals": "error"
+            },
+
+            "suspicious": {
+                "noExplicitAny": "off",
+                "noConsoleLog": "error"
+            },
+
+            "style": {
+                "useFilenamingConvention": {
+                    "level": "error",
+                    "options": {
+                        "requireAscii": true,
+                        "filenameCases": ["kebab-case", "camelCase"]
+                    }
+                },
+
+                "noNamespace": "error",
+                "noNegationElse": "error"
+            },
+
+            "nursery": {
+                "useSortedClasses": {
+                    "level": "error",
+                    "fix": "unsafe",
+                    "options": {
+                        "attributes": ["className"],
+                        "functions": ["clsx", "cx", "cva", "tw"]
+                    }
+                },
+
+                "useImportRestrictions": "error"
+            }
+        }
+    }
+}
