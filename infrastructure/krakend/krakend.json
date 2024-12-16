@@ -46,6 +46,27 @@
                 }
             ]
         },
+        {
+            "endpoint": "/_next/static/chunks/{type}/{name}",
+            "method": "GET",
+            "input_headers": ["*"],
+            "input_query_strings": ["*"],
+            "output_encoding": "no-op",
+            "backend": [
+                {
+                    "url_pattern": "/_next/static/chunks/{type}/{name}",
+                    "encoding": "no-op",
+                    "host": [
+                        "http://frontend-service.default.svc.cluster.local"
+                    ],
+                    "extra_config": {
+                        "backend/http": {
+                            "return_error_details": "error"
+                        }
+                    }
+                }
+            ]
+        },
         
         
         {
