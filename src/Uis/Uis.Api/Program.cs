@@ -1,35 +1,16 @@
-var builder = WebApplication.CreateBuilder(args);
+using Uis.Api.Extensions;
+using Uis.Infrastructure;
+using Uis.Infrastructure.Repositories.Users;
 
-builder.Services.AddOpenApi();
-builder.Services.AddHealthChecks();
+var builder = WebApplication.CreateSlimBuilder(args);
+
+builder.Services.AddApi();
+builder.Services.AddApplication();
+builder.Services.AddInfrastructure(builder.Configuration);
 
 var app = builder.Build();
-app.MapOpenApi();
-app.MapHealthChecks("/healthz");
 
+app.RegisterUserRepository();
+app.RegisterApi();
 
-var summaries = new[]
-{
-    "Freezing", "Bracing", "Chilly", "Cool", "Mild", "Warm", "Balmy", "Hot", "Sweltering", "Scorching"
-};
-
-app.MapGet("/weatherforecast", () =>
-    {
-        var forecast = Enumerable.Range(1, 5).Select(index =>
-                new WeatherForecast
-                (
-                    DateOnly.FromDateTime(DateTime.Now.AddDays(index)),
-                    Random.Shared.Next(-20, 55),
-                    summaries[Random.Shared.Next(summaries.Length)]
-                ))
-            .ToArray();
-        return forecast;
-    })
-    .WithName("GetWeatherForecast");
-
-app.Run();
-
-record WeatherForecast(DateOnly Date, int TemperatureC, string? Summary)
-{
-    public int TemperatureF => 32 + (int)(TemperatureC / 0.5556);
-}
+await app.RunAsync();

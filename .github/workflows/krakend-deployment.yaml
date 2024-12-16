@@ -42,7 +42,7 @@ jobs:
         uses: actions/checkout@v4
 
       - name: Overwrite image for deployment
-        run: sed -i 's\krakend-image\ghcr.io/dmitriy770/analysis-webapp-krakend:${{github.run_id}}\g' ./deployments/krakend/krakend-deployment.yaml
+        run: sed -i 's\{template-krakend-image}\ghcr.io/dmitriy770/analysis-webapp-krakend:${{github.run_id}}\g' ./deployments/krakend/krakend-deployment.yaml
 
       - name: Apply deployment
         uses: actions-hub/kubectl@master

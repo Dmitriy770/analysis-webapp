@@ -1,0 +1,168 @@
+{
+    "$schema": "https://www.krakend.io/schema/v3.json",
+    "version": 3,
+    "timeout": "120s",
+    "endpoints": [
+        {
+            "endpoint": "/api/uis/openapi/v1",
+            "method": "GET",
+            "input_headers": ["*"],
+            "output_encoding": "no-op",
+            "timeout": "2s",      
+            "backend": [
+                {
+                    "url_pattern": "/openapi/v1",
+                    "encoding": "no-op",
+                    "host": [
+                        "http://uis-service.default.svc.cluster.local"
+                    ],
+                    "extra_config": {
+                        "backend/http": {
+                            "return_error_details": "error"
+                        }
+                    }
+                }
+            ]
+        },
+        {
+            "endpoint": "/api/uis/scalar/v1",
+            "method": "GET",
+            "input_headers": ["*"],       
+            "output_encoding": "no-op", 
+            "timeout": "2s",
+            "backend": [
+                {
+                    "encoding": "no-op",
+                    "url_pattern": "/scalar/v1",
+                    "host": [
+                        "http://uis-service.default.svc.cluster.local"
+                    ],
+                    "extra_config": {
+                        "backend/http": {
+                            "return_error_details": "error"
+                        }
+                    }
+                }
+            ]
+        },
+        {
+            "endpoint": "/api/uis/scalar/scalar.js",
+            "method": "GET",
+            "input_headers": ["*"],       
+            "output_encoding": "no-op", 
+            "timeout": "2s",
+            "backend": [
+                {
+                    "encoding": "no-op",
+                    "url_pattern": "/scalar/scalar.js",
+                    "host": [
+                        "http://uis-service.default.svc.cluster.local"
+                    ],
+                    "extra_config": {
+                        "backend/http": {
+                            "return_error_details": "error"
+                        }
+                    }
+                }
+            ]
+        },
+        {
+            "endpoint": "/api/user/login",
+            "method": "POST",
+            "output_encoding": "no-op",
+            "input_headers": ["*"],        
+            "backend": [
+                {
+                    "url_pattern": "/api/user/login",
+                    "encoding": "no-op",
+                    "host": [
+                        "http://uis-service.default.svc.cluster.local"
+                    ],
+                    "extra_config": {
+                        "backend/http": {
+                            "return_error_details": "error"
+                        }
+                    }
+                }
+            ]
+        },
+        {
+            "endpoint": "/api/user/logout",
+            "method": "GET",
+            "output_encoding": "no-op",
+            "input_headers": ["*"],     
+            "backend": [
+                {
+                    "url_pattern": "/api/user/logout",
+                    "encoding": "no-op",
+                    "host": [
+                        "http://uis-service.default.svc.cluster.local"
+                    ],
+                    "extra_config": {
+                        "backend/http": {
+                            "return_error_details": "error"
+                        }
+                    }
+                }
+            ]
+        },
+        {
+            "endpoint": "/api/user",
+            "method": "GET",
+            "output_encoding": "no-op",
+            "input_headers": ["*"],     
+            "backend": [
+                {
+                    "url_pattern": "/api/user",
+                    "encoding": "no-op",
+                    "host": [
+                        "http://uis-service.default.svc.cluster.local"
+                    ],
+                    "extra_config": {
+                        "backend/http": {
+                            "return_error_details": "error"
+                        }
+                    }
+                }
+            ]
+        },
+
+        {
+            "endpoint": "/infra/graylog",
+            "method": "GET",
+            "output_encoding": "no-op",
+            "input_headers": ["*"],     
+            "backend": [
+                {
+                    "url_pattern": "/",
+                    "encoding": "no-op",
+                    "host": [
+                        "http://graylog-service.default.svc.cluster.local:9000"
+                    ],
+                    "extra_config": {
+                        "backend/http": {
+                            "return_error_details": "error"
+                        }
+                    }
+                }
+            ]
+        }
+    ],
+    "extra_config": {
+        "telemetry/logging": {
+            "level": "DEBUG",
+            "prefix": "[KRAKEND]",
+            "stdout": true
+        },
+        "qos/ratelimit/service": {
+            "every": "1m",
+            "max_rate": 500,
+            "client_max_rate": 50,
+            "strategy": "ip"
+        },
+        "router": {
+            "return_error_msg": true,
+            "disable_access_log": false
+        }
+    }
+}

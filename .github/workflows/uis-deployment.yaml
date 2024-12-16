@@ -42,7 +42,25 @@ jobs:
         uses: actions/checkout@v4
 
       - name: Overwrite image for deployment
-        run: sed -i 's\uis-image\ghcr.io/dmitriy770/analysis-webapp-uis:${{github.run_id}}\g' ./deployments/uis/uis-deployment.yaml
+        run: sed -i 's\{template-uis-image}\ghcr.io/dmitriy770/analysis-webapp-uis:${{github.run_id}}\g' ./deployments/uis/uis-deployment.yaml
+      
+      - name: Overwrite user for session storage
+        run: sed -i 's\{template-repository-session-user}\${{secrets.SESSION_STORAGE_USER}}\g' ./deployments/uis/uis-deployment.yaml
+      
+      - name: Overwrite password for session storage
+        run: sed -i 's\{template-repository-session-password}\${{secrets.SESSION_STORAGE_PASSWORD}}\g' ./deployments/uis/uis-deployment.yaml
+      
+      - name: Overwrite user for user storage
+        run: sed -i 's\{template-repository-user-user}\${{secrets.USER_STORAGE_USER}}\g' ./deployments/uis/uis-deployment.yaml
+      
+      - name: Overwrite password for user storage
+        run: sed -i 's\{template-repository-user-password}\${{secrets.USER_STORAGE_PASSWORD}}\g' ./deployments/uis/uis-deployment.yaml
+      
+      - name: Overwrite client_id for github gateway
+        run: sed -i 's\{template-gateway-github-clientid}\${{secrets.GATEWAY_GITHUB_CLIENT_ID}}\g' ./deployments/uis/uis-deployment.yaml
+      
+      - name: Overwrite secret for github gateway
+        run: sed -i 's\{template-gateway-github-secret}\${{secrets.GATEWAY_GITHUB_SECRET}}\g' ./deployments/uis/uis-deployment.yaml
 
       - name: Apply deployment
         uses: actions-hub/kubectl@master

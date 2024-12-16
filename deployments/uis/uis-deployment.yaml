@@ -16,7 +16,7 @@ spec:
     spec:
       containers:
       - name: uis
-        image: uis-image
+        image: {template-uis-image}
         imagePullPolicy: IfNotPresent 
         ports:
         - containerPort: 8080
@@ -24,8 +24,29 @@ spec:
           httpGet:
             path: /healthz
             port: 8080
-          initialDelaySeconds: 3
-          periodSeconds: 3
+          initialDelaySeconds: 60
+          periodSeconds: 30
+          failureThreshold: 3
+        env:
+        - name: Repositories__SessionRepository__User
+          value: {template-repository-session-user}
+        - name: Repositories__SessionRepository__Password
+          value: {template-repository-session-password}
+        - name: Repositories__UserRepository__User
+          value: {template-repository-user-user}
+        - name: Repositories__UserRepository__Password
+          value: {template-repository-user-password}
+        - name: Gateways__GitHub__ClientId
+          value: {template-gateway-github-clientid}
+        - name: Gateways__GitHub__ClientSecret
+          value: {template-gateway-github-secret}
+        resources:
+          requests:
+            memory: "256Mi"
+            cpu: "40m"
+          limits:
+            memory: "512Mi"
+            cpu: "80m"
   strategy:
     type: RollingUpdate
 

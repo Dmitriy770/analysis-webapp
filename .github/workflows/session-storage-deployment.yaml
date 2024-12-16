@@ -1,0 +1,26 @@
+name: Deploy Session Storage
+run-name: Deploy Session Storage by @${{ github.actor }}
+on:
+  workflow_dispatch:
+  workflow_call:
+jobs:
+  deploy-user-storage:
+    name: Deploy Session Storage
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Apply endpoint slice
+        uses: actions-hub/kubectl@master
+        env:
+          KUBE_CONFIG: ${{ secrets.KUBE_CONFIG }}
+        with:
+          args: apply -f ./deployments/session-storage/session-storage-endpoint-slice.yaml
+
+      - name: Apply services
+        uses: actions-hub/kubectl@master
+        env:
+          KUBE_CONFIG: ${{ secrets.KUBE_CONFIG }}
+        with:
+          args: apply -f ./deployments/session-storage/session-storage-service.yaml
