@@ -4,6 +4,28 @@
     "timeout": "120s",
     "endpoints": [
         {
+            "endpoint": "/",
+            "method": "GET",
+            "input_headers": ["*"],
+            "input_query_strings": ["*"],
+            "output_encoding": "no-op",
+            "backend": [
+                {
+                    "url_pattern": "/",
+                    "encoding": "no-op",
+                    "host": [
+                        "http://frontend-service.default.svc.cluster.local"
+                    ],
+                    "extra_config": {
+                        "backend/http": {
+                            "return_error_details": "error"
+                        }
+                    }
+                }
+            ]
+        },
+
+        {
             "endpoint": "/api/uis/openapi/v1",
             "method": "GET",
             "input_headers": ["*"],
