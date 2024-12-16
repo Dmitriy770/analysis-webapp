@@ -33,7 +33,7 @@ public sealed class UserController(
     [ProducesResponseType(StatusCodes.Status200OK)]
     [ProducesResponseType(StatusCodes.Status401Unauthorized)]
     public async Task<IResult> Logout(
-        [FromHeader(Name = Consts.SessionIdKey)]Guid sessionId)
+        [FromHeader(Name = Const.SessionIdKey)]Guid sessionId)
     {
         await sender.Send(new LogoutCommand(sessionId));
         
@@ -45,7 +45,7 @@ public sealed class UserController(
     [ProducesResponseType(typeof(User), StatusCodes.Status200OK)]
     [ProducesResponseType(StatusCodes.Status401Unauthorized)]
     public async Task<IResult> Get(
-        [FromHeader(Name = Consts.SessionIdKey)]Guid sessionId)
+        [FromHeader(Name = Const.SessionIdKey)]Guid sessionId)
     {
         var user = await sender.Send(new GetUserBySessionIdQuery(sessionId));
 

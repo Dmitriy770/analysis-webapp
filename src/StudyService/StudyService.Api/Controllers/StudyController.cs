@@ -1,0 +1,39 @@
+﻿using Microsoft.AspNetCore.Mvc;
+using StudyService.Api.Models;
+
+namespace StudyService.Api.Controllers;
+
+[ApiController]
+[Route("studies")]
+public sealed class StudyController : ControllerBase
+{
+    [HttpPost]
+    public Task<IResult> Add(NewStudy study)
+    {
+        throw new NotImplementedException();
+    }
+    
+    [HttpGet("{id:guid}")]
+    public Task<IResult> Get(Guid id)
+    {
+        throw new NotImplementedException();
+    }
+    
+    [HttpGet]
+    public Task<IResult> GetByUserId([FromQuery] Guid userId)
+    {
+        throw new NotImplementedException();
+    }
+
+    [HttpPost("{id:guid}/result")]
+    public Task<IResult> AddResult(Guid id)
+    {
+        throw new NotImplementedException();
+    }
+
+    [HttpGet("{id:guid}/result")]
+    public Task<IResult> GetResult(Guid id)
+    {
+        throw new NotImplementedException();
+    }
+}

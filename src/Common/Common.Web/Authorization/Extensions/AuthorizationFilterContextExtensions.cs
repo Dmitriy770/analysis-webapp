@@ -1,4 +1,4 @@
-﻿using Common.Web.Authorization.Exception;
+﻿using Common.Web.Authorization.Exceptions;
 using Microsoft.AspNetCore.Mvc.Controllers;
 using Microsoft.AspNetCore.Mvc.Filters;
 using AuthorizeAttribute = Common.Web.Authorization.Attributes.AuthorizeAttribute;
@@ -24,7 +24,7 @@ public static class AuthorizationFilterContextExtensions
     
     public static Guid GetSessionId(this AuthorizationFilterContext context)
     {
-        if (!context.HttpContext.Request.Cookies.TryGetValue(Consts.SessionIdKey, out var sessionIdString))
+        if (!context.HttpContext.Request.Cookies.TryGetValue(Const.SessionIdCookieKey, out var sessionIdString))
         {
             throw new SessionIdNotFoundException();
         }
@@ -39,11 +39,11 @@ public static class AuthorizationFilterContextExtensions
 
     public static void AddSessionToHeader(this AuthorizationFilterContext context, Guid sessionId)
     {
-        context.HttpContext.Request.Headers[Consts.SessionIdKey] = sessionId.ToString();
+        context.HttpContext.Request.Headers[Const.SessionIdCookieKey] = sessionId.ToString();
     }
 
     public static void AddSessionCookie(this AuthorizationFilterContext context, Guid sessionId)
     {
-        context.HttpContext.Response.Cookies.Append(Consts.SessionIdKey, sessionId.ToString());
+        context.HttpContext.Response.Cookies.Append(Const.SessionIdCookieKey, sessionId.ToString());
     }
 }

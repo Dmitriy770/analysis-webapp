@@ -1,4 +1,5 @@
 ﻿namespace Uis.Api.Models.Internal;
 
 public record Session(
-    Guid SessionId);
+    Guid SessionId,
+    long UserId);

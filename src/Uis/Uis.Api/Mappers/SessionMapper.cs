@@ -8,6 +8,7 @@ internal static class SessionMapper
     internal static Response.Session ToResponse(this Session session)
     {
         return new Response.Session(
-            SessionId: session.SessionId);
+            SessionId: session.SessionId,
+            UserId: session.UserId);
     } 
 }
