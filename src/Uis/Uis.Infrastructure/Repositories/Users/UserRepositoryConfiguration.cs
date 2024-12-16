@@ -1,14 +1,9 @@
 ﻿using FluentMigrator.Runner;
-using FluentMigrator.Runner.Processors.Postgres;
-using Microsoft.AspNetCore.Builder;
-using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Npgsql;
-using Npgsql.NameTranslation;
 using Uis.Application.Abstractions.Repositories;
 using Uis.Infrastructure.Repositories.Users.Migrations;
-using Uis.Infrastructure.Repositories.Users.Models;
 using Uis.Infrastructure.Settings;
 
 namespace Uis.Infrastructure.Repositories.Users;
@@ -31,9 +26,9 @@ public static class SessionRepositoryConfiguration
     }
 
     
-    public static void RegisterUserRepository(this WebApplication application)
+    public static void MigrateUserRepository(this IServiceProvider serviceProvider)
     {
-        var runner = application.Services.GetRequiredService<IMigrationRunner>();
+        var runner = serviceProvider.GetRequiredService<IMigrationRunner>();
         runner.MigrateUp();
     }
 

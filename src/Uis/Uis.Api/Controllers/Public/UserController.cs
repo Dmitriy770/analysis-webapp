@@ -28,7 +28,7 @@ public sealed class UserController(
         return Results.Ok(user.ToUserResponse());
     }
 
-    [HttpGet("logout")]
+    [HttpPost("logout")]
     [Authorize]
     [ProducesResponseType(StatusCodes.Status200OK)]
     [ProducesResponseType(StatusCodes.Status401Unauthorized)]

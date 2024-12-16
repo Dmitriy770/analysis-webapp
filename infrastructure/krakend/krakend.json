@@ -154,7 +154,7 @@
         },
         {
             "endpoint": "/api/user/logout",
-            "method": "GET",
+            "method": "POST",
             "output_encoding": "no-op",
             "input_headers": ["*"],     
             "backend": [
