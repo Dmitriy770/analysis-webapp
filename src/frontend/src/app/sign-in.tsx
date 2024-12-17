@@ -15,7 +15,11 @@ export const SignIn: FC<Props> = async ({ className, ...props }) => {
   return user ? (
     <Link href="/dashboard">Dashboard</Link>
   ) : (
-    <Link href="/api/github-auth" className={cn('flex gap-2', buttonVariants({ ...props }), className)}>
+    <Link
+      href="/api/github-auth"
+      prefetch={false}
+      className={cn('flex gap-2', buttonVariants({ ...props }), className)}
+    >
       <SignInIcon /> Sign in
     </Link>
   )
