@@ -20,6 +20,9 @@ spec:
         imagePullPolicy: IfNotPresent 
         ports:
         - containerPort: 3000
+        env:
+        - name: GITHUB_CLIENT_ID
+          value: todo
   strategy:
     type: RollingUpdate
 
