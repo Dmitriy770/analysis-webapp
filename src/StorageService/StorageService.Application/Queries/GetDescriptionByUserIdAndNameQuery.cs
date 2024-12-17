@@ -5,15 +5,15 @@ using StorageService.Domain.Models;
 
 namespace StorageService.Application.Queries;
 
-public record GetDescriptionByNameQuery(
+public record GetDescriptionByUserIdAndNameQuery(
     string Name,
     long UserId)
     : IRequest<DatasetDescription>;
     
 internal sealed class GetDescriptionByNameQueryHandler(
-    IDatasetRepository datasetRepository) : IRequestHandler<GetDescriptionByNameQuery, DatasetDescription>
+    IDatasetRepository datasetRepository) : IRequestHandler<GetDescriptionByUserIdAndNameQuery, DatasetDescription>
 {
-    public async Task<DatasetDescription> Handle(GetDescriptionByNameQuery request, CancellationToken cancellationToken)
+    public async Task<DatasetDescription> Handle(GetDescriptionByUserIdAndNameQuery request, CancellationToken cancellationToken)
     {
         var description = await datasetRepository
             .GetDescriptionsByUserIdAsync(request.UserId, cancellationToken)

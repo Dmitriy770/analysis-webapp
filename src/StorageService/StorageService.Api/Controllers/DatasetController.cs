@@ -64,7 +64,7 @@ public sealed class DatasetController(
     {
         var userId = HttpContext.GetUserId();
 
-        var descriptions = await sender.Send(new GetDescriptionByNameQuery(
+        var descriptions = await sender.Send(new GetDescriptionByUserIdAndNameQuery(
             Name: datasetName,
             UserId: userId),
             cancellationToken);

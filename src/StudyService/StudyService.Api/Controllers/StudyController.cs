@@ -13,20 +13,15 @@ public sealed class StudyController : ControllerBase
         throw new NotImplementedException();
     }
     
-    [HttpGet("{id:guid}")]
-    public Task<IResult> Get(Guid id)
+    [HttpGet]
+    public Task<IResult> Get(
+        [FromQuery] string datasetName)
     {
         throw new NotImplementedException();
     }
     
     [HttpGet]
     public Task<IResult> GetByUserId([FromQuery] Guid userId)
-    {
-        throw new NotImplementedException();
-    }
-
-    [HttpPost("{id:guid}/result")]
-    public Task<IResult> AddResult(Guid id)
     {
         throw new NotImplementedException();
     }

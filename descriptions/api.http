@@ -18,7 +18,7 @@ GET /user with cookie token
 POST /user/logout with cookie token
 
 
-### AnalysisService
+### st
 
 GET /user/limits with cookie token
 {

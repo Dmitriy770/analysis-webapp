@@ -1,8 +1,8 @@
-﻿namespace StudyService.Api.Models;
+﻿namespace StudyService.Domain.Models;
 
 public record Study(
     Guid Id,
-    string Type,
+    StudyType Type,
     string Status,
     int Components,
     DateTime CreationDate,

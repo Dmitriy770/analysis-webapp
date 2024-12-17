@@ -43,13 +43,25 @@ public sealed class InternalDatasetController(
     
     [HttpGet("/description")]
     [ProducesResponseType<DatasetsDescription>(StatusCodes.Status200OK)]
-    public async Task<IResult> GetDescriptionByUserId(
+    public async Task<IResult> GetDescriptionsByUserId(
         [FromQuery] long userId,
         CancellationToken cancellationToken = default)
     {
         var descriptions = sender.CreateStream(new GetDescriptionsByUserIdQuery(userId), cancellationToken);
     
         return Results.Ok(await descriptions.ToApi(cancellationToken));
+    }
+    
+    [HttpGet("/description")]
+    [ProducesResponseType<DatasetsDescription>(StatusCodes.Status200OK)]
+    public async Task<IResult> GetDescriptionByUserIdAndName(
+        [FromQuery] long userId,
+        [FromQuery] string datasetName,
+        CancellationToken cancellationToken = default)
+    {
+        var description = await sender.Send(new GetDescriptionByUserIdAndNameQuery(datasetName, userId), cancellationToken);
+    
+        return Results.Ok(description.ToApi());
     }
 
     private byte[] StreamToBytes(Stream stream, CancellationToken cancellationToken)

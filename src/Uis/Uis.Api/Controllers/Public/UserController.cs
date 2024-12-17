@@ -11,7 +11,7 @@ using Uis.Application.Queries;
 namespace Uis.Api.Controllers.Public;
 
 [ApiController]
-[Route("api/user")]
+[Route("user")]
 public sealed class UserController(
     ISender sender)
     : ControllerBase
