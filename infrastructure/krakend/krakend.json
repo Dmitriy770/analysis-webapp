@@ -189,6 +189,107 @@
         },
 
         {
+            "endpoint": "/studies",
+            "method": "POST",
+            "output_encoding": "no-op",
+            "input_headers": ["*"],
+            "backend": [
+                {
+                    "url_pattern": "/studies",
+                    "encoding": "no-op",
+                    "host": [
+                        "http://study-service.default.svc.cluster.local"
+                    ],
+                    "extra_config": {
+                        "backend/http": {
+                            "return_error_details": "error"
+                        }
+                    }
+                }
+            ]
+        },
+        {
+            "endpoint": "/studies",
+            "method": "GET",
+            "output_encoding": "no-op",
+            "input_headers": ["*"],
+            "backend": [
+                {
+                    "url_pattern": "/studies",
+                    "encoding": "no-op",
+                    "host": [
+                        "http://study-service.default.svc.cluster.local"
+                    ],
+                    "extra_config": {
+                        "backend/http": {
+                            "return_error_details": "error"
+                        }
+                    }
+                }
+            ]
+        },
+        {
+            "endpoint": "/studies/{id}",
+            "method": "GET",
+            "output_encoding": "no-op",
+            "input_headers": ["*"],
+            "backend": [
+                {
+                    "url_pattern": "/studies/{id}",
+                    "encoding": "no-op",
+                    "host": [
+                        "http://study-service.default.svc.cluster.local"
+                    ],
+                    "extra_config": {
+                        "backend/http": {
+                            "return_error_details": "error"
+                        }
+                    }
+                }
+            ]
+        },
+        {
+            "endpoint": "/studies/{id}/result",
+            "method": "GET",
+            "output_encoding": "no-op",
+            "input_headers": ["*"],
+            "backend": [
+                {
+                    "url_pattern": "/studies/{id}/result",
+                    "encoding": "no-op",
+                    "host": [
+                        "http://study-service.default.svc.cluster.local"
+                    ],
+                    "extra_config": {
+                        "backend/http": {
+                            "return_error_details": "error"
+                        }
+                    }
+                }
+            ]
+        },
+        {
+            "endpoint": "/user/limits",
+            "method": "GET",
+            "output_encoding": "no-op",
+            "input_headers": ["*"],
+            "backend": [
+                {
+                    "url_pattern": "/user/limits",
+                    "encoding": "no-op",
+                    "host": [
+                        "http://study-service.default.svc.cluster.local"
+                    ],
+                    "extra_config": {
+                        "backend/http": {
+                            "return_error_details": "error"
+                        }
+                    }
+                }
+            ]
+        },
+
+        {
             "endpoint": "/infra/graylog",
             "method": "GET",
             "output_encoding": "no-op",
