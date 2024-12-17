@@ -2,7 +2,9 @@
 using MediatR;
 using StudyService.Application.Abstractions.Gateways;
 using StudyService.Application.Abstractions.Gateways.Models;
+using StudyService.Application.Abstractions.Producers;
 using StudyService.Application.Abstractions.Providers;
+using StudyService.Application.Abstractions.Repositories;
 using StudyService.Domain.Exceptions;
 using StudyService.Domain.Models;
 
@@ -14,7 +16,9 @@ public record CreateClusteringStudyCommand(
     : IRequest<Study>;
 
 internal sealed class CreateClusteringStudyCommandHandler(
+    IStudyRepository studyRepository,
     IStorageServiceGateway storageServiceGateway,
+    IStudyProducer studyProducer,
     IGuidProvider guidProvider,
     IDateTimeProvider dateTimeProvider)
     : IRequestHandler<CreateClusteringStudyCommand, Study>
@@ -28,17 +32,28 @@ internal sealed class CreateClusteringStudyCommandHandler(
             throw new DatasetNotFoundException(newStudy.Dataset.Name);
         }
 
+        var studyDataset = new StudyDataset(
+            Id: description.Id,
+            Name: description.Name,
+            Columns: newStudy.Dataset.Columns);
+        
         var studyId = guidProvider.NewGuid();
         var study = new Study(
             Id: studyId,
             Type: StudyType.Clustering,
             Status: StudyStatus.InProgress,
             Components: newStudy.Components,
-            CreationDate: dateTimeProvider.Now 
-            )
+            CreationDate: dateTimeProvider.Now,
+            Dataset: studyDataset);
+        
+        await studyRepository.AddAsync(study, cancellationToken);
+        
+        await studyProducer.ProduceAsync(study, cancellationToken);
+        
+        return study;
     }
 
-    private async Task<string?> GeDescription(long userId, string datasetName)
+    private async Task<DatasetDescription?> GeDescription(long userId, string datasetName)
     { 
         var queryParams = new GetDescriptionsQuery
         {

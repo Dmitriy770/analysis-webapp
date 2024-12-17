@@ -3,7 +3,7 @@
 public record Study(
     Guid Id,
     StudyType Type,
-    string Status,
+    StudyStatus Status,
     int Components,
     DateTime CreationDate,
     StudyDataset Dataset);
