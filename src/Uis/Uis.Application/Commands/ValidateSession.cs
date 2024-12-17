@@ -48,6 +48,6 @@ internal sealed class ValidateSessionHandler(
         return newSession;
     }
     
-    private readonly TimeSpan _sessionTimeout = TimeSpan.FromMinutes(15);
+    private readonly TimeSpan _sessionTimeout = TimeSpan.FromMinutes(60);
     private readonly TimeSpan _sessionExtensionTimeout = TimeSpan.FromMinutes(120);
 }
