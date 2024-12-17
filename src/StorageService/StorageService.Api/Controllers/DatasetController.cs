@@ -1,7 +1,9 @@
 ﻿using Common.Web.Authorization.Attributes;
 using Common.Web.Authorization.Extensions;
+using Common.Web.ExceptionFilters;
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
+using StorageService.Api.ExceptionFilters;
 using StorageService.Api.Extensions;
 using StorageService.Api.Mappers;
 using StorageService.Api.Models;
@@ -13,14 +15,15 @@ namespace StorageService.Api.Controllers;
 [ApiController]
 [Route("datasets")]
 [Authorize]
+[ServiceFilter<DatasetControllerExceptionFilter>]
 public sealed class DatasetController(
     ISender sender)
     : ControllerBase
 {
     [HttpPost]
     [ProducesResponseType<DatasetDescription>(StatusCodes.Status200OK)]
-    [ProducesResponseType(StatusCodes.Status400BadRequest)]
-    [ProducesResponseType(StatusCodes.Status401Unauthorized)]
+    [ProducesResponseType<ErrorResponse>(StatusCodes.Status400BadRequest)]
+    [ProducesResponseType<ErrorResponse>(StatusCodes.Status401Unauthorized)]
     public async Task<IResult> Add(
         CancellationToken cancellationToken)
     {
@@ -39,8 +42,8 @@ public sealed class DatasetController(
 
     [HttpGet("descriptions")]
     [ProducesResponseType<DatasetDescription>(StatusCodes.Status200OK)]
-    [ProducesResponseType(StatusCodes.Status401Unauthorized)]
-    [ProducesResponseType(StatusCodes.Status404NotFound)]
+    [ProducesResponseType<ErrorResponse>(StatusCodes.Status401Unauthorized)]
+    [ProducesResponseType<ErrorResponse>(StatusCodes.Status404NotFound)]
     public async Task<IResult> GetDescriptionByUserId(
         CancellationToken cancellationToken)
     {
@@ -53,8 +56,8 @@ public sealed class DatasetController(
     
     [HttpGet("{datasetName}/descriptions")]
     [ProducesResponseType<DatasetDescription>(StatusCodes.Status200OK)]
-    [ProducesResponseType(StatusCodes.Status401Unauthorized)]
-    [ProducesResponseType(StatusCodes.Status404NotFound)]
+    [ProducesResponseType<ErrorResponse>(StatusCodes.Status401Unauthorized)]
+    [ProducesResponseType<ErrorResponse>(StatusCodes.Status404NotFound)]
     public async Task<IResult> GetDescriptionByName(
         string datasetName,
         CancellationToken cancellationToken)

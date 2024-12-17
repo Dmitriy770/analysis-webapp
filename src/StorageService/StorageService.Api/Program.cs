@@ -1,20 +1,13 @@
-using Common.Web.Authorization;
-using Common.Web.Authorization.Extensions;
+using StorageService.Api;
 using StorageService.Application;
+using StorageService.Infrastructure;
 
 var builder = WebApplication.CreateSlimBuilder(args);
-// Add common
-builder.Services.AddAuthorizationFilter();
-
+builder.Services.AddApiServices();
 builder.Services.AddApplicationServices();
-builder.Services.AddControllers(options =>
-{
-    options.AddAuthorizationFilter();
-});
-builder.Services.AddOpenApi();
+builder.Services.AddInfrastructureServices();
 
 var app = builder.Build();
-app.MapOpenApi();
-app.MapControllers();
+app.MapApiServices();
 
 await app.RunAsync();
