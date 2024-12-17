@@ -8,11 +8,11 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Uis.Infrastructure", "Uis.I
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Uis.Application", "Uis.Application\Uis.Application.csproj", "{41D2FB8B-A381-4D9D-BDD8-014D6CC4543E}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Common.Configuration", "Common\Common.Configuration\Common.Configuration.csproj", "{A6F6662F-8BD1-4E81-821E-5BCCF6CA913F}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Common.Configuration", "..\Common\Common.Configuration\Common.Configuration.csproj", "{A6F6662F-8BD1-4E81-821E-5BCCF6CA913F}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Common.Web", "Common\Common.Web\Common.Web.csproj", "{37B166FF-4EA3-4394-B07C-AA4D00E5E093}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Common.Web", "..\Common\Common.Web\Common.Web.csproj", "{37B166FF-4EA3-4394-B07C-AA4D00E5E093}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Common.Logging", "Common\Common.Logging\Common.Logging.csproj", "{FE6EACF0-2EC8-4676-8109-169A9C332BFE}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Common.Logging", "..\Common\Common.Logging\Common.Logging.csproj", "{FE6EACF0-2EC8-4676-8109-169A9C332BFE}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Common", "Common", "{E295CEBA-4FC6-4C28-A1FA-57142485E63C}"
 EndProject
