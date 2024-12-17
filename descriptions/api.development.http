@@ -7,18 +7,11 @@ Content-Type: application/json
 }
 
 ### 
-GET  http://api.analysis.devsquare.ru/user/logout
+POST   http://api.analysis.devsquare.ru/user/logout
 Accept: application/json
 Cookie: SessionId=
 
 ###
 GET  http://api.analysis.devsquare.ru/user
-Accept: application/json
-Cookie: SessionId=
-
-
-###
-GET  https://api.github.com/user
-X-GitHub-Api-Version: 2022-11-28
 Accept: application/json
 Cookie: SessionId=

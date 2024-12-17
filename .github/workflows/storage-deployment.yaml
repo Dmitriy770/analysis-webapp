@@ -28,7 +28,7 @@ jobs:
       - name: Build and push
         uses: docker/build-push-action@v6
         with:
-          context: ./src/StorageService
+          context: ./src
           file: ./src/StorageService/StorageService.Api/Dockerfile
           push: true
           tags: ghcr.io/dmitriy770/analysis-storage-service:${{github.run_id}}
