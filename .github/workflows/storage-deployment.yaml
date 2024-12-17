@@ -5,7 +5,7 @@ on:
   workflow_call:
 
 jobs:
-  build-storage-service:
+  build-storage:
     name: Build Storage service
     runs-on: ubuntu-latest
     steps:
@@ -33,10 +33,10 @@ jobs:
           push: true
           tags: ghcr.io/dmitriy770/analysis-storage-service:${{github.run_id}}
   
-  deploy-storage-service:
+  deploy-storage:
     name: Deploy Storage service
     runs-on: ubuntu-latest
-    needs: [build-uis]
+    needs: [build-storage]
     steps:
       - name: Checkout
         uses: actions/checkout@v4
