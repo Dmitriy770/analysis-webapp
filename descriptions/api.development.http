@@ -9,23 +9,28 @@ Content-Type: application/json
 ### 
 POST   http://api.analysis.devsquare.ru/user/logout
 Accept: application/json
-Cookie: SessionId=
+Cookie: SessionId=;
 
 ###
 GET  http://api.analysis.devsquare.ru/user
 Accept: application/json
-Cookie: SessionId=
+Cookie: SessionId=;
 
 ###
 POST   http://api.analysis.devsquare.ru/datasets
 Accept: application/json
-Cookie: SessionId=
+Cookie: SessionId=;
 Content-Type: text/csv
-Content-Disposition: attachment; filename=iris3.csv; filename*=UTF-8''iris.csv
+Content-Disposition: attachment; filename=iris4.csv; filename*=UTF-8''iris.csv
 
 < ./iris.csv
 
 ###
 GET    http://api.analysis.devsquare.ru/datasets/description
 Accept: application/json
-Cookie: SessionId=
+Cookie: SessionId=;
+
+###
+GET    http://api.analysis.devsquare.ru/datasets/iris4/description
+Accept: application/json
+Cookie: SessionId=;

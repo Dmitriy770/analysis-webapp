@@ -29,10 +29,10 @@ spec:
           failureThreshold: 3
         resources:
           requests:
-            memory: "256Mi"
+            memory: "128Mi"
             cpu: "40m"
           limits:
-            memory: "512Mi"
+            memory: "256Mi"
             cpu: "80m"
   strategy:
     type: RollingUpdate
