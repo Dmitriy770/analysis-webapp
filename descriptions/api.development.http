@@ -16,12 +16,9 @@ GET  http://api.analysis.devsquare.ru/user
 Accept: application/json
 Cookie: SessionId=
 
-POST https://github.com/login/oauth/access_token?client_id=&client_secret=&code=
-X-GitHub-Api-Version: 2022-11-28
-Accept: application/json
 
 ###
 GET  https://api.github.com/user
 X-GitHub-Api-Version: 2022-11-28
 Accept: application/json
-.Authorization: Bearer
+Cookie: SessionId=

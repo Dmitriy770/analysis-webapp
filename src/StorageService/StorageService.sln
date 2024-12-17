@@ -8,9 +8,9 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "StorageService.Domain", "St
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Common", "Common", "{C7FEEA67-78FC-4C39-BEA7-7AF8F0F7EC79}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Common.Web", "..\Common\Common.Web\Common.Web.csproj", "{A7423817-66EF-47B4-BCA1-C9E4B195D9D7}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Common.Web", ".Common\Common.Web\Common.Web.csproj", "{A7423817-66EF-47B4-BCA1-C9E4B195D9D7}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Common.Logging", "..\Common\Common.Logging\Common.Logging.csproj", "{2A499673-CE12-424C-A567-234BC5A7EEA0}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Common.Logging", "Common\Common.Logging\Common.Logging.csproj", "{2A499673-CE12-424C-A567-234BC5A7EEA0}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "StorageService.Infrastructure", "StorageService.Infrastructure\StorageService.Infrastructure.csproj", "{5A4F0B5A-051F-4D43-A7A4-C79A17EF8551}"
 EndProject
