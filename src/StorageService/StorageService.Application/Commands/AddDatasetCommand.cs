@@ -30,7 +30,7 @@ internal sealed class AddDatasetCommandHandler(
         var descriptions = await datasetRepository
             .GetDescriptionsByUserIdAsync(request.UserId, cancellationToken)
             .FirstOrDefaultAsync(dataset => dataset.Name == datasetName, cancellationToken);
-        if (descriptions is null)
+        if (descriptions is not null)
         {
             throw new DatasetDuplicateException(datasetName);
         }

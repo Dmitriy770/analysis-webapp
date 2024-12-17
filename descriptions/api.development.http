@@ -19,8 +19,13 @@ Cookie: SessionId=
 ###
 POST   http://api.analysis.devsquare.ru/datasets
 Accept: application/json
-Cookie: SessionId=44f4e8d2-4000-4ec2-9e53-4e0399c1c820
+Cookie: SessionId=
 Content-Type: text/csv
-Content-Disposition: attachment; filename=iris.csv; filename*=UTF-8''iris.csv
+Content-Disposition: attachment; filename=iris2.csv; filename*=UTF-8''iris.csv
 
 < ./iris.csv
+
+###
+GET    http://api.analysis.devsquare.ru/datasets/description
+Accept: application/json
+Cookie: SessionId=
