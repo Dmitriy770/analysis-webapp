@@ -19,9 +19,6 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
       
-      - name: Copy Common project
-        run: cp -r ./src/Common ./src/Uis/Common
-
       - name: Set up QEMU
         uses: docker/setup-qemu-action@v3
       
@@ -31,7 +28,7 @@ jobs:
       - name: Build and push
         uses: docker/build-push-action@v6
         with:
-          context: ./src/Uis
+          context: ./src
           file: ./src/Uis/Uis.Api/Dockerfile
           push: true
           tags: ghcr.io/dmitriy770/analysis-webapp-uis:${{github.run_id}}
