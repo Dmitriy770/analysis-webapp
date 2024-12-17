@@ -25,7 +25,7 @@ public sealed class InternalDatasetController(
     {
         var result = await sender.Send(new GetContentByIdQuery(id), cancellationToken);
     
-        var content = StreamToBytes(result.Content, cancellationToken);
+        var content = await StreamToBytes(result.Content, cancellationToken);
         return Results.File(content, ContentType, result.Name);
     }
     
@@ -44,7 +44,7 @@ public sealed class InternalDatasetController(
     [HttpGet("/description")]
     [ProducesResponseType<DatasetsDescription>(StatusCodes.Status200OK)]
     public async Task<IResult> GetDescriptionsByUserId(
-        [FromQuery] long userId,
+        [FromQuery(Name = "userId")] long userId,
         CancellationToken cancellationToken = default)
     {
         var descriptions = sender.CreateStream(new GetDescriptionsByUserIdQuery(userId), cancellationToken);
@@ -55,8 +55,8 @@ public sealed class InternalDatasetController(
     [HttpGet("/description")]
     [ProducesResponseType<DatasetsDescription>(StatusCodes.Status200OK)]
     public async Task<IResult> GetDescriptionByUserIdAndName(
-        [FromQuery] long userId,
-        [FromQuery] string datasetName,
+        [FromQuery(Name = "userId")] long userId,
+        [FromQuery(Name = "datasetName")] string datasetName,
         CancellationToken cancellationToken = default)
     {
         var description = await sender.Send(new GetDescriptionByUserIdAndNameQuery(datasetName, userId), cancellationToken);
@@ -64,10 +64,10 @@ public sealed class InternalDatasetController(
         return Results.Ok(description.ToApi());
     }
 
-    private byte[] StreamToBytes(Stream stream, CancellationToken cancellationToken)
+    private async Task<byte[]> StreamToBytes(Stream stream, CancellationToken cancellationToken)
     {
         using var memoryStream = new MemoryStream();
-        stream.CopyToAsync(memoryStream, cancellationToken);
+        await stream.CopyToAsync(memoryStream, cancellationToken);
         return memoryStream.ToArray();
     }
     
