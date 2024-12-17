@@ -11,13 +11,18 @@ public static class HttpContextExtensions
 
      public static void AddUserId(this HttpContext httpContext, long userId)
      {
-         httpContext.Items[Const.UserIdKey] = userId;
+         httpContext.Items.Add(Const.UserIdKey, userId);
      }
      
      public static long GetUserId(this HttpContext httpContext)
      {
          Console.WriteLine("from common 1: " + httpContext.Items[Const.UserIdKey]);
-         if (httpContext.Items[Const.UserIdKey] is not long userId)
+         if (!httpContext.Items.TryGetValue(Const.UserIdKey, out var userIdObj))
+         {
+             throw new ArgumentException(Const.UserIdKey);
+         }
+
+         if (userIdObj is not long userId)
          {
              throw new ArgumentException(Const.UserIdKey);
          }
@@ -28,16 +33,21 @@ public static class HttpContextExtensions
      
      public static void AddSessionId(this HttpContext httpContext, Guid sessionId)
      {
-         httpContext.Items[Const.SessionIdKey] = sessionId;
+         httpContext.Items.Add(Const.SessionIdKey, sessionId);
      }
      
      public static Guid GetSessionId(this HttpContext httpContext)
      {
-         if (httpContext.Items[Const.SessionIdCookieKey] is not Guid userId)
+         if (!httpContext.Items.TryGetValue(Const.SessionIdCookieKey, out var sessionIdObj))
          {
              throw new ArgumentException(Const.SessionIdKey);
          }
+         
+         if (sessionIdObj is not Guid sessionId)
+         {
+             throw new ArgumentException(Const.UserIdKey);
+         }
 
-         return userId;
+         return sessionId;
      }
  }
