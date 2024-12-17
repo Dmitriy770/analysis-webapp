@@ -1,4 +1,5 @@
 ﻿using StudyService.Domain.Models;
+using StudyService.Domain.Models.Studies;
 
 namespace StudyService.Application.Abstractions.Producers;
 

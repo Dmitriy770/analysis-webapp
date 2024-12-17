@@ -1,4 +1,4 @@
-﻿namespace StudyService.Api.Models;
+﻿namespace StudyService.Domain.Models.StudyDatasets;
 
 public record NewStudyDataset(
     string Name,

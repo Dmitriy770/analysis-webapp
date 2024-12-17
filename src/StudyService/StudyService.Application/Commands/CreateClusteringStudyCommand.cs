@@ -7,6 +7,8 @@ using StudyService.Application.Abstractions.Providers;
 using StudyService.Application.Abstractions.Repositories;
 using StudyService.Domain.Exceptions;
 using StudyService.Domain.Models;
+using StudyService.Domain.Models.Studies;
+using StudyService.Domain.Models.StudyDatasets;
 
 namespace StudyService.Application.Commands;
 
@@ -40,6 +42,7 @@ internal sealed class CreateClusteringStudyCommandHandler(
         var studyId = guidProvider.NewGuid();
         var study = new Study(
             Id: studyId,
+            UserId: userId,
             Type: StudyType.Clustering,
             Status: StudyStatus.InProgress,
             Components: newStudy.Components,

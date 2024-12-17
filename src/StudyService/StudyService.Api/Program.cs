@@ -1,6 +1,10 @@
-var builder = WebApplication.CreateBuilder(args);
+using StudyService.Api;
+
+var builder = WebApplication.CreateSlimBuilder(args);
+builder.Services.AddApiServices();
+builder.Services.AddApiServices();
+
 var app = builder.Build();
+app.MapApiServices();
 
-app.MapGet("/", () => "Hello World!");
-
-app.Run();
+await app.RunAsync();

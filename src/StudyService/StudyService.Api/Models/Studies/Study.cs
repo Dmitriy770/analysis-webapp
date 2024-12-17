@@ -1,4 +1,6 @@
-﻿namespace StudyService.Api.Models;
+﻿using StudyService.Api.Models.StudyDatasets;
+
+namespace StudyService.Api.Models.Studies;
 
 public record Study(
     Guid Id,

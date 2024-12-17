@@ -1,6 +1,6 @@
-﻿namespace StudyService.Api.Models;
+﻿namespace StudyService.Domain.Models.StudyDatasets;
 
 public record StudyDataset(
-    string Id,
+    Guid Id,
     string Name,
     string[]? Columns);
