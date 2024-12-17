@@ -35,7 +35,7 @@ internal sealed class AuthorizationFilter(
         {
             AddErrorResult(context, exception);
         }
-        catch (Refit.ApiException exception) when (exception.StatusCode == HttpStatusCode.Unauthorized)
+        catch (Refit.ApiException exception) when (exception.StatusCode is HttpStatusCode.Unauthorized or HttpStatusCode.Forbidden or HttpStatusCode.NotFound)
         {
             AddErrorResult(context, exception);
         }
