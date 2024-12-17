@@ -1,19 +1,13 @@
-import { Button } from '~/shared/components/button'
-import { Heading } from '~/shared/components/heading'
 import { Text } from '~/shared/components/text'
+import { LandingHeader } from './landing-header'
 
 export default function Home() {
   return (
-    <div>
-      <Heading>
-        <Heading.Title>Добро пожаловать!</Heading.Title>
-        <Heading.Description className="italic" color="negative">
-          Тут будет кластеризация
-        </Heading.Description>
-      </Heading>
-      <Button>
-        <Text variant="text-l">Hello, world!</Text>
-      </Button>
+    <div className="h-[100dvh]">
+      <LandingHeader />
+      <div className="-translate-x-1/2 -translate-y-1/2 absolute top-1/2 left-1/2 scale-125">
+        <Text variant="heading-xl">analysis-webapp</Text>
+      </div>
     </div>
   )
 }

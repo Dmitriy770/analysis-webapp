@@ -1,6 +1,7 @@
 import type { Metadata } from 'next'
 import { JetBrains_Mono, Onest } from 'next/font/google'
 import './(styles)/index.css'
+import { ThemeProvider } from 'next-themes'
 import { cn } from '~/shared/lib/classnames'
 
 export const metadata: Metadata = {
@@ -23,8 +24,12 @@ export default function RootLayout({
   children: React.ReactNode
 }>) {
   return (
-    <html lang="ru">
-      <body className={cn(normalFont.variable, monoFont.variable, 'antialiased')}>{children}</body>
+    <html lang="ru" suppressHydrationWarning>
+      <body className={cn(normalFont.variable, monoFont.variable, 'antialiased')}>
+        <ThemeProvider attribute="class" defaultTheme="dark" enableSystem>
+          {children}
+        </ThemeProvider>
+      </body>
     </html>
   )
 }
