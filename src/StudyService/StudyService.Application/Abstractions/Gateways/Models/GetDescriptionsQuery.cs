@@ -7,6 +7,6 @@ public sealed class GetDescriptionsQuery
     [AliasAs("userId")]
     public long UserId { get; set; }
     
-    [AliasAs("datastName")]
+    [AliasAs("datasetName")]
     public string DatasetName { get; set; }
 }
