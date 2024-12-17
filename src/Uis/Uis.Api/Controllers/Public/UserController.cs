@@ -1,7 +1,7 @@
 ﻿using Common.Web.Authorization;
+using Common.Web.Authorization.Attributes;
 using Common.Web.Authorization.Extensions;
 using MediatR;
-using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Uis.Api.Mappers;
 using Uis.Api.Models.Public;
@@ -28,8 +28,8 @@ public sealed class UserController(
         return Results.Ok(user.ToUserResponse());
     }
 
-    [HttpPost("logout")]
     [Authorize]
+    [HttpPost("logout")]
     [ProducesResponseType(StatusCodes.Status200OK)]
     [ProducesResponseType(StatusCodes.Status401Unauthorized)]
     public async Task<IResult> Logout(
@@ -40,8 +40,8 @@ public sealed class UserController(
         return Results.Ok();
     }
 
-    [HttpGet]
     [Authorize]
+    [HttpGet]
     [ProducesResponseType(typeof(User), StatusCodes.Status200OK)]
     [ProducesResponseType(StatusCodes.Status401Unauthorized)]
     public async Task<IResult> Get(
