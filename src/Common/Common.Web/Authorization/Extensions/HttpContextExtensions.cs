@@ -11,7 +11,8 @@ public static class HttpContextExtensions
 
      public static void AddUserId(this HttpContext httpContext, long userId)
      {
-         httpContext.Items.Add(Const.UserIdKey, userId);
+         // httpContext.Items.Add(Const.UserIdKey, userId); fast fix
+         httpContext.Items[Const.UserIdKey] = userId;
      }
      
      public static long GetUserId(this HttpContext httpContext)
@@ -33,7 +34,8 @@ public static class HttpContextExtensions
      
      public static void AddSessionId(this HttpContext httpContext, Guid sessionId)
      {
-         httpContext.Items.Add(Const.SessionIdKey, sessionId);
+         // httpContext.Items.Add(Const.SessionIdKey, sessionId); fast fix
+         httpContext.Items[Const.SessionIdKey] = sessionId;
      }
      
      public static Guid GetSessionId(this HttpContext httpContext)
