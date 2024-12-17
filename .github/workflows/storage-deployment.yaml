@@ -1,5 +1,5 @@
 name: Build and deploy Storage service
-run-name: Deploy UIS by @${{ github.actor }}
+run-name: Deploy Storage service by @${{ github.actor }}
 on:
   workflow_dispatch:
   workflow_call:

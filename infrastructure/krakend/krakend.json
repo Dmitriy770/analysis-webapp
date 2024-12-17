@@ -149,7 +149,7 @@
         },
         {
             "endpoint": "/datasets/description",
-            "method": "POST",
+            "method": "GET",
             "output_encoding": "no-op",
             "input_headers": ["*"],
             "backend": [
@@ -169,7 +169,7 @@
         },
         {
             "endpoint": "/datasets/{name}/description",
-            "method": "POST",
+            "method": "GET",
             "output_encoding": "no-op",
             "input_headers": ["*"],
             "backend": [

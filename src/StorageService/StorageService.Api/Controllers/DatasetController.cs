@@ -14,12 +14,12 @@ namespace StorageService.Api.Controllers;
 
 [ApiController]
 [Route("datasets")]
-[Authorize]
 [ServiceFilter<DatasetControllerExceptionFilter>]
 public sealed class DatasetController(
     ISender sender)
     : ControllerBase
 {
+    [Authorize]
     [HttpPost]
     [ProducesResponseType<DatasetDescription>(StatusCodes.Status200OK)]
     [ProducesResponseType<ErrorResponse>(StatusCodes.Status400BadRequest)]
@@ -40,6 +40,7 @@ public sealed class DatasetController(
 
     }
 
+    [Authorize]
     [HttpGet("description")]
     [ProducesResponseType<DatasetDescription>(StatusCodes.Status200OK)]
     [ProducesResponseType<ErrorResponse>(StatusCodes.Status401Unauthorized)]
@@ -54,6 +55,7 @@ public sealed class DatasetController(
         return Results.Ok(await descriptions.ToApi(cancellationToken));
     }
     
+    [Authorize]
     [HttpGet("{datasetName}/description")]
     [ProducesResponseType<DatasetDescription>(StatusCodes.Status200OK)]
     [ProducesResponseType<ErrorResponse>(StatusCodes.Status401Unauthorized)]
