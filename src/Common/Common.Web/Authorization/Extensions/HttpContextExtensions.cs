@@ -16,10 +16,12 @@ public static class HttpContextExtensions
      
      public static long GetUserId(this HttpContext httpContext)
      {
+         Console.WriteLine("from common 1: " + httpContext.Items[Const.UserIdKey]);
          if (httpContext.Items[Const.UserIdKey] is not long userId)
          {
              throw new ArgumentException(Const.UserIdKey);
          }
+         Console.WriteLine("from common 2: " + userId);
 
          return userId;
      }
