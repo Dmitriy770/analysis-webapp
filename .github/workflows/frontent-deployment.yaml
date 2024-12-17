@@ -32,6 +32,8 @@ jobs:
           file: ./src/frontend/Dockerfile
           push: true
           tags: ghcr.io/dmitriy770/analysis-webapp-frontend:${{github.run_id}}
+          secret-envs: |
+            GITHUB_CLIENT_ID=${{secrets.GATEWAY_GITHUB_CLIENT_ID}}
   
   deploy-frontend:
     name: Deploy frontend
@@ -43,6 +45,9 @@ jobs:
 
       - name: Overwrite image for deployment
         run: sed -i 's\{template-frontend-image}\ghcr.io/dmitriy770/analysis-webapp-frontend:${{github.run_id}}\g' ./deployments/frontend/frontend-deployment.yaml
+
+      - name: Overwrite github clientid for deployment
+        run: sed -i 's\{template-frontend-github-clientid}\${{secrets.GATEWAY_GITHUB_CLIENT_ID}}\g' ./deployments/frontend/frontend-deployment.yaml
 
       - name: Apply deployment
         uses: actions-hub/kubectl@master
