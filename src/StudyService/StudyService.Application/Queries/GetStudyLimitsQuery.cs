@@ -28,7 +28,7 @@ internal sealed class GetStudyLimitsQueryHandler(
             .ToListAsync(cancellationToken);
 
         var left = Math.Max(limit.Total - studies.Count, 0);
-        var reducesAt = studies.Last().CreationDate;
+        var reducesAt = studies.Count > 0 ? studies.Last().CreationDate : default;
 
         return new StudyLimits(
             Total: limit.Total,
