@@ -25,6 +25,7 @@ internal sealed class AuthorizationFilter(
         {
             var sessionId = context.GetSessionId();
             var session = await userServiceClient.GetSessionAsync(sessionId);
+            Console.WriteLine("user id " + session.UserId);
 
             context.AddSessionCookie(session.SessionId);
             context.HttpContext.AddSessionId(session.SessionId);
