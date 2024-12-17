@@ -14,7 +14,7 @@ COPY ["StorageService/StorageService.Application/StorageService.Application.cspr
 COPY ["StorageService/StorageService.Domain/StorageService.Domain.csproj", "StorageService.Domain/"]
 COPY ["StorageService/StorageService.Infrastructure/StorageService.Infrastructure.csproj", "StorageService.Infrastructure/"]
 RUN dotnet restore "StorageService.Api/StorageService.Api.csproj"
-COPY [ "StorageService", "StorageServiсe"]
+COPY [ "StorageService", "StorageService"]
 COPY [ "Common", "Common"]
 WORKDIR "/src/StorageService/StorageService.Api"
 RUN dotnet build "StorageService.Api.csproj" -c $BUILD_CONFIGURATION -o /app/build
