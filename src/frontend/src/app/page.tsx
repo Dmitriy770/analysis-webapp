@@ -1,6 +1,7 @@
 import { Button } from '~/shared/components/button'
 import { Heading } from '~/shared/components/heading'
 import { Text } from '~/shared/components/text'
+import { ThemeToggle } from '~/shared/components/theme-toggle'
 
 export default function Home() {
   return (
@@ -14,6 +15,7 @@ export default function Home() {
       <Button>
         <Text variant="text-l">Hello, world!</Text>
       </Button>
+      <ThemeToggle />
     </div>
   )
 }
