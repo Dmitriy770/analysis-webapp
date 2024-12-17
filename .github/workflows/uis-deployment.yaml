@@ -19,6 +19,9 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
       
+      - name: Copy Common project
+        uses: cp ./src/Common ./scr/Uis -r
+
       - name: Set up QEMU
         uses: docker/setup-qemu-action@v3
       
