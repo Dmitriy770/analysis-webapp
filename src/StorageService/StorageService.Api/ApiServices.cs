@@ -17,6 +17,7 @@ public static class ApiServices
         
         // Controllers
         services.AddOpenApi();
+        services.AddHealthChecks();
         services.AddControllers(options =>
         {
             options.AddAuthorizationFilter();
@@ -28,6 +29,7 @@ public static class ApiServices
     public static WebApplication MapApiServices(this WebApplication app)
     {
         app.MapOpenApi();
+        app.MapHealthChecks("/healthz");
         app.MapControllers();
 
         return app;

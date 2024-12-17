@@ -40,7 +40,7 @@ public sealed class DatasetController(
 
     }
 
-    [HttpGet("descriptions")]
+    [HttpGet("description")]
     [ProducesResponseType<DatasetDescription>(StatusCodes.Status200OK)]
     [ProducesResponseType<ErrorResponse>(StatusCodes.Status401Unauthorized)]
     [ProducesResponseType<ErrorResponse>(StatusCodes.Status404NotFound)]
@@ -54,7 +54,7 @@ public sealed class DatasetController(
         return Results.Ok(await descriptions.ToApi(cancellationToken));
     }
     
-    [HttpGet("{datasetName}/descriptions")]
+    [HttpGet("{datasetName}/description")]
     [ProducesResponseType<DatasetDescription>(StatusCodes.Status200OK)]
     [ProducesResponseType<ErrorResponse>(StatusCodes.Status401Unauthorized)]
     [ProducesResponseType<ErrorResponse>(StatusCodes.Status404NotFound)]

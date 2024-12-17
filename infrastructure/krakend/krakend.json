@@ -5,7 +5,7 @@
     "disable_rest": true,
     "endpoints": [
         {
-            "endpoint": "/api/uis/openapi/v1",
+            "endpoint": "/uis/openapi/v1",
             "method": "GET",
             "input_headers": ["*"],
             "output_encoding": "no-op",
@@ -26,7 +26,7 @@
             ]
         },
         {
-            "endpoint": "/api/uis/scalar/v1",
+            "endpoint": "/uis/scalar/v1",
             "method": "GET",
             "input_headers": ["*"],       
             "output_encoding": "no-op", 
@@ -47,7 +47,7 @@
             ]
         },
         {
-            "endpoint": "/api/uis/scalar/scalar.js",
+            "endpoint": "/uis/scalar/scalar.js",
             "method": "GET",
             "input_headers": ["*"],       
             "output_encoding": "no-op", 
@@ -68,13 +68,13 @@
             ]
         },
         {
-            "endpoint": "/api/user/login",
+            "endpoint": "/user/login",
             "method": "POST",
             "output_encoding": "no-op",
             "input_headers": ["*"],        
             "backend": [
                 {
-                    "url_pattern": "/api/user/login",
+                    "url_pattern": "/user/login",
                     "encoding": "no-op",
                     "host": [
                         "http://uis-service.default.svc.cluster.local"
@@ -88,13 +88,13 @@
             ]
         },
         {
-            "endpoint": "/api/user/logout",
+            "endpoint": "/user/logout",
             "method": "POST",
             "output_encoding": "no-op",
             "input_headers": ["*"],     
             "backend": [
                 {
-                    "url_pattern": "/api/user/logout",
+                    "url_pattern": "/user/logout",
                     "encoding": "no-op",
                     "host": [
                         "http://uis-service.default.svc.cluster.local"
@@ -108,16 +108,76 @@
             ]
         },
         {
-            "endpoint": "/api/user",
+            "endpoint": "/user",
             "method": "GET",
             "output_encoding": "no-op",
             "input_headers": ["*"],     
             "backend": [
                 {
-                    "url_pattern": "/api/user",
+                    "url_pattern": "/user",
                     "encoding": "no-op",
                     "host": [
                         "http://uis-service.default.svc.cluster.local"
+                    ],
+                    "extra_config": {
+                        "backend/http": {
+                            "return_error_details": "error"
+                        }
+                    }
+                }
+            ]
+        },
+        {
+            "endpoint": "/datasets",
+            "method": "POST",
+            "output_encoding": "no-op",
+            "input_headers": ["*"],
+            "backend": [
+                {
+                    "url_pattern": "/datasets",
+                    "encoding": "no-op",
+                    "host": [
+                        "http://storage-service.default.svc.cluster.local"
+                    ],
+                    "extra_config": {
+                        "backend/http": {
+                            "return_error_details": "error"
+                        }
+                    }
+                }
+            ]
+        },
+        {
+            "endpoint": "/datasets/description",
+            "method": "POST",
+            "output_encoding": "no-op",
+            "input_headers": ["*"],
+            "backend": [
+                {
+                    "url_pattern": "/datasets/description",
+                    "encoding": "no-op",
+                    "host": [
+                        "http://storage-service.default.svc.cluster.local"
+                    ],
+                    "extra_config": {
+                        "backend/http": {
+                            "return_error_details": "error"
+                        }
+                    }
+                }
+            ]
+        },
+        {
+            "endpoint": "/datasets/{name}/description",
+            "method": "POST",
+            "output_encoding": "no-op",
+            "input_headers": ["*"],
+            "backend": [
+                {
+                    "url_pattern": "/datasets/{name}/description",
+                    "encoding": "no-op",
+                    "host": [
+                        "http://storage-service.default.svc.cluster.local"
                     ],
                     "extra_config": {
                         "backend/http": {
