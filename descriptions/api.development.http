@@ -3,7 +3,7 @@ Accept: application/json
 Content-Type: application/json
 
 {
-    "token": "901f922def7a92aac078"
+    "token": ""
 }
 
 ### 
@@ -21,7 +21,7 @@ POST   http://api.analysis.devsquare.ru/datasets
 Accept: application/json
 Cookie: SessionId=
 Content-Type: text/csv
-Content-Disposition: attachment; filename=iris2.csv; filename*=UTF-8''iris.csv
+Content-Disposition: attachment; filename=iris3.csv; filename*=UTF-8''iris.csv
 
 < ./iris.csv
 
