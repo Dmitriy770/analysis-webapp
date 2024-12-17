@@ -4,6 +4,7 @@ export {
   BoxSelectIcon,
   CirclePlusIcon,
   Columns3Icon,
+  LayoutDashboardIcon as DashboardIcon,
   Loader2Icon as LoaderIcon,
   LogInIcon as SignInIcon,
   MoonIcon,
