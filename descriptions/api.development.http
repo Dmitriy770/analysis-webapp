@@ -3,7 +3,7 @@ Accept: application/json
 Content-Type: application/json
 
 {
-    "token": ""
+    "token": "422a7f14aa4817704979"
 }
 
 ### 
