@@ -2,11 +2,11 @@
 
 namespace Common.Web.Authorization.Filters.Api.Models;
 
-internal sealed class Session
+public sealed class Session
 {
     [AliasAs("sessionId")]
-    internal Guid SessionId { get; set; }
+    public Guid SessionId { get; set; }
     
     [AliasAs("userId")]
-    internal long UserId { get; set; }
+    public long UserId { get; set; }
 }
