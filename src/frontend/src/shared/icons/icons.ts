@@ -5,6 +5,7 @@ export {
   CirclePlusIcon,
   Columns3Icon,
   Loader2Icon as LoaderIcon,
+  LogInIcon as SignInIcon,
   MoonIcon,
   MousePointer2Icon as MousePointerIcon,
   MousePointerClickIcon,
