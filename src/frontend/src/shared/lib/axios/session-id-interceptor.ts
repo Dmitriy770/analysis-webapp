@@ -1,6 +1,5 @@
 import { cookies } from 'next/headers'
 import type { AxiosRequestInterceptor, AxiosResponseInterceptor } from './types'
-import { redirect } from 'next/navigation'
 
 const SESSION_ID_COOKIE = 'SessionId'
 
@@ -14,14 +13,6 @@ export const sessionIdRequestInterceptor: AxiosRequestInterceptor = async reques
   }
 
   return request
-}
-
-export const reloginResponseInterceptor: AxiosResponseInterceptor = response => {
-  if (response.status === 401) {
-    redirect('/api/github-auth')
-  }
-
-  return response
 }
 
 export const updateSessionCookie: AxiosResponseInterceptor = async response => {

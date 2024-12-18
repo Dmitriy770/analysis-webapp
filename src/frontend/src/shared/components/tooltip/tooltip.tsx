@@ -1,5 +1,3 @@
-'use client'
-
 import * as RadixTooltip from '@radix-ui/react-tooltip'
 import { type ComponentProps, type FC, type ReactNode, useCallback } from 'react'
 import { cn } from '~/shared/lib/classnames'
@@ -92,15 +90,14 @@ const Root: FC<RootProps> = props => {
   )
 }
 
-const Tooltip = Object.assign(Root, {
-  Provider,
-  Trigger: TriggerSlot,
-  Content: ContentSlot,
-  Arrow: ArrowSlot,
-})
+Root.displayName = 'Tooltip'
 
 export {
-  Tooltip,
+  Root as Tooltip,
+  Provider as TooltipProvider,
+  TriggerSlot as TooltipTrigger,
+  ContentSlot as TooltipContent,
+  ArrowSlot as TooltipArrow,
   type RootProps as TooltipProps,
   type ProviderProps as TooltipProviderProps,
   type TriggerProps as TooltipTriggerProps,
