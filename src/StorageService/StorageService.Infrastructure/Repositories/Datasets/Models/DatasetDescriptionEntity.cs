@@ -1,9 +1,11 @@
 ﻿using MongoDB.Bson;
 using MongoDB.Bson.Serialization.Attributes;
+using MongoDB.EntityFrameworkCore;
 
 namespace StorageService.Infrastructure.Repositories.Datasets.Models;
 
-internal sealed class DatasetDescriptionEntity
+[Collection("datasetDescriptions")]
+public sealed class DatasetDescriptionEntity
 {
     [BsonId]
     public ObjectId _id { get; set; }

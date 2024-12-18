@@ -20,7 +20,7 @@ internal class DatasetRepositoryDbContext(
     {
         base.OnModelCreating(modelBuilder);
         
-        modelBuilder.Entity<DatasetRepositoryDbContext>().ToCollection("datasetDescriptions");
+        modelBuilder.Entity<DatasetRepositoryDbContext>();
     }
     
     public DbSet<DatasetDescription> DatasetDescriptions { get; set; }
