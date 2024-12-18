@@ -1,6 +1,5 @@
 'use server'
 
-import Link from 'next/link'
 import type { FC } from 'react'
 import { buttonVariants, type ButtonProps } from '~/shared/components/button'
 import { DashboardIcon, SignInIcon } from '~/shared/icons'
@@ -13,9 +12,8 @@ export const SignIn: FC<Props> = async ({ className, ...props }) => {
   const user = await authenticate()
 
   return (
-    <Link
+    <a
       href={user ? '/dashboard' : '/api/github-auth'}
-      prefetch={false}
       className={cn('flex gap-2', buttonVariants({ ...props }), className)}
     >
       {user ? (
@@ -27,6 +25,6 @@ export const SignIn: FC<Props> = async ({ className, ...props }) => {
           <SignInIcon /> Sign in
         </>
       )}
-    </Link>
+    </a>
   )
 }

@@ -68,9 +68,9 @@ const AccountSidebarLink: FC<{ user: User }> = ({ user }) => {
       className="flex flex-row items-center gap-2 pr-1"
     >
       <span>{user.nickname}</span>
-      <Link href="/sign-out" prefetch={false} className={cn(buttonVariants({ variant: 'ghost' }), 'h-min p-1')}>
+      <a href="/sign-out" className={cn(buttonVariants({ variant: 'ghost' }), 'h-min p-1')}>
         <SignOutIcon />
-      </Link>
+      </a>
     </SidebarLink>
   )
 }
