@@ -40,9 +40,9 @@ public static class InfrastructureService
             Credential = MongoCredential.CreateCredential(settings.Database, settings.Username, settings.Password)
         };
         var mongoClient = new MongoClient(mongoClientSettings);
-        services.AddSingleton<IMongoClient>(mongoClient);
-        
         var database = mongoClient.GetDatabase(settings.Database);
+       
+        services.AddSingleton<IMongoClient>(database.Client);
         services.AddSingleton(database);
 
         var options = new GridFSBucketOptions
