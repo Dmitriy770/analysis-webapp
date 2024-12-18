@@ -1,5 +1,6 @@
 ﻿using MongoDB.Bson;
 using MongoDB.Bson.Serialization.Attributes;
+using MongoDB.Bson.Serialization.IdGenerators;
 using MongoDB.EntityFrameworkCore;
 
 namespace StorageService.Infrastructure.Repositories.Datasets.Models;
@@ -7,7 +8,7 @@ namespace StorageService.Infrastructure.Repositories.Datasets.Models;
 [Collection("datasetDescriptions")]
 public sealed class DatasetDescriptionEntity
 {
-    [BsonId]
+    [BsonId(IdGenerator = typeof(ObjectIdGenerator))]
     public ObjectId _id { get; set; }
     
     [BsonElement("id")]
