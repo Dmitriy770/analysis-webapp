@@ -31,6 +31,7 @@ public static class InfrastructureService
     private static IServiceCollection AddMongo(this IServiceCollection services, IConfigurationRoot configuration)
     {
         var settings = MongoSettings.From(configuration);
+        services.AddSingleton(settings);
         
         var mongoClientSettings = new MongoClientSettings
         {
