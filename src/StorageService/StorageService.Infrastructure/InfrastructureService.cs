@@ -41,7 +41,7 @@ public static class InfrastructureService
             
         };
         Console.WriteLine($"MongoDB server: {settings.Host}:{settings.Port}, {settings.Username}, {settings.Password}");
-        var mongoClient = new MongoClient($"mongodb://{settings.Username}:{settings.Password}@{settings.Host}:{settings.Username}/{settings.Database}?authSource=admin");
+        var mongoClient = new MongoClient($"mongodb://{settings.Username}:{settings.Password}@{settings.Host}:{settings.Port}/{settings.Database}?authSource=admin");
         var database = mongoClient.GetDatabase(settings.Database);
        
         services.AddSingleton<IMongoClient>(database.Client);
