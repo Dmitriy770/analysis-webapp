@@ -1,7 +1,7 @@
 import axios from 'axios'
 import { type ZodSchema, z } from 'zod'
 import type { User } from './types'
-import { reloginResponseInterceptor, sessionIdRequestInterceptor, updateSessionCookie } from '../axios'
+import { sessionIdRequestInterceptor, updateSessionCookie } from '../axios'
 
 const client = axios.create({
   baseURL: 'http://api.analysis.devsquare.ru',
@@ -9,7 +9,6 @@ const client = axios.create({
 })
 
 client.interceptors.request.use(sessionIdRequestInterceptor)
-client.interceptors.response.use(reloginResponseInterceptor)
 
 const userSchema: ZodSchema<User> = z.object({
   nickname: z.string().min(1),
@@ -33,6 +32,10 @@ export const postLogin = async (githubCode: string): Promise<User | null> => {
   }
 
   return parsedUser.data
+}
+
+export const postLogout = async () => {
+  await client.post('/user/logout')
 }
 
 export const getUser = async (): Promise<User | null> => {

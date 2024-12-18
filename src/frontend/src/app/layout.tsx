@@ -3,6 +3,7 @@ import { JetBrains_Mono, Onest } from 'next/font/google'
 import './(styles)/index.css'
 import { ThemeProvider } from 'next-themes'
 import { cn } from '~/shared/lib/classnames'
+import { TooltipProvider } from '~/shared/components/tooltip'
 
 export const metadata: Metadata = {
   title: 'analysis-webapp',
@@ -27,7 +28,7 @@ export default function RootLayout({
     <html lang="ru" suppressHydrationWarning>
       <body className={cn(normalFont.variable, monoFont.variable, 'antialiased')}>
         <ThemeProvider attribute="class" defaultTheme="dark" enableSystem>
-          {children}
+          <TooltipProvider>{children}</TooltipProvider>
         </ThemeProvider>
       </body>
     </html>
