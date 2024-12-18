@@ -5,7 +5,7 @@ using StorageService.Infrastructure.Settings;
 
 namespace StorageService.Infrastructure.Repositories.Datasets;
 
-internal class DatasetRepositoryDbContext(
+internal sealed class DatasetRepositoryDbContext(
     IMongoClient mongoClient,
     MongoSettings settings)
     : DbContext
