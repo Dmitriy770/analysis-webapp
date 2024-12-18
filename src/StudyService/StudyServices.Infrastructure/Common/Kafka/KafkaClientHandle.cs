@@ -13,7 +13,7 @@ internal sealed class KafkaClientHandle : IDisposable
         {
             BootstrapServers = settings.Servers,
             SecurityProtocol = SecurityProtocol.SaslPlaintext,
-            SaslMechanism = SaslMechanism.Plain,
+            SaslMechanism = SaslMechanism.ScramSha512,
             SaslUsername = settings.Username,
             SaslPassword = settings.Password,
         };
