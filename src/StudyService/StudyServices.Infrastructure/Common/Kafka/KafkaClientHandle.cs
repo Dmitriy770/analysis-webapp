@@ -8,6 +8,7 @@ internal sealed class KafkaClientHandle : IDisposable
 {
     public KafkaClientHandle(StudyProducerSettings settings)
     {
+        Console.Write(settings.Username + " " + settings.Password);
         var producerConfig = new ProducerConfig
         {
             BootstrapServers = settings.Servers,
