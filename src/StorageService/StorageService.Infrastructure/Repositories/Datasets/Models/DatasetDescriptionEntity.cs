@@ -8,16 +8,10 @@ namespace StorageService.Infrastructure.Repositories.Datasets.Models;
 [Collection("datasetDescriptions")]
 public sealed class DatasetDescriptionEntity
 {
-    public DatasetDescriptionEntity()
-    {
-        
-    }
-    
     [BsonId(IdGenerator = typeof(ObjectIdGenerator))]
     public ObjectId _id { get; set; }
     
     [BsonElement("id")]
-    [BsonGuidRepresentation(GuidRepresentation.Standard)]
     public Guid Id { get; set; }
     
     [BsonElement("name")]
