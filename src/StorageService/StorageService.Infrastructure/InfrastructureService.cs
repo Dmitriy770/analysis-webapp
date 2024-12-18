@@ -19,6 +19,7 @@ public static class InfrastructureService
         // Repositories
         services.AddMongo(configuration);
         services.AddScoped<IFileRepository, FileRepository>();
+        services.AddDbContext<DatasetRepositoryDbContext>();
         services.AddScoped<IDatasetRepository, DatasetRepository>();
         
         // Providers

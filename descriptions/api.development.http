@@ -20,7 +20,7 @@ Cookie: SessionId=;
 ### Datasets
 POST   http://api.analysis.devsquare.ru/datasets
 Accept: application/json
-Cookie: SessionId=202fc5e7-cb36-477c-a6ed-380d80e3e22e;
+Cookie: SessionId=0c3c756e-7119-4c68-833a-3c89f0ed954c;
 Content-Type: text/csv
 Content-Disposition: attachment; filename=iris6.csv; filename*=UTF-8''iris.csv
 
