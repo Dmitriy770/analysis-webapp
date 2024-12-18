@@ -16,7 +16,6 @@ internal class StudyProducer(
 {
     public async Task ProduceAsync(Study study, CancellationToken cancellationToken = default)
     {
-        var t = new JsonDeserializer();
         var message = new Message<string, string>
         {
             Key = study.Id.ToString(),
