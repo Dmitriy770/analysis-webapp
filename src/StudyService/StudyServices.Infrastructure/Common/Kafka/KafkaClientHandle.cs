@@ -11,7 +11,7 @@ internal sealed class KafkaClientHandle : IDisposable
         var producerConfig = new ProducerConfig
         {
             BootstrapServers = settings.Servers,
-            SecurityProtocol = SecurityProtocol.Plaintext,
+            SecurityProtocol = SecurityProtocol.SaslPlaintext,
             SaslMechanism = SaslMechanism.ScramSha512,
             SaslUsername = settings.Username,
             SaslPassword = settings.Password
