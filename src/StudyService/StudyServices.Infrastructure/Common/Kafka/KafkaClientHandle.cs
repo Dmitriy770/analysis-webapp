@@ -13,9 +13,9 @@ internal sealed class KafkaClientHandle : IDisposable
         {
             BootstrapServers = settings.Servers,
             SecurityProtocol = SecurityProtocol.SaslPlaintext,
-            SaslMechanism = SaslMechanism.ScramSha512,
+            SaslMechanism = SaslMechanism.Plain,
             SaslUsername = settings.Username,
-            SaslPassword = settings.Password
+            SaslPassword = settings.Password,
         };
             
         _kafkaProducer = new ProducerBuilder<byte[], byte[]>(producerConfig).Build();
