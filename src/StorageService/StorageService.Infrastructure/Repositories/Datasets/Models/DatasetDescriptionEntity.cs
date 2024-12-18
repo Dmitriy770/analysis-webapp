@@ -11,6 +11,7 @@ public sealed class DatasetDescriptionEntity
     public ObjectId _id { get; set; }
     
     [BsonElement("id")]
+    [BsonGuidRepresentation(GuidRepresentation.Standard)]
     public Guid Id { get; set; }
     
     [BsonElement("name")]

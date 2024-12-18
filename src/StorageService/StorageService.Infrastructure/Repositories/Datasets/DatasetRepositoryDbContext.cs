@@ -1,6 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using MongoDB.Driver;
-using MongoDB.EntityFrameworkCore.Extensions;
 using StorageService.Domain.Models;
 using StorageService.Infrastructure.Settings;
 
