@@ -6,7 +6,9 @@ internal sealed class FakeFileRepository : IFileRepository
 {
     public Task UploadAsync(string name, Stream content, CancellationToken cancellationToken = default)
     {
-        Files.Add((name, content));
+        var cnt = new MemoryStream();
+        content.CopyTo(cnt);
+        Files.Add((name, cnt));
         
         return Task.CompletedTask;
     }

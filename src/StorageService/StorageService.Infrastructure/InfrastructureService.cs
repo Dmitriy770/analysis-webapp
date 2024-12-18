@@ -17,10 +17,12 @@ public static class InfrastructureService
     public static IServiceCollection AddInfrastructureServices(this IServiceCollection services, IConfigurationRoot configuration)
     {
         // Repositories
-        services.AddMongo(configuration);
-        services.AddScoped<IFileRepository, FileRepository>();
-        services.AddDbContext<DatasetRepositoryDbContext>();
-        services.AddScoped<IDatasetRepository, DatasetRepository>();
+        // services.AddMongo(configuration);
+        // services.AddScoped<IFileRepository, FileRepository>();
+        // services.AddDbContext<DatasetRepositoryDbContext>();
+        // services.AddScoped<IDatasetRepository, DatasetRepository>();
+        services.AddScoped<IFileRepository, FakeFileRepository>();
+        services.AddScoped<IDatasetRepository, FakeDatasetRepository>();
         
         // Providers
         services.AddScoped<IGuidProvider, GuidProvider>();
