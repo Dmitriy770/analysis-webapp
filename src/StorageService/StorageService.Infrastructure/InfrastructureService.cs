@@ -37,9 +37,11 @@ public static class InfrastructureService
         {
             Scheme = ConnectionStringScheme.MongoDB,
             Server = new MongoServerAddress(settings.Host, settings.Port),
-            Credential = MongoCredential.CreateCredential(settings.Database, settings.Username, settings.Password)
+            Credential = MongoCredential.CreateCredential(settings.Database, settings.Username, settings.Password),
+            
         };
-        var mongoClient = new MongoClient(mongoClientSettings);
+        Console.WriteLine($"MongoDB server: {settings.Host}:{settings.Port}, {settings.Username}, {settings.Password}");
+        var mongoClient = new MongoClient($"mongodb://{settings.Username}:{settings.Password}@{settings.Host}:{settings.Username}/{settings.Database}?authSource=admin");
         var database = mongoClient.GetDatabase(settings.Database);
        
         services.AddSingleton<IMongoClient>(database.Client);
