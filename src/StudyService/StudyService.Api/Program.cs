@@ -5,7 +5,7 @@ using StudyServices.Infrastructure;
 var builder = WebApplication.CreateSlimBuilder(args);
 builder.Services.AddApiServices();
 builder.Services.AddApplicationServices();
-builder.Services.AddInfrastructureServices();
+builder.Services.AddInfrastructureServices(builder.Configuration);
 
 var app = builder.Build();
 app.MapApiServices();

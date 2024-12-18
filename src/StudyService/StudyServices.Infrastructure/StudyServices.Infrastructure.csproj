@@ -7,6 +7,7 @@
     </PropertyGroup>
 
     <ItemGroup>
+      <ProjectReference Include="..\..\Common\Common.Configuration\Common.Configuration.csproj" />
       <ProjectReference Include="..\..\Common\Common.Logging\Common.Logging.csproj" />
       <ProjectReference Include="..\StudyService.Application\StudyService.Application.csproj" />
     </ItemGroup>

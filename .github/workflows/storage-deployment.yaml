@@ -44,6 +44,12 @@ jobs:
       - name: Overwrite image for deployment
         run: sed -i 's\{template-storage-image}\ghcr.io/dmitriy770/analysis-storage-service:${{github.run_id}}\g' ./deployments/storage-service/storage-deployment.yaml
 
+      - name: Overwrite user for Mongo
+        run: sed -i 's\{template-repository-mongo-username}\${{secrets.STORAGE_MONGO_USER}}\g' ./deployments/storage-service/storage-deployment.yaml
+      
+      - name: Overwrite password for Mongo
+        run: sed -i 's\{template-repository-mongo-password}\${{secrets.STORAGE_MONGO_PASSWORD}}\g' ./deployments/storage-service/storage-deployment.yaml
+
       - name: Apply deployment
         uses: actions-hub/kubectl@master
         env:

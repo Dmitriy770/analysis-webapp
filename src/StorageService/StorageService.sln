@@ -14,6 +14,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Common.Logging", "..\Common
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "StorageService.Infrastructure", "StorageService.Infrastructure\StorageService.Infrastructure.csproj", "{5A4F0B5A-051F-4D43-A7A4-C79A17EF8551}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Common.Configuration", "..\Common\Common.Configuration\Common.Configuration.csproj", "{19A62B8E-C749-42C8-87C2-14D3F86A5319}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -44,9 +46,14 @@ Global
 		{5A4F0B5A-051F-4D43-A7A4-C79A17EF8551}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{5A4F0B5A-051F-4D43-A7A4-C79A17EF8551}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{5A4F0B5A-051F-4D43-A7A4-C79A17EF8551}.Release|Any CPU.Build.0 = Release|Any CPU
+		{19A62B8E-C749-42C8-87C2-14D3F86A5319}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{19A62B8E-C749-42C8-87C2-14D3F86A5319}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{19A62B8E-C749-42C8-87C2-14D3F86A5319}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{19A62B8E-C749-42C8-87C2-14D3F86A5319}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 		{A7423817-66EF-47B4-BCA1-C9E4B195D9D7} = {C7FEEA67-78FC-4C39-BEA7-7AF8F0F7EC79}
 		{2A499673-CE12-424C-A567-234BC5A7EEA0} = {C7FEEA67-78FC-4C39-BEA7-7AF8F0F7EC79}
+		{19A62B8E-C749-42C8-87C2-14D3F86A5319} = {C7FEEA67-78FC-4C39-BEA7-7AF8F0F7EC79}
 	EndGlobalSection
 EndGlobal

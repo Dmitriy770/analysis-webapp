@@ -14,6 +14,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "StudyServices.Infrastructur
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Common.Logging", "..\Common\Common.Logging\Common.Logging.csproj", "{A14DD2D8-B6DD-4EBC-877D-5EC97A8027A2}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Common.Configuration", "..\Common\Common.Configuration\Common.Configuration.csproj", "{62705062-6AF4-45DD-AA14-4F64206CBC9E}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -44,9 +46,14 @@ Global
 		{A14DD2D8-B6DD-4EBC-877D-5EC97A8027A2}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{A14DD2D8-B6DD-4EBC-877D-5EC97A8027A2}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{A14DD2D8-B6DD-4EBC-877D-5EC97A8027A2}.Release|Any CPU.Build.0 = Release|Any CPU
+		{62705062-6AF4-45DD-AA14-4F64206CBC9E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{62705062-6AF4-45DD-AA14-4F64206CBC9E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{62705062-6AF4-45DD-AA14-4F64206CBC9E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{62705062-6AF4-45DD-AA14-4F64206CBC9E}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 		{284261E1-C876-43F7-B54C-D67E9481B5B8} = {FEC69D41-4F32-448E-AD6C-A83B255D3922}
 		{A14DD2D8-B6DD-4EBC-877D-5EC97A8027A2} = {FEC69D41-4F32-448E-AD6C-A83B255D3922}
+		{62705062-6AF4-45DD-AA14-4F64206CBC9E} = {FEC69D41-4F32-448E-AD6C-A83B255D3922}
 	EndGlobalSection
 EndGlobal

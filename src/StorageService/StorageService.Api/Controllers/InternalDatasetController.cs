@@ -26,6 +26,7 @@ public sealed class InternalDatasetController(
         var result = await sender.Send(new GetContentByIdQuery(id), cancellationToken);
     
         var content = await StreamToBytes(result.Content, cancellationToken);
+        await result.Content.DisposeAsync();
         return Results.File(content, ContentType, result.Name);
     }
     

@@ -27,6 +27,11 @@ spec:
           initialDelaySeconds: 60
           periodSeconds: 30
           failureThreshold: 3
+        env:
+        - name: Producers__Study__Username
+          value: {template-producer-study-username}
+        - name: Producers__Study__Password
+          value: {template-producer-study-password}
         resources:
           requests:
             memory: "128Mi"

@@ -27,6 +27,11 @@ spec:
           initialDelaySeconds: 60
           periodSeconds: 30
           failureThreshold: 3
+        env:
+        - name: Repositories__MongoRepository__Username
+          value: {template-repository-mongo-username}
+        - name: Repositories__MongoRepository__Password
+          value: {template-repository-mongo-password}
         resources:
           requests:
             memory: "128Mi"

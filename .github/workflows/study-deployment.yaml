@@ -44,6 +44,12 @@ jobs:
       - name: Overwrite image for deployment
         run: sed -i 's\{template-study-image}\ghcr.io/dmitriy770/analysis-study-service:${{github.run_id}}\g' ./deployments/study-service/study-deployment.yaml
 
+      - name: Overwrite user for Kafka
+        run: sed -i 's\{template-producer-study-username}\${{secrets.STUDY_KAFKA_USER}}\g' ./deployments/study-service/study-deployment.yaml
+
+      - name: Overwrite password for Kafka
+        run: sed -i 's\{template-producer-study-password}\${{secrets.STUDY_KAFKA_PASSWORD}}\g' ./deployments/study-service/study-deployment.yaml
+
       - name: Apply deployment
         uses: actions-hub/kubectl@master
         env:

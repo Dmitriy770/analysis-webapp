@@ -1,29 +1,26 @@
-﻿using System.Text.Json;
-using Confluent.Kafka;
+﻿using Confluent.Kafka;
 using StudyService.Application.Abstractions.Producers;
 using StudyService.Domain.Models.Studies;
+using StudyServices.Infrastructure.Common.Kafka;
+using StudyServices.Infrastructure.Producers.Studies.Mappers;
+using StudyServices.Infrastructure.Producers.Studies.Models;
+using StudyServices.Infrastructure.Settings;
 
 namespace StudyServices.Infrastructure.Producers.Studies;
 
-public class StudyProducer : IStudyProducer
+internal class StudyProducer(
+    KafkaDependentProducer<Guid, StudyEntity> kafkaDependentProducer,
+    StudyProducerSettings settings)
+    : IStudyProducer
 {
     public async Task ProduceAsync(Study study, CancellationToken cancellationToken = default)
     {
-        using var producer = CreateProducer();
-
-        var topic = "topic";
-        var message = JsonSerializer.Serialize(study);
-        var deliveryReport = await producer.ProduceAsync(topic, new Message<Null, string> { Value = message }, cancellationToken);
-    }
-
-    private IProducer<Null,string> CreateProducer()
-    {
-        var config = new ProducerConfig
+        var message = new Message<Guid, StudyEntity>
         {
-            BootstrapServers = "localhost:9092",
-            ClientId = "study-producer",
+            Key = study.Id,
+            Value = study.ToInfrastructure()
         };
-        
-        return new ProducerBuilder<Null, string>(config).Build();
+        await kafkaDependentProducer.ProduceAsync(settings.Topic, message, cancellationToken);
     }
+
 }
