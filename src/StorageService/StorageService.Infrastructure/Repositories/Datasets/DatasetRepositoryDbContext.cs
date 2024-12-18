@@ -20,7 +20,7 @@ internal sealed class DatasetRepositoryDbContext(
     {
         base.OnModelCreating(modelBuilder);
         
-        modelBuilder.Entity<DatasetRepositoryDbContext>();
+        modelBuilder.Entity<DatasetDescriptionEntity>();
     }
     
     public DbSet<DatasetDescriptionEntity> DatasetDescriptions { get; set; }
