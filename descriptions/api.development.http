@@ -20,9 +20,9 @@ Cookie: SessionId=;
 ### Datasets
 POST   http://api.analysis.devsquare.ru/datasets
 Accept: application/json
-Cookie: SessionId=0c3c756e-7119-4c68-833a-3c89f0ed954c;
+Cookie: SessionId=dd45a4c9-b646-41bd-b7da-d15307a897b4;
 Content-Type: text/csv
-Content-Disposition: attachment; filename=iris6.csv; filename*=UTF-8''iris.csv
+Content-Disposition: attachment; filename=iris7.csv; filename*=UTF-8''iris.csv
 
 < ./iris.csv
 
@@ -39,14 +39,14 @@ Cookie: SessionId=;
 ### Study
 POST http://api.analysis.devsquare.ru/studies
 Accept: application/json
-Cookie: SessionId=9dd143bd-992f-4edb-9ee7-d08b9f806245;
+Cookie: SessionId=1cbead4b-fe75-42f1-b37f-22ae1a4d3110;
 Content-Type: application/json
 
 {
     "type": "clustering",
     "componets": 3,
     "dataset":{
-        "name": "iris6"
+        "name": "iris7"
     }
 }
 
