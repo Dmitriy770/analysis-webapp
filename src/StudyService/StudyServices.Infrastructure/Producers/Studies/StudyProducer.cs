@@ -16,6 +16,7 @@ internal class StudyProducer(
 {
     public async Task ProduceAsync(Study study, CancellationToken cancellationToken = default)
     {
+        Console.WriteLine(settings.Username + " " + settings.Password + " " + settings.Topic);
         var message = new Message<string, string>
         {
             Key = study.Id.ToString(),
