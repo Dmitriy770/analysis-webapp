@@ -55,7 +55,7 @@ public static class InfrastructureService
         services.AddSingleton(settings);
         
         services.AddSingleton<KafkaClientHandle>();
-        services.AddSingleton<KafkaDependentProducer<Guid, StudyEntity>>();
+        services.AddSingleton<KafkaDependentProducer<string, string>>();
             
         return services;
     }
