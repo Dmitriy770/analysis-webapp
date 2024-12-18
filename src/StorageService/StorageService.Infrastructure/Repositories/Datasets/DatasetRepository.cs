@@ -28,7 +28,7 @@ internal class DatasetRepository(
     {
         return dbContext.DatasetDescriptions
             .Where(description => description.UserId == userId)
-            .Select(description => description.ToDomain())
-            .ToAsyncEnumerable();
+            .ToAsyncEnumerable()
+            .Select(description => description.ToDomain());
     }
 }
