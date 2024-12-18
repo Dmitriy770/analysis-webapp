@@ -1,6 +1,7 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using StorageService.Application.Abstractions.Repositories;
 using StorageService.Domain.Models;
+using StorageService.Infrastructure.Repositories.Datasets.Mappers;
 
 namespace StorageService.Infrastructure.Repositories.Datasets;
 
@@ -10,21 +11,24 @@ internal class DatasetRepository(
 {
     public async Task AddDescriptionAsync(DatasetDescription description, CancellationToken cancellationToken = default)
     {
-        await dbContext.DatasetDescriptions.AddAsync(description, cancellationToken);
+        await dbContext.DatasetDescriptions.AddAsync(description.ToInfrastructure(), cancellationToken);
         
         await dbContext.SaveChangesAsync(cancellationToken);
     }
 
     public async Task<DatasetDescription?> GetDescriptionAsync(Guid id, CancellationToken cancellationToken = default)
     {
-        return await dbContext.DatasetDescriptions
+        var description =  await dbContext.DatasetDescriptions
             .FirstOrDefaultAsync(description => description.Id == id, cancellationToken);
+
+        return description?.ToDomain();
     }
 
     public IAsyncEnumerable<DatasetDescription> GetDescriptionsByUserIdAsync(long userId, CancellationToken cancellationToken = default)
     {
         return dbContext.DatasetDescriptions
             .Where(description => description.UserId == userId)
+            .Select(description => description.ToDomain())
             .ToAsyncEnumerable();
     }
 }

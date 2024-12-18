@@ -1,6 +1,7 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using MongoDB.Driver;
 using StorageService.Domain.Models;
+using StorageService.Infrastructure.Repositories.Datasets.Models;
 using StorageService.Infrastructure.Settings;
 
 namespace StorageService.Infrastructure.Repositories.Datasets;
@@ -22,5 +23,5 @@ internal sealed class DatasetRepositoryDbContext(
         modelBuilder.Entity<DatasetRepositoryDbContext>();
     }
     
-    public DbSet<DatasetDescription> DatasetDescriptions { get; set; }
+    public DbSet<DatasetDescriptionEntity> DatasetDescriptions { get; set; }
 }
