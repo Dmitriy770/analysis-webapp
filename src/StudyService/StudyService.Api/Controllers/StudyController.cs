@@ -80,6 +80,17 @@ public sealed class StudyController(
         CancellationToken cancellationToken)
     {
         var userId = HttpContext.GetUserId();
+
+        var rnd = new Random();
+        var points = new decimal[800];
+        for (var i = 0; i < 800; i++)
+        {
+            points[i] = rnd.Next(1, 4);
+        }
+        
+        var result = new StudyResult(
+            Points: points);
+        Results.Ok(result);
         
         var studyResult = await sender.Send(new GetStudyResultQuery(
             StudyId: id, 
