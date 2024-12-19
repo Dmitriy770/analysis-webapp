@@ -17,8 +17,7 @@ internal sealed class KafkaClientHandle : IDisposable
             SaslUsername = "testuser",
             SaslPassword = "eV4ctlLvetlDfL",
             AllowAutoCreateTopics = false,
-            ClientId = "StudyServices",
-            SslEndpointIdentificationAlgorithm = SslEndpointIdentificationAlgorithm.None
+            ClientId = "StudyServices"
         };
             
         _kafkaProducer = new ProducerBuilder<byte[], byte[]>(producerConfig).Build();
