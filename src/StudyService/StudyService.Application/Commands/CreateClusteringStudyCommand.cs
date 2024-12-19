@@ -51,7 +51,7 @@ internal sealed class CreateClusteringStudyCommandHandler(
         
         await studyRepository.AddAsync(study, cancellationToken);
         
-        // await studyProducer.ProduceAsync(study, cancellationToken);
+        await studyProducer.ProduceAsync(study, cancellationToken);
         
         return study;
     }
