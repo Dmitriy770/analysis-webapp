@@ -14,10 +14,11 @@ internal sealed class KafkaClientHandle : IDisposable
             BootstrapServers = settings.Servers,
             SecurityProtocol = SecurityProtocol.SaslPlaintext,
             SaslMechanism = SaslMechanism.ScramSha512,
-            SaslUsername = settings.Username,
-            SaslPassword = settings.Password,
+            SaslUsername = "gen_user",
+            SaslPassword = "SnIXh2p6DfP9g-",
             AllowAutoCreateTopics = false,
-            ClientId = "StudyServices"
+            ClientId = "StudyServices",
+            SslEndpointIdentificationAlgorithm = SslEndpointIdentificationAlgorithm.None
         };
             
         _kafkaProducer = new ProducerBuilder<byte[], byte[]>(producerConfig).Build();

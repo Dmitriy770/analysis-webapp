@@ -22,7 +22,7 @@ internal class StudyProducer(
             Key = study.Id.ToString(),
             Value = JsonSerializer.Serialize(study.ToInfrastructure())
         };
-        await kafkaDependentProducer.ProduceAsync(settings.Topic, message, cancellationToken);
+        await kafkaDependentProducer.ProduceAsync("study_topic", message, cancellationToken);
     }
 
 }
