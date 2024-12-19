@@ -15,7 +15,7 @@ internal sealed class KafkaClientHandle : IDisposable
             SecurityProtocol = SecurityProtocol.SaslPlaintext,
             SaslMechanism = SaslMechanism.ScramSha512,
             SaslUsername = "gen_user",
-            SaslPassword = "SnlXh2p6DfP9gs.",
+            SaslPassword = "SnlXh2p6DfP9gs",
             AllowAutoCreateTopics = false,
             ClientId = "StudyServices",
             SslEndpointIdentificationAlgorithm = SslEndpointIdentificationAlgorithm.None
