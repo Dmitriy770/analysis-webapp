@@ -39,7 +39,7 @@ Cookie: SessionId=;
 ### Study
 POST http://api.analysis.devsquare.ru/studies
 Accept: application/json
-Cookie: SessionId=1cbead4b-fe75-42f1-b37f-22ae1a4d3110;
+Cookie: SessionId=8b9b8a45-9ce9-4c55-a159-535e1cdc5a14;
 Content-Type: application/json
 
 {
