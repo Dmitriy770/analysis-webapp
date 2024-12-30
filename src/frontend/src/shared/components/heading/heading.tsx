@@ -7,20 +7,20 @@ type SuperTitleProps = TextProps
 type TitleProps = TextProps
 type DescriptionProps = TextProps
 
-const SuperTitle = createSlot<SuperTitleProps>('SuperTitle')
-const Title = createSlot<TitleProps>('Title')
-const Description = createSlot<DescriptionProps>('Description')
+const SuperTitleSlot = createSlot<SuperTitleProps>('SuperTitle')
+const TitleSlot = createSlot<TitleProps>('Title')
+const DescriptionSlot = createSlot<DescriptionProps>('Description')
 
 type RootProps = ComponentProps<'div'>
 
 const Root = forwardRef<HTMLDivElement, RootProps>((props, ref) => {
   const { children, className, ...rootProps } = props
 
-  const slots = useSlots({ children, defaultSlot: Title })
+  const slots = useSlots({ children, defaultSlot: TitleSlot })
 
-  const superTitle = slots.get(SuperTitle)
-  const title = slots.get(Title)
-  const description = slots.get(Description)
+  const superTitle = slots.get(SuperTitleSlot)
+  const title = slots.get(TitleSlot)
+  const description = slots.get(DescriptionSlot)
 
   if (!superTitle && !title && !description) {
     return null
@@ -47,16 +47,13 @@ const Root = forwardRef<HTMLDivElement, RootProps>((props, ref) => {
   )
 })
 
-const Heading = Object.assign(Root, {
-  SuperTitle,
-  Title,
-  Description,
-})
-
-Heading.displayName = 'Heading'
+Root.displayName = 'Heading'
 
 export {
-  Heading,
+  Root as Heading,
+  SuperTitleSlot as HeadingSuperTitle,
+  TitleSlot as HeadingTitle,
+  DescriptionSlot as HeadingDescription,
   type RootProps as HeadingProps,
   type SuperTitleProps as HeaderSuperTitleProps,
   type TitleProps as HeaderTitleProps,

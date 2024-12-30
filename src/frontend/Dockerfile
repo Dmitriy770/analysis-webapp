@@ -16,7 +16,7 @@ FROM base AS build
 
 RUN --mount=type=cache,id=pnpm,target=/pnpm/store pnpm install --frozen-lockfile
 ADD . .
-RUN pnpm run build
+RUN --mount=type=secret,id=GITHUB_CLIENT_ID,env=GITHUB_CLIENT_ID pnpm run build
 
 FROM base
 

@@ -1,12 +1,12 @@
-name: Build and deploy frontend
-run-name: Deploy frontend by @${{ github.actor }}
+name: Build and deploy scientist
+run-name: Deploy scientist by @${{ github.actor }}
 on:
   workflow_dispatch:
   workflow_call:
 
 jobs:
   build-frontend:
-    name: Build frontend
+    name: Build scientist
     runs-on: ubuntu-latest
     steps:
       - name: Login to GitHub Registry
@@ -28,11 +28,11 @@ jobs:
       - name: Build and push
         uses: docker/build-push-action@v6
         with:
-          context: ./src/frontend
-          file: ./src/frontend/Dockerfile
+          context: ./src/scientist
+          file: ./src/scientist/Dockerfile
           push: true
-          tags: ghcr.io/dmitriy770/analysis-webapp-frontend:${{github.run_id}}
-          secret-envs: |
+          tags: ghcr.io/dmitriy770/analysis-webapp-scientist:${{github.run_id}}
+          secret-envs:
             GITHUB_CLIENT_ID=${{secrets.GATEWAY_GITHUB_CLIENT_ID}}
   
   deploy-frontend:
@@ -44,21 +44,18 @@ jobs:
         uses: actions/checkout@v4
 
       - name: Overwrite image for deployment
-        run: sed -i 's\{template-frontend-image}\ghcr.io/dmitriy770/analysis-webapp-frontend:${{github.run_id}}\g' ./deployments/frontend/frontend-deployment.yaml
-
-      - name: Overwrite github clientid for deployment
-        run: sed -i 's\{template-frontend-github-clientid}\${{secrets.GATEWAY_GITHUB_CLIENT_ID}}\g' ./deployments/frontend/frontend-deployment.yaml
+        run: sed -i 's\{template-scientist-image}\ghcr.io/dmitriy770/analysis-webapp-scientist:${{github.run_id}}\g' ./deployments/scientist/scientist-deployment.yaml
 
       - name: Apply deployment
         uses: actions-hub/kubectl@master
         env:
           KUBE_CONFIG: ${{ secrets.KUBE_CONFIG }}
         with:
-          args: apply -f ./deployments/frontend/frontend-deployment.yaml
+          args: apply -f ./deployments/scientist/scientist-deployment.yaml
 
       - name: Apply services
         uses: actions-hub/kubectl@master
         env:
           KUBE_CONFIG: ${{ secrets.KUBE_CONFIG }}
         with:
-          args: apply -f ./deployments/frontend/frontend-service.yaml
+          args: apply -f ./deployments/scientist/scientist-service.yaml

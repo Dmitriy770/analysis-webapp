@@ -1,7 +1,7 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: frontend-deployment
+  name: scientist-deployment
   labels:
     app: frontend
 spec:
@@ -15,21 +15,11 @@ spec:
         app: frontend
     spec:
       containers:
-      - name: frontend
-        image: {template-frontend-image}
+      - name: scientist
+        image: {template-scientist-image}
         imagePullPolicy: IfNotPresent 
         ports:
         - containerPort: 3000
-        resources:
-          requests:
-            memory: "128Mi"
-            cpu: "20m"
-          limits:
-            memory: "256Mi"
-            cpu: "40m"
-        env:
-        - name: GITHUB_CLIENT_ID
-          value: {template-frontend-github-clientid}
   strategy:
     type: RollingUpdate
 
