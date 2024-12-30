@@ -1,0 +1,28 @@
+POST http://localhost:5163/datasets
+Content-Type: multipart/form-data; boundary=----WebKitFormBoundaryVTPPPEUc5BZOIKdx
+Content-Length: 457791
+
+------WebKitFormBoundaryVTPPPEUc5BZOIKdx
+Content-Disposition: form-data; name="file"; filename="iris.csv"
+Content-Type: text/css
+
+
+< ./iris.csv
+------WebKitFormBoundaryVTPPPEUc5BZOIKdx--
+
+### 
+POST http://localhost:5163/api/dataset
+Content-Type: application/json
+Content-Disposition: attachment; filename=iris.csv
+
+{
+    "w": "test"
+}
+
+
+###
+POST http://localhost:5163/datasets
+Content-Type: text/csv
+Content-Disposition: attachment; filename=iris.csv; filename*=UTF-8''iris.csv
+
+< ./iris.csv

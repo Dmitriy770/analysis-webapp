@@ -1,0 +1,44 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: study-deployment
+  labels:
+    app: study
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: study
+  template:
+    metadata:
+      labels:
+        app: study
+    spec:
+      containers:
+      - name: study
+        image: {template-study-image}
+        imagePullPolicy: IfNotPresent 
+        ports:
+        - containerPort: 8080
+        livenessProbe:
+          httpGet:
+            path: /healthz
+            port: 8080
+          initialDelaySeconds: 60
+          periodSeconds: 30
+          failureThreshold: 3
+        env:
+        - name: Producers__Study__Username
+          value: {template-producer-study-username}
+        - name: Producers__Study__Password
+          value: {template-producer-study-password}
+        resources:
+          requests:
+            memory: "128Mi"
+            cpu: "40m"
+          limits:
+            memory: "256Mi"
+            cpu: "80m"
+  strategy:
+    type: RollingUpdate
+

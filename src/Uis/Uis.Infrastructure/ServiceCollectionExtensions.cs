@@ -1,10 +1,10 @@
-﻿using Microsoft.Extensions.Configuration;
+﻿using Common.Logging.HttpClient;
+using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Refit;
 using Uis.Application.Abstractions.Gateways;
 using Uis.Application.Abstractions.Providers;
 using Uis.Application.Commands;
-using Uis.Common.HttpClient;
 using Uis.Infrastructure.Gateways.GitHub;
 using Uis.Infrastructure.Gateways.GitHub.Api;
 using Uis.Infrastructure.Providers;

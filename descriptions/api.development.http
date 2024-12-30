@@ -1,0 +1,72 @@
+# User
+POST http://api.analysis.devsquare.ru/user/login
+Accept: application/json
+Content-Type: application/json
+
+{
+    "token": ""
+}
+
+### 
+POST   http://api.analysis.devsquare.ru/user/logout
+Accept: application/json
+Cookie: SessionId=;
+
+###
+GET  http://api.analysis.devsquare.ru/user
+Accept: application/json
+Cookie: SessionId=;
+
+### Datasets
+POST   http://api.analysis.devsquare.ru/datasets
+Accept: application/json
+Cookie: SessionId=dd45a4c9-b646-41bd-b7da-d15307a897b4;
+Content-Type: text/csv
+Content-Disposition: attachment; filename=iris7.csv; filename*=UTF-8''iris.csv
+
+< ./iris.csv
+
+###
+GET    http://api.analysis.devsquare.ru/datasets/description
+Accept: application/json
+Cookie: SessionId=;
+
+###
+GET    http://api.analysis.devsquare.ru/datasets/iris4/description
+Accept: application/json
+Cookie: SessionId=;
+
+### Study
+POST http://api.analysis.devsquare.ru/studies
+Accept: application/json
+Cookie: SessionId=8b9b8a45-9ce9-4c55-a159-535e1cdc5a14;
+Content-Type: application/json
+
+{
+    "type": "clustering",
+    "componets": 3,
+    "dataset":{
+        "name": "iris7"
+    }
+}
+
+###
+GET  http://api.analysis.devsquare.ru/studies
+Accept: application/json
+Cookie: SessionId=9dd143bd-992f-4edb-9ee7-d08b9f806245;
+
+###
+GET  http://api.analysis.devsquare.ru/studies/2329fc5f-b553-45b1-8c47-39c4bf471e8d
+Accept: application/json
+Cookie: SessionId=9dd143bd-992f-4edb-9ee7-d08b9f806245;
+
+###
+GET  http://api.analysis.devsquare.ru/studies/2329fc5f-b553-45b1-8c47-39c4bf471e8d/result
+Accept: application/json
+Cookie: SessionId=9dd143bd-992f-4edb-9ee7-d08b9f806245;
+
+
+###
+GET http://api.analysis.devsquare.ru/user/limits
+Accept: application/json
+Cookie: SessionId=9dd143bd-992f-4edb-9ee7-d08b9f806245;

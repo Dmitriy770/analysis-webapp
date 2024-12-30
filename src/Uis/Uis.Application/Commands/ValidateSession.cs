@@ -27,13 +27,13 @@ internal sealed class ValidateSessionHandler(
         }
 
         var currentDateTime = dateTimeProvider.Now;
-        if (session.CreatedDateTime + _sessionTimeout > currentDateTime)
+        if (currentDateTime < session.CreatedDateTime + _sessionTimeout )
         {
             return session;
         }
 
         await sessionRepository.DeleteAsync(session.SessionId);
-        if (session.CreatedDateTime + _sessionExtensionTimeout > currentDateTime)
+        if (currentDateTime > session.CreatedDateTime + _sessionExtensionTimeout)
         {
             throw new SessionExpiredException(session.SessionId);
         }
@@ -48,6 +48,6 @@ internal sealed class ValidateSessionHandler(
         return newSession;
     }
     
-    private readonly TimeSpan _sessionTimeout = TimeSpan.FromMinutes(15);
+    private readonly TimeSpan _sessionTimeout = TimeSpan.FromMinutes(60);
     private readonly TimeSpan _sessionExtensionTimeout = TimeSpan.FromMinutes(120);
 }

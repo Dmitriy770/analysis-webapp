@@ -1,13 +1,11 @@
-﻿using System.Diagnostics;
-using System.Net;
+﻿using System.Net;
 using System.Text.Json;
-using FluentMigrator.Infrastructure;
+using Common.Web.Authorization.Extensions;
+using Common.Web.ExceptionFilters;
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Filters;
 using Uis.Application.Commands;
-using Uis.Common.Authorization.Extensions;
-using Uis.Common.ExceptionFilter;
 using Uis.Domain.Exceptions;
 
 namespace Uis.Api.Filters.Public;

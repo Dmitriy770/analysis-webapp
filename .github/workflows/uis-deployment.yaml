@@ -28,7 +28,7 @@ jobs:
       - name: Build and push
         uses: docker/build-push-action@v6
         with:
-          context: ./src/Uis
+          context: ./src
           file: ./src/Uis/Uis.Api/Dockerfile
           push: true
           tags: ghcr.io/dmitriy770/analysis-webapp-uis:${{github.run_id}}

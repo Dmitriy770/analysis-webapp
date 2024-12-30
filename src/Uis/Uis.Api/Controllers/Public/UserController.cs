@@ -1,18 +1,17 @@
-﻿using MediatR;
+﻿using Common.Web.Authorization;
+using Common.Web.Authorization.Attributes;
+using Common.Web.Authorization.Extensions;
+using MediatR;
 using Microsoft.AspNetCore.Mvc;
-using Uis.Api.Filters.Public;
 using Uis.Api.Mappers;
 using Uis.Api.Models.Public;
 using Uis.Application.Commands;
 using Uis.Application.Queries;
-using Uis.Common.Authorization;
-using Uis.Common.Authorization.Attributes;
-using Uis.Common.Authorization.Extensions;
 
 namespace Uis.Api.Controllers.Public;
 
 [ApiController]
-[Route("api/user")]
+[Route("user")]
 public sealed class UserController(
     ISender sender)
     : ControllerBase
@@ -29,24 +28,25 @@ public sealed class UserController(
         return Results.Ok(user.ToUserResponse());
     }
 
-    [HttpGet("logout")]
     [Authorize]
+    [HttpPost("logout")]
     [ProducesResponseType(StatusCodes.Status200OK)]
     [ProducesResponseType(StatusCodes.Status401Unauthorized)]
     public async Task<IResult> Logout(
-        [FromHeader(Name = Consts.SessionIdKey)]Guid sessionId)
+        [FromHeader(Name = Const.SessionIdKey)]Guid sessionId)
     {
         await sender.Send(new LogoutCommand(sessionId));
         
         return Results.Ok();
     }
 
-    [HttpGet]
     [Authorize]
+    
+    [HttpGet]
     [ProducesResponseType(typeof(User), StatusCodes.Status200OK)]
     [ProducesResponseType(StatusCodes.Status401Unauthorized)]
     public async Task<IResult> Get(
-        [FromHeader(Name = Consts.SessionIdKey)]Guid sessionId)
+        [FromHeader(Name = Const.SessionIdKey)]Guid sessionId)
     {
         var user = await sender.Send(new GetUserBySessionIdQuery(sessionId));
 

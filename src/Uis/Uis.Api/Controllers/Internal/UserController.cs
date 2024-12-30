@@ -7,7 +7,7 @@ using Uis.Application.Queries;
 namespace Uis.Api.Controllers.Internal;
 
 [ApiController]
-[Route("api/internal/user")]
+[Route("internal/user")]
 [ServiceFilter<UserControllerExceptionFilter>]
 public class UserController(
     ISender sender)
@@ -23,7 +23,7 @@ public class UserController(
     }
     
     [HttpGet("{userId:long}/limits/total")]
-    public async Task<IResult> GetLimitsBySessionId(
+    public async Task<IResult> GetLimitsByUserId(
         long userId)
     {
         var user = await sender.Send(new GetUserByUserIdQuery(userId));

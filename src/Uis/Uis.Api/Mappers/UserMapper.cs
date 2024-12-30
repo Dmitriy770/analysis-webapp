@@ -10,7 +10,8 @@ internal static class UserMapper
     internal static ResponsePublic.User ToUserResponse(this User user)
     {
         return new ResponsePublic.User(
-            Nickname: user.Name);
+            Nickname: user.Name,
+            AvatarUrl: user.AvatarUri);
     }
 
     internal static ResponseInternal.Limit ToLimitResponse(this User user)
