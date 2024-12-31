@@ -1,0 +1,29 @@
+appFromExternalRepo.enabled: false
+image:
+  registry: ghcr.io
+  repository: dmitriy770/analysis-study-service
+command: [command]
+args: [arguments]
+
+kong:
+  extraEnvVars:
+    - name: Producers__Study__Username
+    - name: Producers__Study__Password
+
+resourcesPreset: "micro"
+
+customLivenessProbe:
+  httpGet:
+    path: /healthz
+    port: 8080
+  initialDelaySeconds: 60
+  periodSeconds: 30
+  failureThreshold: 3
+
+containerPorts:
+  http: 8080
+
+service:
+  type: ClusterIP
+  ports:
+    http: 80

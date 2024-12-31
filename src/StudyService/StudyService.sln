@@ -16,6 +16,12 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Common.Logging", "..\Common
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Common.Configuration", "..\Common\Common.Configuration\Common.Configuration.csproj", "{62705062-6AF4-45DD-AA14-4F64206CBC9E}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "StudyService.Automation", "StudyService.Automation", "{2F792C74-4D5C-40DE-BAD8-3E5930A1A6ED}"
+	ProjectSection(SolutionItems) = preProject
+		StudyService.Automation\deploy.sh = StudyService.Automation\deploy.sh
+		StudyService.Automation\values.yaml = StudyService.Automation\values.yaml
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU

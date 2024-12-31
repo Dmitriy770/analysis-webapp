@@ -8,18 +8,15 @@ internal sealed class KafkaClientHandle : IDisposable
 {
     public KafkaClientHandle(StudyProducerSettings settings)
     {
-        Console.Write(settings.Username + " " + settings.Password);
         var producerConfig = new ProducerConfig
         {
             BootstrapServers = settings.Servers,
             SecurityProtocol = SecurityProtocol.SaslPlaintext,
-            SaslMechanism = SaslMechanism.ScramSha512,
-            SaslUsername = "testuser",
-            SaslPassword = "eV4ctlLvetlDfL",
+            SaslMechanism = SaslMechanism.Plain,
+            SaslUsername = settings.Username,
+            SaslPassword = settings.Password,
             AllowAutoCreateTopics = false,
-            ClientId = "StudyServices",
-            Debug = "all",
-            Sasl
+            ClientId = "StudyServices"
         };
             
         _kafkaProducer = new ProducerBuilder<byte[], byte[]>(producerConfig).Build();
