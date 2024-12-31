@@ -62,6 +62,7 @@ jobs:
       - name: Helm deploy
         run: |
           cd ./src/StudyService/StudyService.Automation
+          chmod 700 deploy.sh
           ./deploy.sh
         env:
           TAG: ${{ github.run_id }}
