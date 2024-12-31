@@ -48,7 +48,7 @@ jobs:
 
       - name: Set kubectl context
         run: |
-          echo ${{ secrets.KUBE_CONFIG }} | base64 -d > ${KUBECONFIG}
+          echo ${{ secrets.KUBE_CONFIG }} | base64 -d > "${KUBECONFIG}"
       
       - name: Install helm
         run: |
