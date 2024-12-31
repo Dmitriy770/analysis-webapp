@@ -8,7 +8,6 @@ jobs:
   deploy-study:
     name: Deploy study service
     runs-on: ubuntu-latest
-    needs: [build-study]
     steps:
       - name: Checkout
         uses: actions/checkout@v4
