@@ -3,8 +3,7 @@ appFromExternalRepo.enabled: false
 image:
   registry: ghcr.io
   repository: dmitriy770/analysis-study-service
-command: [command]
-args: [arguments]
+command: ["dotnet", "StudyService.Api.dll"]
 
 kong:
   extraEnvVars:
