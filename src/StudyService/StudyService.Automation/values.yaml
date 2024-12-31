@@ -5,7 +5,7 @@ global:
 image:
   registry: ghcr.io
   repository: dmitriy770/analysis-study-service
-command: []
+command: ["dotnet", "app/StudyService.Api.dll"]
 
 kong:
   extraEnvVars:
