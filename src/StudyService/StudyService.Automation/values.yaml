@@ -1,5 +1,7 @@
-global.security.allowInsecureImages: true
 appFromExternalRepo.enabled: false
+global: 
+  security: 
+    allowInsecureImages: true
 image:
   registry: ghcr.io
   repository: dmitriy770/analysis-study-service
