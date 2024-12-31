@@ -61,6 +61,7 @@ jobs:
 
       - name: Helm deploy
         run: |
+          echo ${{ github.run_id }}
           cd ./src/StudyService/StudyService.Automation
           chmod 700 deploy.sh
           ./deploy.sh
