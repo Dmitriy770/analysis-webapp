@@ -1,0 +1,16 @@
+listeners:
+  client:
+    protocol: SASL_PLAINTEXT
+  controller:
+    protocol: SASL_PLAINTEXT
+  interbroker:
+    protocol: SASL_PLAINTEXT
+
+sasl:
+  enabledMechanisms: PLAIN
+  interBrokerMechanism: PLAIN
+  controllerMechanism: PLAIN
+
+resourcesPreset: "small"
+controller:
+  replicaCount: 1
