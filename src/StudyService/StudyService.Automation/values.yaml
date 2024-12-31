@@ -1,3 +1,4 @@
+global.security.allowInsecureImages: false
 appFromExternalRepo.enabled: false
 image:
   registry: ghcr.io
