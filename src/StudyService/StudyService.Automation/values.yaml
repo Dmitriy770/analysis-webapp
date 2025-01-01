@@ -12,7 +12,7 @@ appFromExternalRepo:
     image:
       tag: 9.0.101-debian-12-r0
     subFolder: aspnetcore/performance/caching/output/samples/9.x/OCControllers/
-  startCommand: 	["dotnet", "OCMinimal.dll"]
+  startCommand: 	["dotnet", "OCControllers.dll"]
 
 kong:
   extraEnvVars:
