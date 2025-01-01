@@ -23,4 +23,4 @@ resources:
     memory: 512Mi
 
 persistence:
-enabled: false
+  enabled: false
