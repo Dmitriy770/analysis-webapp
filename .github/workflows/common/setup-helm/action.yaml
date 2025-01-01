@@ -6,18 +6,21 @@ runs:
   using: 'composite'
   steps:
     - name: Install kubectl
+      shell: bash
       run: |
         curl -LO https://dl.k8s.io/release/v1.32.0/bin/linux/amd64/kubectl
         sudo install -o root -g root -m 0755 kubectl /usr/local/bin/kubectl
         kubectl version --client
 
     - name: Set kubectl context
+      shell: bash
       run: |
         mkdir "$HOME/.kube"
         touch "$HOME/.kube/config"
         echo ${{ inputs.kube_config }} | base64 -d > "$HOME/.kube/config"
     
     - name: Install helm
+      shell: bash
       run: |
         curl -fsSL -o get_helm.sh https://raw.githubusercontent.com/helm/helm/main/scripts/get-helm-3
         chmod 700 get_helm.sh
