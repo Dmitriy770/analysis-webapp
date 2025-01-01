@@ -1,4 +1,4 @@
-name: [deploy][business] StudyService
+name: '[deploy][business] StudyService'
 run-name: deploy StudyService by @${{ github.actor }}
 on:
   workflow_dispatch:

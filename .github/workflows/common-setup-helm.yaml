@@ -1,4 +1,4 @@
-name: [common] setup kubectl and helm
+name: '[common] setup kubectl and helm'
 run-name: setup kubectl and helm by @${{ github.actor }}
 on:
   workflow_call:
