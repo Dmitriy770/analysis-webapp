@@ -13,7 +13,7 @@ jobs:
         uses: actions/checkout@v4
 
       - name: Setup kubectl and helm
-        uses: ./.github/actions/common/setup-helm
+        uses: ./.github/workflows/actions/common/setup-helm
 
       - name: Helm deploy
         run: |
