@@ -8,13 +8,13 @@ jobs:
   deploy-study:
     name: Deploy study service
     runs-on: ubuntu-latest
+    secrets: inherit
     steps:
       - name: Checkout
         uses: actions/checkout@v4
 
       - name: Setup kubectl and helm
-        uses: ./.github/workflows/common-setup-helm.yaml
-        secrets: inherit
+        uses: ./.github/workflows/common/setup-helm.yaml
 
       - name: Helm deploy
         run: |
