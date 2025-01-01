@@ -11,6 +11,16 @@ sasl:
   interBrokerMechanism: PLAIN
   controllerMechanism: PLAIN
 
-resourcesPreset: "small"
 controller:
   replicaCount: 1
+
+resources:
+  requests:
+    cpu: 0.5
+    memory: 256i
+  limits:
+    cpu: 1
+    memory: 512Mi
+
+persistence:
+enabled: false
