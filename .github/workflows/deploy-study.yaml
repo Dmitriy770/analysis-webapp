@@ -14,6 +14,8 @@ jobs:
 
       - name: Setup kubectl and helm
         uses: ./.github/workflows/common/setup-helm
+        with:
+          kube_config: ${{ secrets.KUBE_CONFIG }}
 
       - name: Helm deploy
         run: |
