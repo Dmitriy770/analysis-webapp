@@ -4,15 +4,14 @@ image:
 appFromExternalRepo:
   enabled: true
   clone:
-    # repository: https://github.com/Dmitriy770/analysis-webapp
-    repository: https://github.com/dotnet/AspNetCore.Docs.git
+    repository: https://github.com/Dmitriy770/analysis-webapp
     depth:
 
   publish:
     image:
       tag: 9.0.101-debian-12-r0
-    subFolder: aspnetcore/performance/caching/output/samples/9.x/OCControllers/
-  startCommand: 	["dotnet", "OCControllers.dll"]
+    subFolder: src/StudyService/StudyService.Api/
+  startCommand: 	["dotnet", "StudyService.Api.dll"]
 
 kong:
   extraEnvVars:
