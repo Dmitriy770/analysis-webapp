@@ -4,10 +4,13 @@ image:
 appFromExternalRepo:
   enabled: true
   clone:
-    repository: https://github.com/Dmitriy770/analysis-webapp
+    # repository: https://github.com/Dmitriy770/analysis-webapp
+    repository: https://github.com/dotnet/AspNetCore.Docs.git
+    depth:
+
   publish:
-    subFolder: src/StudyService/StudyService.Api
-    startCommand: 	["dotnet", "StudyService.Api.dll"]
+    subFolder: aspnetcore/performance/caching/output/samples/9.x/
+  startCommand: 	["dotnet", "OCMinimal.dll"]
 
 kong:
   extraEnvVars:
