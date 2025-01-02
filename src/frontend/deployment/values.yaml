@@ -43,6 +43,3 @@ resources:
   limits:
      cpu: 100m
      memory: 256Mi
-
-extraEnvVars:
-  - name: GITHUB_CLIENT_ID
