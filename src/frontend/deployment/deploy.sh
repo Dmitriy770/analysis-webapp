@@ -11,4 +11,5 @@ helm upgrade frontend-service bitnami-repo/node \
     --timeout 4m0s \
     --values values.yaml \
     --set revision="$BRANCH" \
-    --set installCommand="['/bin/bash'\, '\./src/frontend/deployment/init\.sh'\, '$GITHUB_CLIENT_ID']"
+    --set installCommand="['/bin/bash'\, '\./src/frontend/deployment/init\.sh'\, '$GITHUB_CLIENT_ID']" \
+    --set extraEnvVars[0].value="$GITHUB_CLIENT_ID"

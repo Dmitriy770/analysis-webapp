@@ -18,6 +18,9 @@ podSecurityContext:
   enabled: true
   fsGroup: 1001
 
+extraEnvVars:
+  - name: GITHUB_CLIENT_ID
+
 mongodb:
   enabled: false
 

@@ -20,13 +20,6 @@ public static class Authorization
         
         return services;
     }
-
-    public static IServiceCollection AddAuthorizationExceptionFilter(this IServiceCollection services)
-    {
-        services.AddScoped<AuthorizationExceptionFilter>();
-
-        return services;
-    }
     
     private static readonly Uri BaseAddress = new("http://uis-service.default.svc.cluster.local");
 }
