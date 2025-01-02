@@ -21,6 +21,10 @@ ls /opt/bitnami/node/bin/lib
 echo '----'
 ls /opt/bitnami/node/bin
 echo '----'
+ls /opt/bitnami/node/bin/node
+echo '----'
+ls /opt/bitnami/node
+echo '----'
 
 
 pnpm --version
