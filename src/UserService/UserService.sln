@@ -16,6 +16,12 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Common.Logging", "..\Common
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Common", "Common", "{E295CEBA-4FC6-4C28-A1FA-57142485E63C}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "UserService.Automation", "UserService.Automation", "{F65BB96B-C6D0-47F3-8956-31564AD85383}"
+	ProjectSection(SolutionItems) = preProject
+		UserService.Automation\deploy.sh = UserService.Automation\deploy.sh
+		UserService.Automation\values.yaml = UserService.Automation\values.yaml
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU

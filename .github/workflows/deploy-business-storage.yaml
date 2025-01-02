@@ -6,7 +6,7 @@ on:
 
 jobs:
   deploy-study:
-    name: Deploy study service
+    name: Deploy StorageService
     runs-on: ubuntu-latest
     steps:
       - name: Checkout

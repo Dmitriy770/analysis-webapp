@@ -1,0 +1,32 @@
+name: '[deploy][business] UserService'
+run-name: deploy UserService by @${{ github.actor }}
+on:
+  workflow_dispatch:
+  workflow_call:
+
+jobs:
+  deploy-study:
+    name: Deploy UserService
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup kubectl and helm
+        uses: ./.github/workflows/common/setup-helm
+        with:
+          kube_config: ${{ secrets.KUBE_CONFIG }}
+
+      - name: Helm deploy
+        run: |
+          cd ./src/UserService/UserService.Automation
+          chmod 700 deploy.sh
+          ./deploy.sh
+        env:
+          BRANCH: ${{ github.ref_name }}
+          SESSION_STORAGE_USER: ${{ secrets.SESSION_STORAGE_USER }}
+          SESSION_STORAGE_PASSWORD: ${{ secrets.SESSION_STORAGE_PASSWORD }}
+          USER_STORAGE_USER: ${{ secrets.USER_STORAGE_USER }}
+          USER_STORAGE_PASSWORD: ${{ secrets.USER_STORAGE_PASSWORD }}
+          GITHUB_CLIENT_ID: ${{ secrets.GATEWAY_GITHUB_CLIENT_ID }}
+          GITHUB_SECRET: ${{ secrets.GATEWAY_GITHUB_SECRET }}
