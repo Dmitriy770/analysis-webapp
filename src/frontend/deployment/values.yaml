@@ -8,7 +8,7 @@ getAppFromExternalRepository: true
 repository: https://github.com/Dmitriy770/analysis-webapp
 revision: new-deployment
 
-installCommand: [''/bin/bash', './src/frontend/deployment/init.sh']
+installCommand: ['/bin/bash', './src/frontend/deployment/init.sh']
 command: ['/bin/bash', './src/frontend/deployment/entrypoint.sh']
 
 mongodb:
