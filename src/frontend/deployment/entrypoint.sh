@@ -7,6 +7,8 @@ export PATH="$PNPM_HOME:$PATH"
 
 cd ./src/frontend || exit
 
+ls ..
+ls ../lib
 ls ../lib/node_modules
 
 corepack enable
