@@ -40,10 +40,10 @@ readinessProbe:
 resources:
   requests:
      cpu: 100m
-     memory: 128Mi
+     memory: 256Mi
   limits:
      cpu: 100m
-     memory: 128Mi
+     memory: 256Mi
 
 extraEnvVars:
   - name: GITHUB_CLIENT_ID
