@@ -4,7 +4,7 @@ helm upgrade kafka oci://registry-1.docker.io/bitnamicharts/kafka \
     --install \
     --atomic \
     --create-namespace \
-    --namespace studies-kafka \
+    --namespace common-infra \
     --values values.yaml \
     --timeout 2m0s \
     --set sasl.client.users[0]="$KAFKA_UI_BROKER_USER" \

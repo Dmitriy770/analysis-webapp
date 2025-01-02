@@ -1,11 +1,22 @@
 apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
-  name: main-ingress
+  name: business-ingress
   namespace: business
 spec:
   ingressClassName: nginx
-  rules:      
+  rules:
+  - host: analysis.devsquare.ru
+    http:
+      paths:
+      - path:
+        pathType: Prefix
+        backend: 
+          service: 
+            name: frontend-service-node
+            port: 
+              number: 80
+
   - host: api.analysis.devsquare.ru
     http:
       paths:

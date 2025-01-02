@@ -1,5 +1,6 @@
 ﻿using System.Net;
 using System.Text.Json;
+using Common.Web.Authorization.Exceptions;
 using Common.Web.Authorization.Extensions;
 using Common.Web.ExceptionFilters;
 using MediatR;
@@ -28,7 +29,7 @@ public sealed class AuthorizationFilter(
             context.AddSessionToHeader(newSession.SessionId);
             context.AddSessionCookie(sessionId);
         }
-        catch (Exception exception) when(exception is SessionExpiredException or SessionNotFoundException or SessionExpiredException)
+        catch (Exception exception) when(exception is SessionExpiredException or SessionNotFoundException or SessionExpiredException or SessionIdNotFoundException)
         {
             var response = new ErrorResponse(
                 StatusCode: (int)HttpStatusCode.Unauthorized,

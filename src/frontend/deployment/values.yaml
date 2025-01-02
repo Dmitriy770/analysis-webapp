@@ -29,13 +29,13 @@ service:
 livenessProbe:
   enabled: true
   path: '/'
-  initialDelaySeconds: 70
+  initialDelaySeconds: 60
   periodSeconds: 30
 
 readinessProbe:
   enabled: true
   path: '/'
-  initialDelaySeconds: 50
+  initialDelaySeconds: 30
   periodSeconds: 20
 
 resources:

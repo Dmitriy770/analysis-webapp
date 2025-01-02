@@ -2,7 +2,7 @@ yamlApplicationConfig:
   kafka:
     clusters:
       - name: studies-tasks
-        bootstrapServers:  kafka.studies-kafka.svc.cluster.local:9092
+        bootstrapServers:  kafka.common-infra.svc.cluster.local:9092
         properties: 
           security.protocol: SASL_PLAINTEXT
           sasl.mechanism: PLAIN

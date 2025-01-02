@@ -1,7 +1,6 @@
 #!/bin/bash
 
 export GITHUB_CLIENT_ID=$1
-export NODE_DEBUG=net
 
 corepack enable
 
