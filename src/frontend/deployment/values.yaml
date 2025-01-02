@@ -13,11 +13,11 @@ command: ['/bin/bash', './src/frontend/deployment/entrypoint.sh']
 
 containerSecurityContext:
   enabled: true
-  runAsUser: 1001
+  runAsUser: 0
   runAsNonRoot: false
 podSecurityContext:
   enabled: true
-  fsGroup: 1001
+  fsGroup: 0
 
 mongodb:
   enabled: false
