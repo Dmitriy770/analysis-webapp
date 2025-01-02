@@ -11,8 +11,7 @@ appFromExternalRepo:
     image:
       tag: 9.0.101-debian-12-r0
     subFolder: src/UserService/UserService.Api/
-  startCommand: 	["dotnet", "UserService.Api.dll"]
-
+  startCommand: ["dotnet", "UserService.Api.dll"]
 
 extraEnvVars:
   - name: Repositories__SessionRepository__User

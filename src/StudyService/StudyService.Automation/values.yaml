@@ -11,7 +11,7 @@ appFromExternalRepo:
     image:
       tag: 9.0.101-debian-12-r0
     subFolder: src/StudyService/StudyService.Api/
-  startCommand: 	["dotnet", "StudyService.Api.dll"]
+  startCommand: ["dotnet", "StudyService.Api.dll"]
 
 extraEnvVars:
   - name: Producers__Study__Username
