@@ -1,6 +1,8 @@
 #!/bin/bash
 
 export GITHUB_CLIENT_ID=$1
+echo 'client id '
+echo $GITHUB_CLIENT_ID
 
 corepack enable
 
