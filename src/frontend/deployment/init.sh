@@ -10,4 +10,6 @@ cd ./src/frontend || exit
 pnpm install --prod --frozen-lockfile
 pnpm install --frozen-lockfile
 
+pnpm run build
+
 cd ./../.. || exit
