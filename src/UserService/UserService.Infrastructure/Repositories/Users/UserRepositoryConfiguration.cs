@@ -24,7 +24,6 @@ public static class SessionRepositoryConfiguration
         
         return serviceCollection;
     }
-
     
     public static void MigrateUserRepository(this IServiceProvider serviceProvider)
     {
@@ -49,6 +48,7 @@ public static class SessionRepositoryConfiguration
     
     private static string GetConnectionString(UserRepositorySettings settings)
     {
+        Console.WriteLine(settings.User + " " + settings.Password);
         var connectionStringBuilder = new NpgsqlConnectionStringBuilder
         {
             Host = settings.Endpoint,
