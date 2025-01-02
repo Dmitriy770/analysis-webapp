@@ -1,12 +1,12 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Uis.Api", "Uis.Api\Uis.Api.csproj", "{34C185FA-FC24-4250-A5BF-58CB062AA099}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UserService.Api", "UserService.Api\UserService.Api.csproj", "{34C185FA-FC24-4250-A5BF-58CB062AA099}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Uis.Domain", "Uis.Domain\Uis.Domain.csproj", "{5A8BBCEF-8EA0-44CA-85C1-37B7905B08F2}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UserService.Domain", "UserService.Domain\UserService.Domain.csproj", "{5A8BBCEF-8EA0-44CA-85C1-37B7905B08F2}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Uis.Infrastructure", "Uis.Infrastructure\Uis.Infrastructure.csproj", "{5C5B4CE0-C583-45DE-93F7-F6215602DDCD}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UserService.Infrastructure", "UserService.Infrastructure\UserService.Infrastructure.csproj", "{5C5B4CE0-C583-45DE-93F7-F6215602DDCD}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Uis.Application", "Uis.Application\Uis.Application.csproj", "{41D2FB8B-A381-4D9D-BDD8-014D6CC4543E}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UserService.Application", "UserService.Application\UserService.Application.csproj", "{41D2FB8B-A381-4D9D-BDD8-014D6CC4543E}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Common.Configuration", "..\Common\Common.Configuration\Common.Configuration.csproj", "{A6F6662F-8BD1-4E81-821E-5BCCF6CA913F}"
 EndProject

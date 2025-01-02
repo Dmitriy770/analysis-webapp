@@ -5,6 +5,7 @@
         <Nullable>enable</Nullable>
         <ImplicitUsings>enable</ImplicitUsings>
         <DockerDefaultTargetOS>Linux</DockerDefaultTargetOS>
+        <RootNamespace>Uis.Api</RootNamespace>
     </PropertyGroup>
 
     <ItemGroup>
@@ -14,7 +15,7 @@
     
     <ItemGroup>
       <ProjectReference Include="..\..\Common\Common.Web\Common.Web.csproj" />
-      <ProjectReference Include="..\Uis.Infrastructure\Uis.Infrastructure.csproj" />
+      <ProjectReference Include="..\UserService.Infrastructure\UserService.Infrastructure.csproj" />
     </ItemGroup>
     
     <ItemGroup>

@@ -4,6 +4,7 @@
         <TargetFramework>net9.0</TargetFramework>
         <ImplicitUsings>enable</ImplicitUsings>
         <Nullable>enable</Nullable>
+        <RootNamespace>Uis.Infrastructure</RootNamespace>
     </PropertyGroup>
 
     <ItemGroup>
@@ -24,7 +25,7 @@
     <ItemGroup>
       <ProjectReference Include="..\..\Common\Common.Configuration\Common.Configuration.csproj" />
       <ProjectReference Include="..\..\Common\Common.Logging\Common.Logging.csproj" />
-      <ProjectReference Include="..\Uis.Application\Uis.Application.csproj" />
+      <ProjectReference Include="..\UserService.Application\UserService.Application.csproj" />
     </ItemGroup>
 
 </Project>
