@@ -5,7 +5,7 @@ helm upgrade user-service oci://registry-1.docker.io/bitnamicharts/aspnet-core \
     --atomic \
     --create-namespace \
     --namespace business-logic-services \
-    --timeout 2m0s \
+    --timeout 4m0s \
     --values values.yaml \
     --set appFromExternalRepo.clone.revision="$BRANCH" \
     --set kong.extraEnvVars[0].value="$SESSION_STORAGE_USER" \

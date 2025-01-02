@@ -48,7 +48,7 @@ public static class SessionRepositoryConfiguration
     
     private static string GetConnectionString(UserRepositorySettings settings)
     {
-        Console.WriteLine(settings.User + " " + settings.Password);
+        Console.WriteLine("creds: " + settings.User + " " + settings.Password);
         var connectionStringBuilder = new NpgsqlConnectionStringBuilder
         {
             Host = settings.Endpoint,
