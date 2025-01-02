@@ -4,7 +4,7 @@ helm upgrade studies-service oci://registry-1.docker.io/bitnamicharts/aspnet-cor
     --install \
     --atomic \
     --create-namespace \
-    --namespace business-logic-services \
+    --namespace business \
     --timeout 2m0s \
     --values values.yaml \
     --set appFromExternalRepo.clone.revision="$BRANCH" \

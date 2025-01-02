@@ -6,7 +6,7 @@ helm upgrade frontend-service bitnami-repo/node \
     --install \
     --atomic \
     --create-namespace \
-    --namespace business-logic-services \
+    --namespace business \
     --timeout 4m0s \
     --values values.yaml \
     --set revision="$BRANCH" \

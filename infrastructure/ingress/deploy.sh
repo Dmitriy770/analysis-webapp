@@ -1,6 +1,6 @@
 #!/bin/bash
 
-helm upgrade ingress-nginx https://kubernetes.github.io/ingress-nginx \
+helm upgrade ingress-nginx oci://ghcr.io/nginxinc/charts/nginx-ingress \
     --install \
     --atomic \
     --create-namespace \
