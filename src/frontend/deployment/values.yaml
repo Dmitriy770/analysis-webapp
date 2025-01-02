@@ -8,8 +8,8 @@ getAppFromExternalRepository: true
 repository: https://github.com/Dmitriy770/analysis-webapp
 revision: main
 
-installCommand: ['/bin/bash', './src/frontend/deployment/init.sh']
-command: ['/bin/bash', '/src/frontend/deployment/entrypoint.sh']
+installCommand: ['pwd', '&&', '/bin/bash', './src/frontend/deployment/init.sh']
+command: ['/bin/bash', './src/frontend/deployment/entrypoint.sh']
 
 mongodb:
   enabled: false

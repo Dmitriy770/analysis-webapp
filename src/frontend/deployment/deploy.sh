@@ -8,4 +8,4 @@ helm upgrade frontend-service bitnami-repo/node \
     --create-namespace \
     --namespace business-logic-services \
     --values values.yaml \
-    --timeout 2m0s
+    --timeout 5m0s
