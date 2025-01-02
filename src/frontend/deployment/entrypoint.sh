@@ -7,14 +7,14 @@ export PATH="$PNPM_HOME:$PATH"
 
 cd ./src/frontend || exit
 
-ls
-ls ..
-ls ../lib
-ls ../lib/node_modules
-
 corepack enable
 
-ls ../lib/node_modules/corepack/
+ls /opt/bitnami/node/bin/pnpm
+echo '----'
+ls /opt/bitnami/node
+echo '----'
+ls /opt/bitnami
+echo '----'
 
 pnpm --version
 
