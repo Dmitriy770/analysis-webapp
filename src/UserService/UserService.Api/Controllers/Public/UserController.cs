@@ -41,7 +41,6 @@ public sealed class UserController(
     }
 
     [Authorize]
-    
     [HttpGet]
     [ProducesResponseType(typeof(User), StatusCodes.Status200OK)]
     [ProducesResponseType(StatusCodes.Status401Unauthorized)]

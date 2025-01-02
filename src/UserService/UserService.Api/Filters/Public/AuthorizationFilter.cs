@@ -12,7 +12,8 @@ using Uis.Domain.Exceptions;
 namespace Uis.Api.Filters.Public;
 
 public sealed class AuthorizationFilter(
-    ISender sender)
+    ISender sender,
+    ILogger<AuthorizationFilter> logger)
     : IAsyncAuthorizationFilter
 {
     public async Task OnAuthorizationAsync(AuthorizationFilterContext context)
@@ -24,9 +25,10 @@ public sealed class AuthorizationFilter(
 
         try
         {
+            logger.LogInformation("Start work filter");
             foreach (var (key, value) in context.HttpContext.Request.Cookies)
             {
-                Console.WriteLine($"cookie: {key}: {value}");
+                logger.LogInformation($"cookie: {key}: {value}");
             }
             var sessionId = context.GetSessionId();
             var newSession = await sender.Send(new ValidateSession(sessionId));
