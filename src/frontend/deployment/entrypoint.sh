@@ -5,7 +5,7 @@ getent group developers
 export PNPM_HOME="/pnpm"
 export PATH="$PNPM_HOME:$PATH"
 
-npm install -g pnpm
+npm install -g pnpm --unsafe-perm
 
 corepack enable
 
