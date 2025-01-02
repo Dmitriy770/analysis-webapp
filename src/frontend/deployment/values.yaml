@@ -8,7 +8,6 @@ getAppFromExternalRepository: true
 repository: https://github.com/Dmitriy770/analysis-webapp
 revision: 'feature/new-deployment'
 
-installCommand: ['/bin/bash', './src/frontend/deployment/init.sh']
 command: ['/bin/bash', './src/frontend/deployment/entrypoint.sh']
 
 containerSecurityContext:

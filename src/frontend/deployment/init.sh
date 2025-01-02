@@ -1,7 +1,6 @@
 #!/bin/bash
 
-export PNPM_HOME="/pnpm"
-export PATH="$PNPM_HOME:$PATH"
+export GITHUB_CLIENT_ID=$1
 
 corepack enable
 
