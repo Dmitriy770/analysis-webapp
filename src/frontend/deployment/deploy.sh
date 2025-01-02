@@ -2,7 +2,7 @@
 
 helm repo add bitnami-repo https://charts.bitnami.com/bitnami
 
-helm upgrade kafka bitnami-repo/node \
+helm upgrade frontend-service bitnami-repo/node \
     --install \
     --atomic \
     --create-namespace \

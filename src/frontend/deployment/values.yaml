@@ -6,10 +6,18 @@ containerPorts:
 
 getAppFromExternalRepository: true
 repository: https://github.com/Dmitriy770/analysis-webapp
-revision: master
+revision: main
 
 installCommand: ['/bin/bash', './src/frontend/deployment/init.sh']
 command: ['/bin/bash', '/src/frontend/deployment/entrypoint.sh']
+
+mongodb:
+  enabled: false
+
+service:
+  type: ClusterIP
+  ports:
+    http: 80
 
 resources:
   requests:
