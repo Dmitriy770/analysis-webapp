@@ -30,7 +30,7 @@ livenessProbe:
   enabled: true
   path: '/'
   initialDelaySeconds: 60
-   periodSeconds: 30
+  periodSeconds: 30
 
 readinessProbe:
   enabled: true
