@@ -33,4 +33,4 @@ resources:
 
 extraEnvVars:
   - name: BITNAMI_DEBUG
-    value: true
+    value: 'true'
