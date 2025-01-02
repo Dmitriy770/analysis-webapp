@@ -11,6 +11,10 @@ revision: 'feature/new-deployment'
 installCommand: ['/bin/bash', './src/frontend/deployment/init.sh']
 command: ['/bin/bash', './src/frontend/deployment/entrypoint.sh']
 
+containerSecurityContext:
+  enabled: true
+  runAsUser: 1001
+  runAsNonRoot: false
 podSecurityContext:
   enabled: true
   fsGroup: 1001

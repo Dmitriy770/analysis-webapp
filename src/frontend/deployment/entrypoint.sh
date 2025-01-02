@@ -7,7 +7,7 @@ cd ./src/frontend || exit
 
 ls ../lib/node_modules/corepack/
 
-corepack enable pnpm
+corepack enable
 
 pnpm --version
 
