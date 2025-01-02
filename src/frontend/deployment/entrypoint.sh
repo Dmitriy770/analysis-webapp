@@ -7,6 +7,8 @@ cd ./src/frontend || exit
 
 corepack enable
 
-sudo pnpm run start
+pnpm --version
+
+pnpm run start
 
 cd ./../.. || exit
