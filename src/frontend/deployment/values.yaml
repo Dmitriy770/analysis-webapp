@@ -27,6 +27,11 @@ service:
   ports:
     http: 80
 
+readinessProbe:
+  enabled: true
+  path: '/'
+  initialDelaySeconds: 30
+
 resources:
   requests:
      cpu: 100m
@@ -34,7 +39,3 @@ resources:
   limits:
      cpu: 100m
      memory: 128Mi
-
-extraEnvVars:
-  - name: BITNAMI_DEBUG
-    value: 'true'
