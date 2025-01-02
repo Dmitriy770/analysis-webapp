@@ -27,10 +27,15 @@ service:
   ports:
     http: 80
 
+livenessProbe:
+  enabled: true
+  path: '/'
+  initialDelaySeconds: 120
+
 readinessProbe:
   enabled: true
   path: '/'
-  initialDelaySeconds: 50
+  initialDelaySeconds: 120
 
 resources:
   requests:
