@@ -24,6 +24,10 @@ public sealed class AuthorizationFilter(
 
         try
         {
+            foreach (var (key, value) in context.HttpContext.Request.Cookies)
+            {
+                Console.WriteLine($"cookie: {key}: {value}");
+            }
             var sessionId = context.GetSessionId();
             var newSession = await sender.Send(new ValidateSession(sessionId));
             context.AddSessionToHeader(newSession.SessionId);
