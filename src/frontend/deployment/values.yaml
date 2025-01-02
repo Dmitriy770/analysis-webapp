@@ -17,7 +17,7 @@ containerSecurityContext:
   runAsNonRoot: false
 podSecurityContext:
   enabled: true
-  fsGroup: 0
+  fsGroup: 1001
 
 mongodb:
   enabled: false
