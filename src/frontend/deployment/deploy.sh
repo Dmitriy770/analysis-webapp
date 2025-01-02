@@ -7,5 +7,7 @@ helm upgrade frontend-service bitnami-repo/node \
     --atomic \
     --create-namespace \
     --namespace business-logic-services \
+    --timeout 4m0s \
     --values values.yaml \
-    --timeout 4m0s
+    --set revision="$BRANCH" \
+    --set extraEnvVars[0].value="$GITHUB_CLIENT_ID"

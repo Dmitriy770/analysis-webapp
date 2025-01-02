@@ -30,7 +30,7 @@ service:
 readinessProbe:
   enabled: true
   path: '/'
-  initialDelaySeconds: 30
+  initialDelaySeconds: 50
 
 resources:
   requests:
@@ -39,3 +39,6 @@ resources:
   limits:
      cpu: 100m
      memory: 128Mi
+
+extraEnvVars:
+  - name: extraEnvVars: 
