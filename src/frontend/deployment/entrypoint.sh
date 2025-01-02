@@ -5,6 +5,8 @@ export PATH="$PNPM_HOME:$PATH"
 
 cd ./src/frontend || exit
 
+ls ../lib/node_modules/corepack/
+
 corepack enable
 
 pnpm --version
