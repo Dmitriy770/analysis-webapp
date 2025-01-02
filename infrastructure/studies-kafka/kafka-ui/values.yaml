@@ -8,15 +8,6 @@ yamlApplicationConfig:
           sasl.mechanism: PLAIN
   auth:
     type: login_form
-  spring:
-    security:
-      user:
-       name: admin
-       password: admin
-  management:
-    health:
-      ldap:
-        enabled: false
 
 resources:
    requests:
