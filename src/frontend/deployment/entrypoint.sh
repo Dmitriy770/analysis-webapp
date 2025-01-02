@@ -9,14 +9,19 @@ corepack enable
 
 cd ./src/frontend || exit
 
+ls /opt/bitnami/node/bin/pnpm
+echo '----'
+ls /opt/bitnami/node/bin/lib/node_modules/corepack/dist
+echo '----'
+ls /opt/bitnami/node/bin/lib/node_modules/corepack
+echo '----'
+ls /opt/bitnami/node/bin/lib/node_modules
+echo '----'
+ls /opt/bitnami/node/bin/lib
+echo '----'
 ls /opt/bitnami/node/bin
 echo '----'
-ls /opt/bitnami/node
-echo '----'
-ls /opt/bitnami
-echo '----'
-ls /opt/bitnami/lib
-echo '----'
+
 
 pnpm --version
 
