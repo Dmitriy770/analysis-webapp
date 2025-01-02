@@ -24,4 +24,4 @@ jobs:
           ./deploy.sh
         env:
           BRANCH: ${{ github.ref_name }}
-          GITHUB_CLIENT_ID: ${{ secrets.GITHUB_CLIENT_ID }}
+          GITHUB_CLIENT_ID: ${{ secrets.GATEWAY_GITHUB_SECRET }}
