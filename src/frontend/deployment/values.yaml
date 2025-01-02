@@ -29,13 +29,13 @@ service:
 livenessProbe:
   enabled: true
   path: '/'
-  initialDelaySeconds: 140
+  initialDelaySeconds: 70
   periodSeconds: 30
 
 readinessProbe:
   enabled: true
   path: '/'
-  initialDelaySeconds: 120
+  initialDelaySeconds: 50
   periodSeconds: 20
 
 resources:
@@ -43,5 +43,5 @@ resources:
      cpu: 100m
      memory: 256Mi
   limits:
-     cpu: 100m
+     cpu: 150m
      memory: 256Mi
