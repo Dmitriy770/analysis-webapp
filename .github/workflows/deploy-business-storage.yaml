@@ -1,0 +1,26 @@
+name: '[deploy][business] StorageService'
+run-name: deploy StorageService by @${{ github.actor }}
+on:
+  workflow_dispatch:
+  workflow_call:
+
+jobs:
+  deploy-study:
+    name: Deploy study service
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup kubectl and helm
+        uses: ./.github/workflows/common/setup-helm
+        with:
+          kube_config: ${{ secrets.KUBE_CONFIG }}
+
+      - name: Helm deploy
+        run: |
+          cd ./src/StorageService/StorageService.Automation
+          chmod 700 deploy.sh
+          ./deploy.sh
+        env:
+          BRANCH: ${{ github.ref_name }}
