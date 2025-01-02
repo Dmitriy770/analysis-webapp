@@ -5,6 +5,8 @@ getent group developers
 export PNPM_HOME="/pnpm"
 export PATH="$PNPM_HOME:$PATH"
 
+npm install -g pnpm
+
 corepack enable
 
 cd ./src/frontend || exit
