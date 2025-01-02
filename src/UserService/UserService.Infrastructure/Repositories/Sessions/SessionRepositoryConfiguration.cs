@@ -12,12 +12,13 @@ internal static class SessionRepositoryConfiguration
         this IServiceCollection serviceCollection,
         IConfigurationRoot configuration)
     {
-        var redisSettings = SessionRepositorySettings.From(configuration);
+        var settings = SessionRepositorySettings.From(configuration);
+        Console.WriteLine("redis " + settings.User + " " + settings.Password);
         var redisConfiguration = new ConfigurationOptions
         {
-            EndPoints = {{redisSettings.Endpoint, redisSettings.Port}},
-            User = redisSettings.User,
-            Password = redisSettings.Password,
+            EndPoints = {{settings.Endpoint, settings.Port}},
+            User = settings.User,
+            Password = settings.Password,
             AbortOnConnectFail = false
         };
         
