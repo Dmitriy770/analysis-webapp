@@ -1,12 +1,12 @@
-name: '[deploy][business] StorageService'
-run-name: deploy StorageService by @${{ github.actor }}
+name: '[deploy][infra] ingress'
+run-name: deploy ingress by @${{ github.actor }}
 on:
   workflow_dispatch:
   workflow_call:
 
 jobs:
   deploy:
-    name: Deploy StorageService
+    name: Deploy ingress
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
@@ -17,10 +17,14 @@ jobs:
         with:
           kube_config: ${{ secrets.KUBE_CONFIG }}
 
-      - name: Helm deploy
+      - name: Helm deploy ingress
         run: |
-          cd ./src/StorageService/StorageService.Automation
+          cd ./infrastructure/ingress
           chmod 700 deploy.sh
           ./deploy.sh
-        env:
-          BRANCH: ${{ github.ref_name }}
+        
+      - name: Apply business ingress
+        run: |
+          cd ./infrastructure/ingress
+          chmod 700 deploy.sh
+          kubectl apply -f business-ingress.yaml

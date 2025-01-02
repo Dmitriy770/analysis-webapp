@@ -1,0 +1,13 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: main-ingress
+  namespace: common-infra
+  annotations:
+    nginx.org/mergeable-ingress-type: master
+spec:
+  ingressClassName: nginx
+  rules:
+  - host: analysis.devsquare.ru
+  - host: api.analysis.devsquare.ru
+  - host: monitoring.analysis.devsquare.ru
