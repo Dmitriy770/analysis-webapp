@@ -11,6 +11,10 @@ revision: 'feature/new-deployment'
 installCommand: ['/bin/bash', './src/frontend/deployment/init.sh']
 command: ['/bin/bash', './src/frontend/deployment/entrypoint.sh']
 
+podSecurityContext:
+  enabled: true
+  fsGroup: 1001
+
 mongodb:
   enabled: false
 
@@ -26,3 +30,7 @@ resources:
   limits:
      cpu: 100m
      memory: 128Mi
+
+extraEnvVars:
+  - name: BITNAMI_DEBUG
+    value: true
