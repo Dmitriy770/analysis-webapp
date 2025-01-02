@@ -1,11 +1,11 @@
 #!/bin/bash
 
-export PNPM_HOME="/pnpm"
+export PNPM_HOME="$HOME/bin/pnpm"
 export PATH="$PNPM_HOME:$PATH"
 
 cd ./src/frontend || exit
 
-corepack enable
+corepack enable --install-directory ~/bin
 
 pnpm --version
 
