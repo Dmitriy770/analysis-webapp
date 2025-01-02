@@ -9,3 +9,5 @@ corepack enable
 
 pnpm install --prod --frozen-lockfile
 pnpm install --frozen-lockfile
+
+cd ./../.. || exit
