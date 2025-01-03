@@ -3,17 +3,14 @@ kind: Ingress
 metadata:
   name: monitoring-ingress
   namespace: monitoring
-  annotations:
-    nginx.ingress.kubernetes.io/use-regex: "true"
-    nginx.ingress.kubernetes.io/rewrite-target: /$2
 spec:
   ingressClassName: nginx
   rules:
-  - host: monitoring.analysis.devsquare.ru
+  - host: kafka.monitoring.analysis.devsquare.ru
     http:
       paths:
       - path: /
-        pathType: ImplementationSpecific
+        pathType: Path
         backend: 
           service: 
             name: kafka-ui
