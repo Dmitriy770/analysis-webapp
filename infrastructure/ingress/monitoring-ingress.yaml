@@ -13,7 +13,7 @@ spec:
     http:
       paths:
       - path: /kafka(/|$)(.*)
-        pathType: Prefix
+        pathType: ImplementationSpecific
         backend: 
           service: 
             name: kafka-ui
