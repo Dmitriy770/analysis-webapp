@@ -50,7 +50,6 @@ jobs:
           kube_config: ${{ secrets.KUBE_CONFIG }}
 
       - name: Apply deployment
-        uses: actions-hub/kubectl@master
         run: kubectl apply -f ./src/scientist/deployment/scientist-deployment.yaml
 
       - name: Apply services
