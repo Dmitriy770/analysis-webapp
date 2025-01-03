@@ -28,3 +28,9 @@ jobs:
           cd ./infrastructure/ingress
           chmod 700 deploy.sh
           kubectl apply -f business-ingress.yaml
+      
+      - name: Apply monitoring ingress
+        run: |
+          cd ./infrastructure/ingress
+          chmod 700 deploy.sh
+          kubectl apply -f monitoring-ingress.yaml
