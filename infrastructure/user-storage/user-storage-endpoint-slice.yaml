@@ -1,15 +1,16 @@
 apiVersion: discovery.k8s.io/v1
 kind: EndpointSlice
 metadata:
-  name: session-storage-service-endpoint-slice
+  name: user-storage-service-endpoint-slice
+  namespace: common-infra
   labels:
-    kubernetes.io/service-name: session-storage-service
+    kubernetes.io/service-name: user-storage-service
 addressType: IPv4
 ports:
   - name: http
     appProtocol: http
     protocol: TCP
-    port: 6379
+    port: 5432
 endpoints:
   - addresses:
-      - "192.168.0.8"
+      - "192.168.0.7"

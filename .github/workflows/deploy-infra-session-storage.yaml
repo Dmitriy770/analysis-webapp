@@ -1,5 +1,5 @@
-name: '[deploy][infra] user storage'
-run-name: Deploy User Storage by @${{ github.actor }}
+name: '[deploy][infra] session storage'
+run-name: Deploy Session Storage by @${{ github.actor }}
 on:
   workflow_dispatch:
   workflow_call:
@@ -10,14 +10,14 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v4
-
+      
       - name: Setup kubectl and helm
         uses: ./.github/workflows/common/setup-helm
         with:
           kube_config: ${{ secrets.KUBE_CONFIG }}
 
       - name: Apply endpoint slice
-        run: kubectl apply -f ./infrastructure/user-storage/user-storage-endpoint-slice.yaml
+        run: kubectl apply -f ./infrastructure/session-storage/session-storage-endpoint-slice.yaml
 
       - name: Apply services
-        run: kubectl apply -f ./infrastructure/user-storage/user-storage-service.yaml
+        run: kubectl apply -f ./infrastructure/session-storage/session-storage-service.yaml
