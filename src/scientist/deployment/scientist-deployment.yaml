@@ -13,7 +13,7 @@ spec:
   template:
     metadata:
       labels:
-        app: frontend
+        app: scientist
     spec:
       containers:
       - name: scientist
