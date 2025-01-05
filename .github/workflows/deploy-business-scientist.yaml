@@ -42,7 +42,7 @@ jobs:
         uses: actions/checkout@v4
 
       - name: Overwrite image for deployment
-        run: sed -i 's\{template-scientist-image}\ghcr.io/dmitriy770/analysis-webapp-scientist:${{github.run_id}}\g' ./scr/scientist/deployment/scientist-deployment.yaml
+        run: sed -i 's\{template-scientist-image}\ghcr.io/dmitriy770/analysis-webapp-scientist:${{github.run_id}}\g' ./src/scientist/deployment/scientist-deployment.yaml
 
       - name: Setup kubectl and helm
         uses: ./.github/workflows/common/setup-helm
