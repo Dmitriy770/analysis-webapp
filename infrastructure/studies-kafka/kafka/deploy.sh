@@ -3,6 +3,7 @@
 helm upgrade kafka oci://registry-1.docker.io/bitnamicharts/kafka \
     --install \
     --atomic \
+    --recreate-pods \
     --create-namespace \
     --namespace common-infra \
     --values values.yaml \

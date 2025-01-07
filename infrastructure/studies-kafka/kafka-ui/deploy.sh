@@ -5,6 +5,7 @@ helm repo add kafka-ui https://provectus.github.io/kafka-ui-charts
 helm upgrade kafka-ui kafka-ui/kafka-ui \
     --install \
     --atomic \
+    --recreate-pods \
     --create-namespace \
     --namespace monitoring \
     --timeout 2m0s \
