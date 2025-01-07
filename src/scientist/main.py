@@ -40,6 +40,7 @@ def main():
         dataset_contents = get_dataset_contents(dataset_id=dataset_id)
         points = clusterize_dataset(dataset_contents=dataset_contents, columns=dataset_columns)
 
+        print(list(map(lambda p: p.to_json(), points))
         post_study_result(study_id=study_id, points=points)
 
     consumer.close()
