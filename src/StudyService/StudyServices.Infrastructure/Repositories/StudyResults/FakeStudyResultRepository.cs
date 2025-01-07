@@ -1,12 +1,16 @@
-﻿using StudyService.Application.Abstractions.Repositories;
+﻿using Microsoft.Extensions.Logging;
+using StudyService.Application.Abstractions.Repositories;
 using StudyService.Domain.Models.StudyResults;
 
 namespace StudyServices.Infrastructure.Repositories.StudyResults;
 
-internal sealed class FakeStudyResultRepository : IStudyResultRepository
+internal sealed class FakeStudyResultRepository(
+    ILogger<FakeStudyResultRepository> logger) : IStudyResultRepository
 {
     public Task AddAsync(StudyResult studyResult, CancellationToken cancellationToken = default)
     {
+        logger.LogInformation("Adding study result to database");
+        
         StudyResults.Add(studyResult);
         
         return Task.CompletedTask;
