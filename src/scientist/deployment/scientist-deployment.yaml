@@ -21,6 +21,13 @@ spec:
         imagePullPolicy: IfNotPresent 
         ports:
         - containerPort: 3000
+        env:
+        - name: KAFKA_SERVER
+          value: {template-kafka-server}
+        - name: KAFKA_USER
+          value: {template-kafka-user}
+        - name: KAFKA_PASSWORD
+          value: {template-kafka-password}
         resources:
           requests:
             memory: "128Mi"

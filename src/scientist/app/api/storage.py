@@ -1,6 +1,6 @@
 import httpx
 
-storage_client = httpx.Client(base_url="http://storage-service.default.svc.cluster.local")
+storage_client = httpx.Client(base_url="http://storage-service-aspnet-core.business.svc.cluster.local")
 
 
 def get_dataset_contents(*, dataset_id: str):

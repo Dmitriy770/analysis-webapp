@@ -21,5 +21,5 @@ public static class Authorization
         return services;
     }
     
-    private static readonly Uri BaseAddress = new("http://uis-service.default.svc.cluster.local");
+    private static readonly Uri BaseAddress = new("http://user-service-aspnet-core.business.svc.cluster.local");
 }
