@@ -11,8 +11,6 @@ from app.api import get_dataset_contents, post_study_result
 def main():
     print("initializing consumer")
     
-    print('creds: ' + os.getenv('KAFKA_SERVER') + ' | ' + os.getenv('KAFKA_USER') + ' | ' + os.getenv('KAFKA_PASSWORD'))
-
     try:
         consumer = KafkaConsumer(
             bootstrap_servers=os.getenv('KAFKA_SERVER'),
@@ -33,7 +31,10 @@ def main():
     consumer.subscribe(['study_topic'])
 
     for message in consumer:
+        print(message)
         message_data: dict = message.value
+        print('---------')
+        print(message_data)
 
         study_id = message_data["id"]
         dataset_id = message_data["dataset"]["id"]
