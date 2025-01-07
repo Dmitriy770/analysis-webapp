@@ -47,7 +47,9 @@ jobs:
           kube_config: ${{ secrets.KUBE_CONFIG }}
 
       - name: Deploy
-        run: ./src/scientist/deployment/deploy.sh
+        run: |
+          cd ./src/scientist/deployment
+          chmod 700 deploy.sh
         env:
           IMAGE_TAG: ${{ github.run_id }}
           KAFKA_SCIENTIST_SERVICE_BROKER_USER: ${{ secrets.KAFKA_SCIENTIST_SERVICE_BROKER_USER }}
