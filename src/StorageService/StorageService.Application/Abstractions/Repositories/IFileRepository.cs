@@ -2,7 +2,7 @@
 
 public interface IFileRepository
 {
-    public Task UploadAsync(string name, Stream content, CancellationToken cancellationToken = default);
+    public Task UploadAsync(string name, byte[] content, CancellationToken cancellationToken = default);
 
-    public Task<Stream?> DownloadAsync(string name, CancellationToken cancellationToken = default);
+    public Task<byte[]?> DownloadAsync(string name, CancellationToken cancellationToken = default);
 }

@@ -33,9 +33,8 @@ public sealed class DatasetController(
 
         var fileName = Request.GetFileName();
         var userId = HttpContext.GetUserId();
-        Console.WriteLine("fronContext: "+ userId);
 
-        var description = await sender.Send(new AddDatasetCommand(fileName, userId, content), cancellationToken);
+        var description = await sender.Send(new AddDatasetCommand(fileName, userId, content.ToArray()), cancellationToken);
 
         return Results.Ok(description.ToApi());
 

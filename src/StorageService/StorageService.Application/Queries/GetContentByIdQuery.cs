@@ -10,7 +10,7 @@ public record GetContentByIdQuery(
 
 public record Result(
    string Name,
-   Stream Content);
+   byte[] Content);
    
 internal sealed class GetContentByIdQueryHandler(
     IDatasetRepository datasetRepository,
