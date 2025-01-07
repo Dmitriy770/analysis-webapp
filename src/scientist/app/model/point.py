@@ -7,4 +7,4 @@ class Point:
     coordinates: list[float]
 
     def to_json(self) -> list[float]:
-        return [self.cluster_id, *self.coordinates]
+        return [str(self.cluster_id), *self.coordinates]
