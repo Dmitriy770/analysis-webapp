@@ -33,5 +33,8 @@ internal sealed class AddStudyResultCommandHandler(
             StudyId: study.Id,
             Points: request.Points);
         await studyResultRepository.AddAsync(studyResult, cancellationToken);
+
+        var newStudy = study with {Status = StudyStatus.Done};
+        await studyRepository.UpdateAsync(newStudy, cancellationToken);
     }
 }

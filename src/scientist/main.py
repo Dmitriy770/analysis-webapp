@@ -41,7 +41,6 @@ def main():
         points = clusterize_dataset(dataset_contents=dataset_contents, columns=dataset_columns)
 
         post_study_result(study_id=study_id, points=points)      
-        consumer.commit()  
 
         print("message consumed")
 

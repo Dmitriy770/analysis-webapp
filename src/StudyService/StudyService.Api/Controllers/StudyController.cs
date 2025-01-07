@@ -45,7 +45,7 @@ public sealed class StudyController(
     {
         var userId = HttpContext.GetUserId();
 
-       var studies = sender.CreateStream(new GetStudyByUserIdQuery(userId), cancellationToken);
+       var studies = sender.CreateStream(new GetStudiesByUserIdQuery(userId), cancellationToken);
 
        return Results.Ok(await studies.ToApi(cancellationToken));
     }

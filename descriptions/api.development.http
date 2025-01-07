@@ -54,12 +54,12 @@ Content-Type: application/json
 ###
 GET http://api.analysis.devsquare.ru/studies
 Accept: application/json
-Cookie: SessionId=d4c8572d-58ce-4e69-adde-809b9495c8e0;
+Cookie: SessionId=2ffbd370-2e68-4ff8-b0e5-096ce1b3f511;
 
 ###
 GET http://api.analysis.devsquare.ru/studies/c8dc66ce-742b-4977-a4af-9ecebec2fcac
 Accept: application/json
-Cookie: SessionId=d4c8572d-58ce-4e69-adde-809b9495c8e0;
+Cookie: SessionId=2ffbd370-2e68-4ff8-b0e5-096ce1b3f511;
 
 ###
 GET http://api.analysis.devsquare.ru/studies/c8dc66ce-742b-4977-a4af-9ecebec2fcac/result

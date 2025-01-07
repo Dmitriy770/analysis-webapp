@@ -12,6 +12,19 @@ internal sealed class FakeStudyRepository : IStudyRepository
         return Task.CompletedTask;
     }
 
+    public Task UpdateAsync(Study study, CancellationToken cancellationToken = default)
+    {
+        for (var i = 0; i < Studies.Count; i++)
+        {
+            if (Studies[i].Id == study.Id)
+            {
+                Studies[i] = study;
+            }
+        }
+        
+        return Task.CompletedTask;
+    }
+
     public IAsyncEnumerable<Study> GetByUserIdAsync(long userId, CancellationToken cancellationToken = default)
     {
         return Studies

@@ -5,15 +5,15 @@ using StudyService.Domain.Models.Studies;
 
 namespace StudyService.Application.Queries;
 
-public record GetStudyByUserIdQuery(
+public record GetStudiesByUserIdQuery(
     long UserId)
     : IStreamRequest<Study>;
 
 internal sealed class GetStudyByUserIdQueryHandler(
     IStudyRepository studyRepository)
-    : IStreamRequestHandler<GetStudyByUserIdQuery, Study>
+    : IStreamRequestHandler<GetStudiesByUserIdQuery, Study>
 {
-    public IAsyncEnumerable<Study> Handle(GetStudyByUserIdQuery request, CancellationToken cancellationToken)
+    public IAsyncEnumerable<Study> Handle(GetStudiesByUserIdQuery request, CancellationToken cancellationToken)
     {
         return studyRepository.GetByUserIdAsync(request.UserId, cancellationToken);
     }
