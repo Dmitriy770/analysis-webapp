@@ -39,7 +39,7 @@ Cookie: SessionId=;
 ### Study
 POST http://api.analysis.devsquare.ru/studies
 Accept: application/json
-Cookie: SessionId=d4c8572d-58ce-4e69-adde-809b9495c8e0;
+Cookie: SessionId=2ffbd370-2e68-4ff8-b0e5-096ce1b3f511;
 Content-Type: application/json
 
 {
@@ -57,14 +57,14 @@ Accept: application/json
 Cookie: SessionId=2ffbd370-2e68-4ff8-b0e5-096ce1b3f511;
 
 ###
-GET http://api.analysis.devsquare.ru/studies/c8dc66ce-742b-4977-a4af-9ecebec2fcac
+GET http://api.analysis.devsquare.ru/studies/0c5daaff-a976-4a82-9bf8-a7a1f19e7db8
 Accept: application/json
 Cookie: SessionId=2ffbd370-2e68-4ff8-b0e5-096ce1b3f511;
 
 ###
-GET http://api.analysis.devsquare.ru/studies/c8dc66ce-742b-4977-a4af-9ecebec2fcac/result
+GET http://api.analysis.devsquare.ru/studies/0c5daaff-a976-4a82-9bf8-a7a1f19e7db8/result
 Accept: application/json
-Cookie: SessionId=d4c8572d-58ce-4e69-adde-809b9495c8e0;
+Cookie: SessionId=2ffbd370-2e68-4ff8-b0e5-096ce1b3f511;
 
 
 ###

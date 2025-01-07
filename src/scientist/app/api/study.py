@@ -6,4 +6,4 @@ study_client = httpx.Client(base_url="http://studies-service-aspnet-core.busines
 
 
 def post_study_result(*, study_id: str, points: list[Point]):
-    study_client.post(f"/internal/studies/{study_id}/result", json={"points": list(map(lambda p: p.to_json(), points))})
+    study_client.post(f"/internal/studies/{study_id}/result", data={"points": list(map(lambda p: p.to_json(), points))})
