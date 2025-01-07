@@ -36,9 +36,9 @@ def main():
         print('---------')
         print(message_data)
 
-        study_id = message_data["id"]
-        dataset_id = message_data["dataset"]["id"]
-        dataset_columns = message_data["dataset"]["columns"]
+        study_id = message_data["Id"]
+        dataset_id = message_data["DatasetEntity"]["Id"]
+        dataset_columns = message_data["DatasetEntity"]["Columns"]
 
         dataset_contents = get_dataset_contents(dataset_id=dataset_id)
         points = clusterize_dataset(dataset_contents=dataset_contents, columns=dataset_columns)
