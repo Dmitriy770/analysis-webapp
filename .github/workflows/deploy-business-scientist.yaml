@@ -32,6 +32,8 @@ jobs:
           file: ./src/scientist/Dockerfile
           push: true
           tags: ghcr.io/dmitriy770/analysis-webapp-scientist:${{ github.run_id }}
+          cache-from: type=gha,scope=container
+          cache-to: type=gha,mode=max,scope=container
   
   deploy:
     name: Deploy scientist
