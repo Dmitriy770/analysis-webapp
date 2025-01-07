@@ -1,6 +1,6 @@
 #!/bin/bash
 
-export KAFKA_SERVER='kafka.studies-kafka.svc.cluster.local:9092'
+export KAFKA_SERVER='kafka.common-infra.svc.cluster.local:9092'
 
 cd ./src/scientist/deployment || exit
 

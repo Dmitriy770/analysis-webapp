@@ -1,5 +1,4 @@
 ﻿using Confluent.Kafka;
-using Microsoft.Extensions.Configuration;
 using StudyServices.Infrastructure.Settings;
 
 namespace StudyServices.Infrastructure.Common.Kafka;
@@ -15,7 +14,7 @@ internal sealed class KafkaClientHandle : IDisposable
             SaslMechanism = SaslMechanism.Plain,
             SaslUsername = settings.Username,
             SaslPassword = settings.Password,
-            AllowAutoCreateTopics = false,
+            AllowAutoCreateTopics = true,
             ClientId = "StudyServices"
         };
             
