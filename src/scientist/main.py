@@ -10,6 +10,8 @@ from app.api import get_dataset_contents, post_study_result
 
 def main():
     print("initializing consumer")
+    
+    print('creds: ' + os.getenv('KAFKA_SERVER') + ' | ' + os.getenv('KAFKA_USER') + ' | ' + os.getenv('KAFKA_PASSWORD'))
 
     try:
         consumer = KafkaConsumer(
@@ -23,9 +25,8 @@ def main():
             sasl_plain_password=os.getenv('KAFKA_PASSWORD'),
         )
     except NoBrokersAvailable as ex:
-        
-        print(f"error: no kafka brokers available. Except {ex}")
-        exit(1)
+        print(f"error: no kafka brokers available.")
+        raise
 
     print("consuming messages")
 
