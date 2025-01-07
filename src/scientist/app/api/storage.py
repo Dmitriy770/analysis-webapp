@@ -8,4 +8,7 @@ def get_dataset_contents(*, dataset_id: str):
 
     response.raise_for_status()
 
-    return response.read()
+    body = response.read()
+    print(body)
+
+    return body

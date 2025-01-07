@@ -31,10 +31,7 @@ def main():
     consumer.subscribe(['study_topic'])
 
     for message in consumer:
-        print(message)
         message_data: dict = message.value
-        print('---------')
-        print(message_data)
 
         study_id = message_data["Id"]
         dataset_id = message_data["DatasetEntity"]["Id"]
