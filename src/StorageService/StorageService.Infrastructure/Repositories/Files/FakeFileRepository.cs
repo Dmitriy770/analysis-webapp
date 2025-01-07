@@ -4,25 +4,27 @@ namespace StorageService.Infrastructure.Repositories.Files;
 
 internal sealed class FakeFileRepository : IFileRepository
 {
-    public Task UploadAsync(string name, Stream content, CancellationToken cancellationToken = default)
+    public async Task UploadAsync(string name, Stream content, CancellationToken cancellationToken = default)
     {
-        var cnt = new MemoryStream();
-        content.CopyTo(cnt);
-        Files.Add((name, cnt));
+        using var ms = new MemoryStream();
+        await content.CopyToAsync(ms, cancellationToken);
         
-        return Task.CompletedTask;
+        Files.Add((name, ms.ToArray()));
     }
 
-    public Task<Stream?> DownloadAsync(string name, CancellationToken cancellationToken = default)
+    public async Task<Stream?> DownloadAsync(string name, CancellationToken cancellationToken = default)
     {
         var tuple = Files.FirstOrDefault(file => file.FileName == name);
         if (tuple == default)
         {
-            return Task.FromResult<Stream?>(null);
+            return null;
         }
 
-        return Task.FromResult<Stream?>(tuple.Stream);
+        var stream = new MemoryStream();
+        await stream.WriteAsync(tuple.Data.AsMemory(0, tuple.Data.Length), cancellationToken);
+        
+        return stream;
     }
 
-    private static readonly List<(string FileName, Stream Stream)> Files = [];
+    private static readonly List<(string FileName, byte[] Data)> Files = [];
 }
