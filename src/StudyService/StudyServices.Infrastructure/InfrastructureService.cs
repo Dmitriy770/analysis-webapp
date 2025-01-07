@@ -60,6 +60,6 @@ public static class InfrastructureService
         return services;
     }
 
-    private static readonly Uri UserServiceAddress = new("http://uis-service.default.svc.cluster.local");
-    private static readonly Uri StorageServiceAddress = new("http://storage-service.default.svc.cluster.local");
+    private static readonly Uri UserServiceAddress = new("http://user-service-aspnet-core.business.svc.cluster.local");
+    private static readonly Uri StorageServiceAddress = new("http://storage-service-aspnet-core.business.svc.cluster.local");
 }
