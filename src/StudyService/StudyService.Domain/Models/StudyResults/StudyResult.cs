@@ -2,4 +2,4 @@
 
 public record StudyResult(
     Guid StudyId,
-    decimal[] Points);
+    string[][] Points);

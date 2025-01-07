@@ -9,7 +9,7 @@ namespace StudyService.Application.Commands;
 
 public record AddStudyResultCommand(
     Guid StudyId,
-    decimal[] Points)
+    string[][] Points)
     : IRequest;
 
 internal sealed class AddStudyResultCommandHandler(
