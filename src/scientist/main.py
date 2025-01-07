@@ -13,7 +13,6 @@ def main():
 
     try:
         consumer = KafkaConsumer(
-            'study_topic',
             bootstrap_servers=os.getenv('KAFKA_SERVER'),
             auto_offset_reset="earliest",
             enable_auto_commit=True,
@@ -23,11 +22,14 @@ def main():
             sasl_plain_username=os.getenv('KAFKA_USER'),
             sasl_plain_password=os.getenv('KAFKA_PASSWORD'),
         )
-    except NoBrokersAvailable:
-        print("error: no kafka brokers available")
+    except NoBrokersAvailable as ex:
+        
+        print(f"error: no kafka brokers available. Except {ex}")
         exit(1)
 
     print("consuming messages")
+
+    consumer.subscribe(['study_topic'])
 
     for message in consumer:
         message_data: dict = message.value
@@ -40,6 +42,8 @@ def main():
         points = clusterize_dataset(dataset_contents=dataset_contents, columns=dataset_columns)
 
         post_study_result(study_id=study_id, points=points)
+
+    consumer.close()
 
 
 if __name__ == "__main__":
