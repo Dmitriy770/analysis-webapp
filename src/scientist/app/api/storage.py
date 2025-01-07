@@ -4,7 +4,7 @@ storage_client = httpx.Client(base_url="http://storage-service-aspnet-core.busin
 
 
 def get_dataset_contents(*, dataset_id: str):
-    response = storage_client.get(f"/internal/datasets/${dataset_id}")
+    response = storage_client.get(f"/internal/datasets/{dataset_id}")
 
     response.raise_for_status()
 
