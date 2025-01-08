@@ -1,5 +1,7 @@
 #!/bin/bash
 
+echo $BRANCH
+
 helm upgrade user-service oci://registry-1.docker.io/bitnamicharts/aspnet-core \
     --install \
     --atomic \
