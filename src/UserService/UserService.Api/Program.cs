@@ -9,6 +9,8 @@ builder.AddApi();
 builder.Services.AddApplication();
 builder.Services.AddInfrastructure(builder.Configuration);
 
+builder.AddOpenTelemetry();
+
 var app = builder.Build();
 
 app.Services.MigrateUserRepository();
