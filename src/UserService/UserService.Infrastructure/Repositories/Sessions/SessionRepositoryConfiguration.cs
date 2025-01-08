@@ -13,7 +13,6 @@ internal static class SessionRepositoryConfiguration
         IConfigurationRoot configuration)
     {
         var settings = SessionRepositorySettings.From(configuration);
-        Console.WriteLine("redis " + settings.User + " " + settings.Password);
         var redisConfiguration = new ConfigurationOptions
         {
             EndPoints = {{settings.Endpoint, settings.Port}},

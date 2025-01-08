@@ -80,6 +80,8 @@ public static class UserServiceApiConfiguration
     {
         builder.Services.AddMediatRTelemetry(configuration =>
         {
+            configuration.Name = "UserServiceMediatr";
+            
             configuration.Add<LoginCommand>();
             configuration.Add<LogoutCommand>();
             configuration.Add<ValidateSession>();
