@@ -20,9 +20,12 @@ spec:
         image: mcr.microsoft.com/dotnet/aspire-dashboard:9.0
         imagePullPolicy: IfNotPresent 
         ports:
-        - containerPort: 18888
-        - containerPort: 18889
-        - containerPort: 18890
+        - name: http
+          containerPort: 18888
+        - name: oltp
+          containerPort: 18889
+        - name: oltp-http
+          containerPort: 18890
         env:
         - name: Dashboard__Frontend__AuthMode
           value: BrowserToken
