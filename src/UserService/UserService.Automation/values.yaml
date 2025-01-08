@@ -20,6 +20,8 @@ extraEnvVars:
   - name: Repositories__UserRepository__Password
   - name: Gateways__GitHub__ClientId
   - name: Gateways__GitHub__ClientSecret
+  - name: OTEL_EXPORTER_OTLP_ENDPOINT
+    value: http://aspire-dashboard-service.monitoring.svc.cluster.local:18889
 
 customLivenessProbe:
   httpGet:

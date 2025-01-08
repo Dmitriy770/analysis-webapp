@@ -1,0 +1,27 @@
+name: '[deploy][monitoring] aspire dashboard'
+run-name: Deploy Aspire Dashboard by @${{ github.actor }}
+on:
+  workflow_dispatch:
+  workflow_call:
+
+jobs:
+  deploy:
+    name: Deploy Aspire Dashboard
+    runs-on: ubuntu-latest
+    needs: [build]
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup kubectl and helm
+        uses: ./.github/workflows/common/setup-helm
+        with:
+          kube_config: ${{ secrets.KUBE_CONFIG }}
+
+      - name: Deploy
+        run: |
+          cd ./infrastructure/aspire-dashboard
+          chmod 700 deploy.sh
+          ./deploy.sh
+        env:
+          ASPIRE_DASHBOARD_TOKEN: ${{ secrets.ASPIRE_DASHBOARD_TOKEN }}

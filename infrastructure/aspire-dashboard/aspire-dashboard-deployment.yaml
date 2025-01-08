@@ -1,0 +1,40 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: aspire-dashboard-deployment
+  namespace: monitoring
+  labels:
+    app: aspire-dashboard
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: aspire-dashboard
+  template:
+    metadata:
+      labels:
+        app: aspire-dashboard
+    spec:
+      containers:
+      - name: aspire-dashboard
+        image: mcr.microsoft.com/dotnet/aspire-dashboard:9.0
+        imagePullPolicy: IfNotPresent 
+        ports:
+        - containerPort: 18888
+        - containerPort: 18889
+        - containerPort: 18890
+        env:
+        - name: Dashboard__Frontend__AuthMode
+          value: BrowserToken
+        - name: Dashboard__Frontend__BrowserToken
+          value: {template-dashboard-token}
+        resources:
+          requests:
+            memory: "128Mi"
+            cpu: "40m"
+          limits:
+            memory: "256Mi"
+            cpu: "80m"
+  strategy:
+    type: RollingUpdate
+

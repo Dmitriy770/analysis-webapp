@@ -1,0 +1,20 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: aspire-dashboard-service
+  namespace: monitoring
+spec:
+  ports:
+  - name: http
+    protocol: TCP
+    port: 80
+    targetPort: 18888
+  - name: oltp
+    protocol: TCP
+    port: 18889
+    targetPort: 18889
+  - name: oltp-http
+    protocol: TCP
+    port: 18890
+    targetPort: 18890
+  type: ClusterIP

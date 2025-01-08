@@ -58,7 +58,7 @@ public static class UserServiceApiConfiguration
                     .AddHttpClientInstrumentation()
                     .AddNpgsqlInstrumentation();
                 
-                metrics.AddConsoleExporter();
+                metrics.AddOtlpExporter();
             })
             .WithTracing(tracing =>
             {
@@ -68,10 +68,10 @@ public static class UserServiceApiConfiguration
                     .AddEntityFrameworkCoreInstrumentation()
                     .AddNpgsql();
 
-                tracing.AddConsoleExporter();
+                tracing.AddOtlpExporter();
             });
 
-        builder.Logging.AddOpenTelemetry(logging => logging.AddConsoleExporter());
+        builder.Logging.AddOpenTelemetry(logging => logging.AddOtlpExporter());
 
         return builder;
     }
