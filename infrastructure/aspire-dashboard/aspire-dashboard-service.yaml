@@ -4,17 +4,19 @@ metadata:
   name: aspire-dashboard-service
   namespace: monitoring
 spec:
+  selector:
+    app: aspire-dashboard
   ports:
   - name: http
     protocol: TCP
     port: 80
-    targetPort: 18888
+    targetPort: http
   - name: oltp
     protocol: TCP
     port: 18889
-    targetPort: 18889
+    targetPort: oltp
   - name: oltp-http
     protocol: TCP
     port: 18890
-    targetPort: 18890
+    targetPort: oltp-http
   type: ClusterIP
