@@ -1,4 +1,5 @@
-﻿using Common.Logging.HttpClient;
+﻿using Common.Logging;
+using Common.Logging.HttpClient;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Refit;
@@ -35,6 +36,8 @@ public static class UserServiceInfrastructureConfiguration
     {
         var settings = GitHubGatewaySettings.From(configuration);
         services.AddSingleton(settings);
+        
+        services.AddCommonLogging();
         
         services
             .AddRefitClient<IGitHubApi>()

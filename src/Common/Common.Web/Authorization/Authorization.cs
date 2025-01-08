@@ -12,8 +12,6 @@ public static class Authorization
 {
     public static IServiceCollection AddAuthorizationFilter(this IServiceCollection services)
     {
-        services.TryAddScoped<HttpClientLogger>();
-        
         services.AddCommonLogging();
         services
             .AddRefitClient<IUserServiceClient>()
