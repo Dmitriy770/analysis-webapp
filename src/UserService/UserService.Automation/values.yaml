@@ -1,0 +1,46 @@
+image:
+  tag: 9.0.0-debian-12-r1
+
+appFromExternalRepo:
+  enabled: true
+  clone:
+    repository: https://github.com/Dmitriy770/analysis-webapp
+    depth:
+
+  publish:
+    image:
+      tag: 9.0.101-debian-12-r0
+    subFolder: src/UserService/UserService.Api/
+  startCommand: ["dotnet", "UserService.Api.dll"]
+
+extraEnvVars:
+  - name: Repositories__SessionRepository__User
+  - name: Repositories__SessionRepository__Password
+  - name: Repositories__UserRepository__User
+  - name: Repositories__UserRepository__Password
+  - name: Gateways__GitHub__ClientId
+  - name: Gateways__GitHub__ClientSecret
+
+customLivenessProbe:
+  httpGet:
+    path: /healthz
+    port: 8080
+  initialDelaySeconds: 60
+  periodSeconds: 30
+  failureThreshold: 3
+
+containerPorts:
+  http: 8080
+
+service:
+  type: ClusterIP
+  ports:
+    http: 80
+
+resources:
+  requests:
+    cpu: 40m
+    memory: 128Mi
+  limits:
+    cpu: 80m
+    memory: 256Mi

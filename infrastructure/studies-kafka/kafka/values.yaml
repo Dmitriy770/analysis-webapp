@@ -1,0 +1,33 @@
+listeners:
+  client:
+    protocol: SASL_PLAINTEXT
+  controller:
+    protocol: SASL_PLAINTEXT
+  interbroker:
+    protocol: SASL_PLAINTEXT
+
+sasl:
+  enabledMechanisms: PLAIN
+  interBrokerMechanism: PLAIN
+  controllerMechanism: PLAIN
+
+controller:
+  replicaCount: 1
+  persistence:
+    enabled: false
+  logPersistence:
+    enabled: false
+
+broker:
+  persistence:
+    enabled: false
+  logPersistence:
+    enabled: false
+
+resources:
+  requests:
+    cpu: 0.5
+    memory: 256i
+  limits:
+    cpu: 1
+    memory: 512Mi

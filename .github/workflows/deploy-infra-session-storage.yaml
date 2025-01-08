@@ -1,0 +1,23 @@
+name: '[deploy][infra] session storage'
+run-name: Deploy Session Storage by @${{ github.actor }}
+on:
+  workflow_dispatch:
+  workflow_call:
+jobs:
+  deploy:
+    name: Deploy
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+      
+      - name: Setup kubectl and helm
+        uses: ./.github/workflows/common/setup-helm
+        with:
+          kube_config: ${{ secrets.KUBE_CONFIG }}
+
+      - name: Apply endpoint slice
+        run: kubectl apply -f ./infrastructure/session-storage/session-storage-endpoint-slice.yaml
+
+      - name: Apply services
+        run: kubectl apply -f ./infrastructure/session-storage/session-storage-service.yaml

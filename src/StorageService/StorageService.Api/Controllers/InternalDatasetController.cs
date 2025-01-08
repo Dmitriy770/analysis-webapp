@@ -24,10 +24,8 @@ public sealed class InternalDatasetController(
         CancellationToken cancellationToken = default)
     {
         var result = await sender.Send(new GetContentByIdQuery(id), cancellationToken);
-    
-        var content = await StreamToBytes(result.Content, cancellationToken);
-        await result.Content.DisposeAsync();
-        return Results.File(content, ContentType, result.Name);
+        
+        return Results.File(result.Content, ContentType, result.Name);
     }
     
     [HttpGet("{id:guid}/description")]

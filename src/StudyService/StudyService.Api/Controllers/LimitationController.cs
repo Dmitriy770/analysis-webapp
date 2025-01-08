@@ -10,7 +10,7 @@ using StudyService.Application.Queries;
 namespace StudyService.Api.Controllers;
 
 [ApiController]
-[Route("user/limits")]
+[Route("studies/limits")]
 public sealed class LimitationController(
     ISender sender)
     : ControllerBase

@@ -1,0 +1,18 @@
+yamlApplicationConfig:
+  kafka:
+    clusters:
+      - name: studies-tasks
+        bootstrapServers:  kafka.common-infra.svc.cluster.local:9092
+        properties: 
+          security.protocol: SASL_PLAINTEXT
+          sasl.mechanism: PLAIN
+  auth:
+    type: login_form
+
+resources:
+   requests:
+     cpu: 200m
+     memory: 256Mi
+   limits:
+     cpu: 300m
+     memory: 512Mi

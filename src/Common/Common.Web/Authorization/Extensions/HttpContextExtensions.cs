@@ -11,13 +11,11 @@ public static class HttpContextExtensions
 
      public static void AddUserId(this HttpContext httpContext, long userId)
      {
-         // httpContext.Items.Add(Const.UserIdKey, userId); fast fix
          httpContext.Items[Const.UserIdKey] = userId;
      }
      
      public static long GetUserId(this HttpContext httpContext)
      {
-         Console.WriteLine("from common 1: " + httpContext.Items[Const.UserIdKey]);
          if (!httpContext.Items.TryGetValue(Const.UserIdKey, out var userIdObj))
          {
              throw new ArgumentException(Const.UserIdKey);
@@ -27,14 +25,12 @@ public static class HttpContextExtensions
          {
              throw new ArgumentException(Const.UserIdKey);
          }
-         Console.WriteLine("from common 2: " + userId);
 
          return userId;
      }
      
      public static void AddSessionId(this HttpContext httpContext, Guid sessionId)
      {
-         // httpContext.Items.Add(Const.SessionIdKey, sessionId); fast fix
          httpContext.Items[Const.SessionIdKey] = sessionId;
      }
      

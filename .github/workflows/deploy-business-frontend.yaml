@@ -1,0 +1,27 @@
+name: '[deploy][business] frontend'
+run-name: deploy frontend by @${{ github.actor }}
+on:
+  workflow_dispatch:
+  workflow_call:
+
+jobs:
+  deploy:
+    name: Deploy frontend service
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup kubectl and helm
+        uses: ./.github/workflows/common/setup-helm
+        with:
+          kube_config: ${{ secrets.KUBE_CONFIG }}
+
+      - name: Helm deploy
+        run: |
+          cd ./src/frontend/deployment
+          chmod 700 deploy.sh
+          ./deploy.sh
+        env:
+          BRANCH: ${{ github.ref_name }}
+          GITHUB_CLIENT_ID: ${{ secrets.GATEWAY_GITHUB_CLIENT_ID }}

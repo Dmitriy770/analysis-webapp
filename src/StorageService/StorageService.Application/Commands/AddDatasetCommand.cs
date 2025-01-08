@@ -9,7 +9,7 @@ namespace StorageService.Application.Commands;
 public record AddDatasetCommand(
     string FileName,
     long UserId,
-    Stream Content)
+    byte[] Content)
     : IRequest<DatasetDescription>;
     
 internal sealed class AddDatasetCommandHandler(

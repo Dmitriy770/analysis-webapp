@@ -1,0 +1,36 @@
+name: '[deploy][infra] ingress'
+run-name: deploy ingress by @${{ github.actor }}
+on:
+  workflow_dispatch:
+  workflow_call:
+
+jobs:
+  deploy:
+    name: Deploy ingress
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup kubectl and helm
+        uses: ./.github/workflows/common/setup-helm
+        with:
+          kube_config: ${{ secrets.KUBE_CONFIG }}
+
+      - name: Helm deploy ingress
+        run: |
+          cd ./infrastructure/ingress
+          chmod 700 deploy.sh
+          ./deploy.sh
+        
+      - name: Apply business ingress
+        run: |
+          cd ./infrastructure/ingress
+          chmod 700 deploy.sh
+          kubectl apply -f business-ingress.yaml
+      
+      - name: Apply monitoring ingress
+        run: |
+          cd ./infrastructure/ingress
+          chmod 700 deploy.sh
+          kubectl apply -f monitoring-ingress.yaml

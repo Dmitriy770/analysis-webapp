@@ -29,7 +29,7 @@ internal sealed class CreateClusteringStudyCommandHandler(
     public async Task<Study> Handle(CreateClusteringStudyCommand request, CancellationToken cancellationToken)
     {
         var (newStudy, userId) = request;
-        if (await GeDescription(userId, newStudy.Dataset.Name) is not { } description)
+        if (await GetDescription(userId, newStudy.Dataset.Name) is not { } description)
         {
             throw new DatasetNotFoundException(newStudy.Dataset.Name);
         }
@@ -56,7 +56,7 @@ internal sealed class CreateClusteringStudyCommandHandler(
         return study;
     }
 
-    private async Task<DatasetDescription?> GeDescription(long userId, string datasetName)
+    private async Task<DatasetDescription?> GetDescription(long userId, string datasetName)
     { 
         var queryParams = new GetDescriptionsQuery
         {

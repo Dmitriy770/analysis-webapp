@@ -16,6 +16,12 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "StorageService.Infrastructu
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Common.Configuration", "..\Common\Common.Configuration\Common.Configuration.csproj", "{19A62B8E-C749-42C8-87C2-14D3F86A5319}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "StorageService.Automation", "StorageService.Automation", "{EE3C95D0-8E94-49F4-AA38-B49431F05C85}"
+	ProjectSection(SolutionItems) = preProject
+		StorageService.Automation\deploy.sh = StorageService.Automation\deploy.sh
+		StorageService.Automation\values.yaml = StorageService.Automation\values.yaml
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU

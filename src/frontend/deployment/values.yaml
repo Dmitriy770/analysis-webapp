@@ -1,0 +1,50 @@
+image:
+  tag: 20.18.1-debian-12-r2
+
+containerPorts:
+  http: 3000
+
+getAppFromExternalRepository: true
+repository: https://github.com/Dmitriy770/analysis-webapp
+revision: 'feature/new-deployment'
+
+command: ['/bin/bash', './src/frontend/deployment/entrypoint.sh']
+
+containerSecurityContext:
+  enabled: true
+  runAsUser: 0
+  runAsNonRoot: false
+podSecurityContext:
+  enabled: true
+  fsGroup: 1001
+
+extraEnvVars:
+  - name: GITHUB_CLIENT_ID
+
+mongodb:
+  enabled: false
+
+service:
+  type: ClusterIP
+  ports:
+    http: 80
+
+livenessProbe:
+  enabled: true
+  path: '/'
+  initialDelaySeconds: 60
+  periodSeconds: 30
+
+readinessProbe:
+  enabled: true
+  path: '/'
+  initialDelaySeconds: 30
+  periodSeconds: 20
+
+resources:
+  requests:
+     cpu: 100m
+     memory: 256Mi
+  limits:
+     cpu: 150m
+     memory: 256Mi

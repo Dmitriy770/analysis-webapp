@@ -1,0 +1,43 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: business-ingress
+  namespace: business
+spec:
+  ingressClassName: nginx
+  rules:
+  - host: analysis.devsquare.ru
+    http:
+      paths:
+      - path: /
+        pathType: Prefix
+        backend: 
+          service: 
+            name: frontend-service-node
+            port: 
+              number: 80
+
+  - host: api.analysis.devsquare.ru
+    http:
+      paths:
+      - path: /user
+        pathType: Prefix
+        backend: 
+          service: 
+            name: user-service-aspnet-core 
+            port: 
+              number: 80
+      - path: /studies
+        pathType: Prefix
+        backend: 
+          service: 
+            name: studies-service-aspnet-core
+            port: 
+              number: 80 
+      - path: /datasets
+        pathType: Prefix
+        backend: 
+          service: 
+            name: storage-service-aspnet-core
+            port: 
+              number: 80 
