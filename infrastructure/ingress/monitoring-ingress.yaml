@@ -23,6 +23,6 @@ spec:
         pathType: Prefix
         backend: 
           service: 
-            name: aspire-dashboard
+            name: aspire-dashboard-service
             port: 
               number: 80
