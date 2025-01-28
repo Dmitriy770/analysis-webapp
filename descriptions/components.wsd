@@ -1,8 +1,7 @@
 @startuml Analysis Service
 
-skinparam {
-    HorizontalAlignment center
-}
+skinparam sequenceMessageAlign center
+skinparam sequenceReferenceAlign center
 
 cloud "GitHub" as GitHub
 
@@ -32,8 +31,10 @@ node "clustering processor service" as ClusteringProcessorService{
 
 queue "MessageBroker\n[Kafka]" as MessageBroker
 
-database "clustering storage\n[MongoDB]" as ClusteringStorage
+database "analysis storage\n[MongoDB]" as AnalysisStorage
 database "user storage\n[PostgreSQL]" as UserStorage
+database "session storage\n[Redis]" as SessionStorage
+database "datasets storage\n[MongoDB]" as ClusteringStorage
 
 GitHub <-d-- UserDomain
 GitHub <-l--> Frontend
@@ -43,11 +44,14 @@ Frontend <-d--> ApiGateway
 ApiGateway <-d-- LimitationDomain
 ApiGateway <-d--> AnalysisDomain
 ApiGateway <-d--> UserDomain 
+ApiGateway <-d--> StorageDomain
 
 UserDomain -l--> LimitationDomain
-UserDomain <-r-> UserStorage
+UserDomain <-r-> SessionStorage
+UserDomain <-d-> UserStorage
 
 AnalysisDomain <-d--> StorageDomain
+AnalysisDomain <-l--> AnalysisStorage
 StorageDomain -u--> LimitationDomain
 StorageDomain <-l-> ClusteringStorage
 
